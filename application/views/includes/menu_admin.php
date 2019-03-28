@@ -38,7 +38,7 @@
 						 
 				   <li class="treeview">
 		  <a href="#">
-			<i class="fa fa-file-text"></i> <span>Publicar</span>
+			<i class="fa fa-file-text"></i> <span>Publição</span>
 			<i class="fa fa-angle-left pull-right"></i>
 		  </a>
 		  
