@@ -1,25 +1,26 @@
-# Specifies intentionally untracked files to ignore when using Git
-# http://git-scm.com/docs/gitignore
 
-*~
-*.sw[mnpcod]
-*.log
-*.tmp
-*.tmp.*
-log.txt
-*.sublime-project
-*.sublime-workspace
-.vscode/
-npm-debug.log*
+# Created by https://www.gitignore.io/api/codeigniter
+# Edit at https://www.gitignore.io/?templates=codeigniter
 
-.idea/
-.sourcemaps/
-.sass-cache/
-.tmp/
-.versions/
-assets/*
-assets_portal/*
-uploads/*
-application/config/*
+### CodeIgniter ###
+*/config/development
+*/logs/log-*.php
+!*/logs/index.html
+*/cache/*
+!*/cache/index.html
+!*/cache/.htaccess
+
+user_guide_src/build/*
+user_guide_src/cilexer/build/*
+user_guide_src/cilexer/dist/*
+user_guide_src/cilexer/pycilexer.egg-info/*
+
+#codeigniter 3
+application/logs/*
+!application/logs/index.html
+!application/logs/.htaccess
 
 
+### CodeIgniter Patch ###
+
+# End of https://www.gitignore.io/api/codeigniter
