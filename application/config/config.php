@@ -20,9 +20,9 @@
 |
 | If you need to allow multiple domains, remember that this file is still
 | a PHP script and you can easily do that on your own.
-| s
+| 
 */
-$config['base_url'] = 'http://localhost:8888/transparencia/';
+$config['base_url'] = 'http://pocoes.ba.gov.br/';
 
 /* 
 |--------------------------------------------------------------------------
