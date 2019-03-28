@@ -22,7 +22,7 @@
 | a PHP script and you can easily do that on your own.
 | 
 */
-$config['base_url'] = 'https://pocoes.ba.gov.br/';
+$config['base_url'] = 'https://transparencia.pocoes.ba.gov.br/';
 
 /* 
 |--------------------------------------------------------------------------
