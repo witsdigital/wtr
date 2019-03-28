@@ -215,3 +215,163 @@ DEBUG - 2019-03-28 01:43:37 --> UTF-8 Support Enabled
 DEBUG - 2019-03-28 01:43:37 --> URI Class Initialized
 DEBUG - 2019-03-28 01:43:37 --> Router Class Initialized
 ERROR - 2019-03-28 01:43:37 --> 404 Page Not Found --> uploads
+DEBUG - 2019-03-28 01:45:28 --> Config Class Initialized
+DEBUG - 2019-03-28 01:45:28 --> Hooks Class Initialized
+DEBUG - 2019-03-28 01:45:28 --> Utf8 Class Initialized
+DEBUG - 2019-03-28 01:45:28 --> UTF-8 Support Enabled
+DEBUG - 2019-03-28 01:45:28 --> URI Class Initialized
+DEBUG - 2019-03-28 01:45:28 --> Router Class Initialized
+DEBUG - 2019-03-28 01:45:28 --> Output Class Initialized
+DEBUG - 2019-03-28 01:45:28 --> Security Class Initialized
+DEBUG - 2019-03-28 01:45:28 --> Input Class Initialized
+DEBUG - 2019-03-28 01:45:28 --> Global POST and COOKIE data sanitized
+DEBUG - 2019-03-28 01:45:28 --> Language Class Initialized
+DEBUG - 2019-03-28 01:45:28 --> Loader Class Initialized
+DEBUG - 2019-03-28 01:45:28 --> Helper loaded: url_helper
+DEBUG - 2019-03-28 01:45:28 --> Database Driver Class Initialized
+DEBUG - 2019-03-28 01:45:28 --> Session Class Initialized
+DEBUG - 2019-03-28 01:45:28 --> Helper loaded: string_helper
+DEBUG - 2019-03-28 01:45:28 --> Session routines successfully run
+DEBUG - 2019-03-28 01:45:28 --> XML-RPC Class Initialized
+DEBUG - 2019-03-28 01:45:28 --> Model Class Initialized
+DEBUG - 2019-03-28 01:45:28 --> Model Class Initialized
+DEBUG - 2019-03-28 01:45:28 --> Model Class Initialized
+DEBUG - 2019-03-28 01:45:28 --> Model Class Initialized
+DEBUG - 2019-03-28 01:45:28 --> Model Class Initialized
+DEBUG - 2019-03-28 01:45:28 --> Controller Class Initialized
+DEBUG - 2019-03-28 01:45:28 --> File loaded: application/views/includes/import.php
+DEBUG - 2019-03-28 01:45:28 --> File loaded: application/views/includes/header.php
+DEBUG - 2019-03-28 01:45:28 --> File loaded: application/views/includes/menu_admin.php
+DEBUG - 2019-03-28 01:45:28 --> File loaded: application/views/131/cadastro2.php
+DEBUG - 2019-03-28 01:45:28 --> File loaded: application/views/includes/footer.php
+DEBUG - 2019-03-28 01:45:28 --> Final output sent to browser
+DEBUG - 2019-03-28 01:45:28 --> Total execution time: 0.1249
+DEBUG - 2019-03-28 01:45:28 --> Config Class Initialized
+DEBUG - 2019-03-28 01:45:28 --> Hooks Class Initialized
+DEBUG - 2019-03-28 01:45:28 --> Utf8 Class Initialized
+DEBUG - 2019-03-28 01:45:28 --> UTF-8 Support Enabled
+DEBUG - 2019-03-28 01:45:28 --> URI Class Initialized
+DEBUG - 2019-03-28 01:45:28 --> Router Class Initialized
+ERROR - 2019-03-28 01:45:28 --> 404 Page Not Found --> uploads
+DEBUG - 2019-03-28 01:56:42 --> Config Class Initialized
+DEBUG - 2019-03-28 01:56:42 --> Hooks Class Initialized
+DEBUG - 2019-03-28 01:56:42 --> Utf8 Class Initialized
+DEBUG - 2019-03-28 01:56:42 --> UTF-8 Support Enabled
+DEBUG - 2019-03-28 01:56:42 --> URI Class Initialized
+DEBUG - 2019-03-28 01:56:42 --> Router Class Initialized
+ERROR - 2019-03-28 01:56:42 --> 404 Page Not Found --> uploads
+DEBUG - 2019-03-28 01:56:46 --> Config Class Initialized
+DEBUG - 2019-03-28 01:56:46 --> Hooks Class Initialized
+DEBUG - 2019-03-28 01:56:46 --> Utf8 Class Initialized
+DEBUG - 2019-03-28 01:56:46 --> UTF-8 Support Enabled
+DEBUG - 2019-03-28 01:56:46 --> URI Class Initialized
+DEBUG - 2019-03-28 01:56:46 --> Router Class Initialized
+DEBUG - 2019-03-28 01:56:46 --> Output Class Initialized
+DEBUG - 2019-03-28 01:56:46 --> Security Class Initialized
+DEBUG - 2019-03-28 01:56:46 --> Input Class Initialized
+DEBUG - 2019-03-28 01:56:46 --> Global POST and COOKIE data sanitized
+DEBUG - 2019-03-28 01:56:46 --> Language Class Initialized
+DEBUG - 2019-03-28 01:56:46 --> Loader Class Initialized
+DEBUG - 2019-03-28 01:56:46 --> Helper loaded: url_helper
+DEBUG - 2019-03-28 01:56:46 --> Database Driver Class Initialized
+DEBUG - 2019-03-28 01:56:46 --> Session Class Initialized
+DEBUG - 2019-03-28 01:56:46 --> Helper loaded: string_helper
+DEBUG - 2019-03-28 01:56:46 --> Session routines successfully run
+DEBUG - 2019-03-28 01:56:46 --> XML-RPC Class Initialized
+DEBUG - 2019-03-28 01:56:46 --> Model Class Initialized
+DEBUG - 2019-03-28 01:56:46 --> Model Class Initialized
+DEBUG - 2019-03-28 01:56:46 --> Model Class Initialized
+DEBUG - 2019-03-28 01:56:46 --> Model Class Initialized
+DEBUG - 2019-03-28 01:56:46 --> Model Class Initialized
+DEBUG - 2019-03-28 01:56:46 --> Controller Class Initialized
+DEBUG - 2019-03-28 01:56:46 --> Model Class Initialized
+DEBUG - 2019-03-28 01:56:46 --> File loaded: application/views/includes/import.php
+DEBUG - 2019-03-28 01:56:46 --> File loaded: application/views/includes/header.php
+DEBUG - 2019-03-28 01:56:46 --> File loaded: application/views/includes/menu_admin.php
+DEBUG - 2019-03-28 01:56:46 --> File loaded: application/views/publicar/view.php
+DEBUG - 2019-03-28 01:56:46 --> File loaded: application/views/includes/footer.php
+DEBUG - 2019-03-28 01:56:46 --> Final output sent to browser
+DEBUG - 2019-03-28 01:56:46 --> Total execution time: 0.0735
+DEBUG - 2019-03-28 01:56:46 --> Config Class Initialized
+DEBUG - 2019-03-28 01:56:46 --> Hooks Class Initialized
+DEBUG - 2019-03-28 01:56:46 --> Utf8 Class Initialized
+DEBUG - 2019-03-28 01:56:46 --> UTF-8 Support Enabled
+DEBUG - 2019-03-28 01:56:46 --> URI Class Initialized
+DEBUG - 2019-03-28 01:56:46 --> Router Class Initialized
+ERROR - 2019-03-28 01:56:46 --> 404 Page Not Found --> uploads
+DEBUG - 2019-03-28 01:57:10 --> Config Class Initialized
+DEBUG - 2019-03-28 01:57:10 --> Hooks Class Initialized
+DEBUG - 2019-03-28 01:57:10 --> Utf8 Class Initialized
+DEBUG - 2019-03-28 01:57:10 --> UTF-8 Support Enabled
+DEBUG - 2019-03-28 01:57:10 --> URI Class Initialized
+DEBUG - 2019-03-28 01:57:10 --> Router Class Initialized
+DEBUG - 2019-03-28 01:57:10 --> Output Class Initialized
+DEBUG - 2019-03-28 01:57:10 --> Security Class Initialized
+DEBUG - 2019-03-28 01:57:10 --> Input Class Initialized
+DEBUG - 2019-03-28 01:57:10 --> Global POST and COOKIE data sanitized
+DEBUG - 2019-03-28 01:57:10 --> Language Class Initialized
+DEBUG - 2019-03-28 01:57:10 --> Loader Class Initialized
+DEBUG - 2019-03-28 01:57:10 --> Helper loaded: url_helper
+DEBUG - 2019-03-28 01:57:10 --> Database Driver Class Initialized
+DEBUG - 2019-03-28 01:57:10 --> Session Class Initialized
+DEBUG - 2019-03-28 01:57:10 --> Helper loaded: string_helper
+DEBUG - 2019-03-28 01:57:10 --> Session routines successfully run
+DEBUG - 2019-03-28 01:57:10 --> XML-RPC Class Initialized
+DEBUG - 2019-03-28 01:57:10 --> Model Class Initialized
+DEBUG - 2019-03-28 01:57:10 --> Model Class Initialized
+DEBUG - 2019-03-28 01:57:10 --> Model Class Initialized
+DEBUG - 2019-03-28 01:57:10 --> Model Class Initialized
+DEBUG - 2019-03-28 01:57:10 --> Model Class Initialized
+DEBUG - 2019-03-28 01:57:10 --> Controller Class Initialized
+DEBUG - 2019-03-28 01:57:10 --> File loaded: application/views/includes/import.php
+DEBUG - 2019-03-28 01:57:10 --> File loaded: application/views/includes/header.php
+DEBUG - 2019-03-28 01:57:10 --> File loaded: application/views/includes/menu_admin.php
+DEBUG - 2019-03-28 01:57:10 --> File loaded: application/views/131/cadastro2.php
+DEBUG - 2019-03-28 01:57:10 --> File loaded: application/views/includes/footer.php
+DEBUG - 2019-03-28 01:57:10 --> Final output sent to browser
+DEBUG - 2019-03-28 01:57:10 --> Total execution time: 0.0482
+DEBUG - 2019-03-28 01:57:10 --> Config Class Initialized
+DEBUG - 2019-03-28 01:57:10 --> Hooks Class Initialized
+DEBUG - 2019-03-28 01:57:10 --> Utf8 Class Initialized
+DEBUG - 2019-03-28 01:57:10 --> UTF-8 Support Enabled
+DEBUG - 2019-03-28 01:57:10 --> URI Class Initialized
+DEBUG - 2019-03-28 01:57:10 --> Router Class Initialized
+ERROR - 2019-03-28 01:57:10 --> 404 Page Not Found --> uploads
+DEBUG - 2019-03-28 01:57:24 --> Config Class Initialized
+DEBUG - 2019-03-28 01:57:24 --> Hooks Class Initialized
+DEBUG - 2019-03-28 01:57:24 --> Utf8 Class Initialized
+DEBUG - 2019-03-28 01:57:24 --> UTF-8 Support Enabled
+DEBUG - 2019-03-28 01:57:24 --> URI Class Initialized
+DEBUG - 2019-03-28 01:57:24 --> Router Class Initialized
+DEBUG - 2019-03-28 01:57:24 --> Output Class Initialized
+DEBUG - 2019-03-28 01:57:24 --> Security Class Initialized
+DEBUG - 2019-03-28 01:57:24 --> Input Class Initialized
+DEBUG - 2019-03-28 01:57:24 --> Global POST and COOKIE data sanitized
+DEBUG - 2019-03-28 01:57:24 --> Language Class Initialized
+DEBUG - 2019-03-28 01:57:24 --> Loader Class Initialized
+DEBUG - 2019-03-28 01:57:24 --> Helper loaded: url_helper
+DEBUG - 2019-03-28 01:57:24 --> Database Driver Class Initialized
+DEBUG - 2019-03-28 01:57:24 --> Session Class Initialized
+DEBUG - 2019-03-28 01:57:24 --> Helper loaded: string_helper
+DEBUG - 2019-03-28 01:57:24 --> Session routines successfully run
+DEBUG - 2019-03-28 01:57:24 --> XML-RPC Class Initialized
+DEBUG - 2019-03-28 01:57:24 --> Model Class Initialized
+DEBUG - 2019-03-28 01:57:24 --> Model Class Initialized
+DEBUG - 2019-03-28 01:57:24 --> Model Class Initialized
+DEBUG - 2019-03-28 01:57:24 --> Model Class Initialized
+DEBUG - 2019-03-28 01:57:24 --> Model Class Initialized
+DEBUG - 2019-03-28 01:57:24 --> Controller Class Initialized
+DEBUG - 2019-03-28 01:57:24 --> File loaded: application/views/includes/import.php
+DEBUG - 2019-03-28 01:57:24 --> File loaded: application/views/includes/header.php
+DEBUG - 2019-03-28 01:57:24 --> File loaded: application/views/includes/menu_admin.php
+DEBUG - 2019-03-28 01:57:24 --> File loaded: application/views/secretarias/view.php
+DEBUG - 2019-03-28 01:57:24 --> File loaded: application/views/includes/footer.php
+DEBUG - 2019-03-28 01:57:24 --> Final output sent to browser
+DEBUG - 2019-03-28 01:57:24 --> Total execution time: 0.0468
+DEBUG - 2019-03-28 01:57:24 --> Config Class Initialized
+DEBUG - 2019-03-28 01:57:24 --> Hooks Class Initialized
+DEBUG - 2019-03-28 01:57:24 --> Utf8 Class Initialized
+DEBUG - 2019-03-28 01:57:24 --> UTF-8 Support Enabled
+DEBUG - 2019-03-28 01:57:24 --> URI Class Initialized
+DEBUG - 2019-03-28 01:57:24 --> Router Class Initialized
+ERROR - 2019-03-28 01:57:24 --> 404 Page Not Found --> uploads

@@ -146,7 +146,7 @@
 
 		
 							<li>
-								<a href="#"><i class="fa fa-circle-o"></i> Usuarios<i class="fa fa-angle-left pull-right"></i></a>
+								<a href="#"><i class="fa fa-circle-o"></i> Usuários<i class="fa fa-angle-left pull-right"></i></a>
 								<ul class="treeview-menu">
 									<li><a href="<?= site_url('usuario/cadastro') ?>"><i class="fa fa-circle-o"></i>Cadastrar</a></li>
 									<li><a href="<?= site_url('usuario/index') ?>"><i class="fa fa-circle-o"></i>Exibir</a></li>
