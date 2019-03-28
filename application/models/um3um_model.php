@@ -173,13 +173,15 @@ class um3um_model extends CI_Model {
         $this->db->where('cod_dados_131',  $querya[0]->id);
         //$this->db->limit(10);
         
-        if(isset($filtro['operacao'])){
+        if(isset($filtro['operacao']) && $filtro['operacao']!='DECON' ){
                   $this->db->where('tipo',$filtro['operacao']);
+                
         }
         
     $query = $this->db->get("131_despesa_dados");
 
 
+//print_r($query->result());
 
         return $query->result();
 
@@ -189,8 +191,9 @@ class um3um_model extends CI_Model {
         $this->db->where('ano',$filtro['ano']);
         $querya=$this->db->get('dados_131')->result();
       
-        if(isset($filtro['operacao'])){
+        if(isset($filtro['operacao']) && $filtro['operacao']!='RECON' ){
                   $this->db->where('tipo',$filtro['operacao']);
+                
         }
         $this->db->where('cod_dados_131',  $querya[0]->id);
 

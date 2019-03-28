@@ -55,10 +55,11 @@ header('Content-Type: text/html; charset=utf-8');
                         <label for="exampleInputEmail1">Tipo de operação</label>
                         <select  class="form-control"  name="operacao">
                             
-                            <option value="0">Consolidado</option>
+                            <option value="DECON">Despesa Consolidado</option>
                             <option value="EMP">(despesa) Empenho</option>
                             <option value="LIQ">(despesa) Liquidação</option>
                             <option value="PAG">(despesa) Pagamento</option>
+                               <option value="RECON">Receita Consolidado</option>
                             <option value="ORC">(Receita) Orçamentário</option>
                             <option value="NORC">(Receita) Extra-Orçamentário</option>
 
