@@ -37,7 +37,7 @@ header('Content-Type: text/html; charset=utf-8');
         <div class="box">
 
             <div class="box-body">
-                <form action="<?= site_url(); ?>Um3Um/printReport"  onsubmit="return validarSenha(this)" enctype="multipart/form-data" method="post">
+                <form  target="_blank"  action="<?= site_url(); ?>Um3Um/printReport"  onsubmit="return validarSenha(this)" enctype="multipart/form-data" method="post">
                       
                       
                 <div class="form-group col-md-3">
