@@ -42,7 +42,7 @@
             <div class="row" style="margin: 20px;">
 			
                <div  class="row" >
-			   <?php echo $mensagem; ?>
+		
 			   				<div class="col-md-8">								<div class="col-md-12">						<h4>O que é o e-sic?</h4> <br>						<p>O e-SIC (Sistema Eletrônico do Serviço de Informações ao Cidadão) permite que qualquer pessoa, física ou jurídica, encaminhe pedidos de acesso a informação para órgãos e entidades do Poder Executivo do Estado.</p>						<p>Por meio do sistema, além de fazer o pedido, é possível acompanhar o prazo pelo número de protocolo gerado e receber a resposta da solicitação por e-mail; entrar com recursos, apresentar reclamações e consultar as respostas recebidas. </p>					</div>					
 			   </div>
 
