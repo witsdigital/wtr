@@ -89,7 +89,7 @@
                                 <td><?php echo $row->natureza ?></td>
                                 
                                 <td>R$ <?php echo $row->valor ?></td>
-                                <td><?php echo date("d/m/Y", strtotime($row->data_registro)) ?>  </td>
+                                <td><?php echo $row->data_registro ?>  </td>
                                 <td>  <button type="button" class="btn btn-default" data-toggle="modal" data-target="#<?php echo $row->id ?>">
                                        <i class="fa  fa-search"></i>  Detalhes
                                     </button></td>
