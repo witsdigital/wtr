@@ -176,7 +176,9 @@ class um3um_model extends CI_Model {
         if(isset($filtro['operacao'])){
                   $this->db->where('tipo',$filtro['operacao']);
         }
-$query = $this->db->get("131_despesa_dados");
+        
+    $query = $this->db->get("131_despesa_dados");
+
 
 
         return $query->result();

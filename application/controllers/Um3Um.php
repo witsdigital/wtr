@@ -99,7 +99,10 @@ class Um3Um extends CI_Controller {
         $filtro['inicio'] =  $this->input->post('competenciaa');
         $filtro['fim'] =  $this->input->post('competenciab');
         $filtro['ano'] =  $this->input->post('ano');
-        $filtro['operacao'] =  $this->input->post('operacao');
+        if($filtro['operacao']!=0){
+                  $filtro['operacao'] =  $this->input->post('operacao'); 
+        }
+ 
 
 
         $this->load->model('um3um_model');
