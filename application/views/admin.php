@@ -22,13 +22,13 @@
         </h1>
 
     </section>
-
-    <!-- Main content -->
+<!--
+     Main content 
     <section class="content">
-        <!-- Small boxes (Stat box) -->
+         Small boxes (Stat box) 
         <div class="row">
             <div class="col-lg-3 col-xs-6">
-                <!-- small box -->
+                 small box 
                 <div class="small-box bg-aqua">
                     <div class="inner">
                         <?php
@@ -73,9 +73,9 @@
                     </div>
                     <a href="<?= base_url('publicacoes') ?>" class="small-box-footer">Publicações <i class="fa fa-arrow-circle-right"></i></a>
                 </div>
-            </div><!-- ./col -->
+            </div> ./col 
             <div class="col-lg-3 col-xs-6">
-                <!-- small box -->
+                 small box 
                 <div class="small-box bg-green">
                     <div class="inner">
                         <h3><?php echo $rowcountcontrato; ?></h3>
@@ -87,9 +87,9 @@
                     <a href="<?= base_url('publicar') ?>" class="small-box-footer">Publicadas <i class="fa fa-arrow-circle-right"></i></a>
 
                 </div>
-            </div><!-- ./col -->
+            </div> ./col 
             <div class="col-lg-3 col-xs-6">
-                <!-- small box -->
+                 small box 
                 <div class="small-box bg-yellow">
                     <div class="inner">
 
@@ -101,9 +101,9 @@
                     </div>
                     <a href="<?= base_url('usuario') ?>" class="small-box-footer">Usuarios <i class="fa fa-arrow-circle-right"></i></a>
                 </div>
-            </div><!-- ./col -->
+            </div> ./col 
             <div class="col-lg-3 col-xs-6">
-                <!-- small box -->
+                 small box 
                 <div class="small-box bg-red">
                     <div class="inner">
                         <h3><?php echo $rowcountlicitacao ?></h3>
@@ -114,10 +114,10 @@
                     </div>
                     <a href="<?= base_url('entidade') ?>" class="small-box-footer">Clientes <i class="fa fa-arrow-circle-right"></i></a>
                 </div>
-            </div><!-- ./col -->
+            </div> ./col 
 
             <div class="col-lg-3 col-xs-6">
-                <!-- small box -->
+                 small box 
                 <div class="small-box bg-blue">
                     <div class="inner">
                         <h3><?php echo $rowcountedital ?></h3>
@@ -128,9 +128,9 @@
                     </div>
                     <a href="<?= base_url('entidade') ?>" class="small-box-footer">Clientes <i class="fa fa-arrow-circle-right"></i></a>
                 </div>
-            </div><!-- ./col -->
+            </div> ./col 
             <div class="col-lg-3 col-xs-6">
-                <!-- small box -->
+                 small box 
                 <div class="small-box bg-black">
                     <div class="inner">
                         <h3><?php echo $rowcountpregao ?></h3>
@@ -141,8 +141,8 @@
                     </div>
                     <a href="<?= base_url('entidade') ?>" class="small-box-footer">Clientes <i class="fa fa-arrow-circle-right"></i></a>
                 </div>
-            </div><!-- ./col -->
-        </div><!-- /.row -->
+            </div> ./col 
+        </div> /.row 
         <div class="row">
             <div class="col-md-12">
                 <div class="box">
@@ -162,7 +162,7 @@
                             </div>
                             <button class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
                         </div>
-                    </div><!-- /.box-header -->
+                    </div> /.box-header 
                     <div class="box-body">
                         <div class="row">
                             <div class="col-md-8">
@@ -170,10 +170,10 @@
                                     <strong>Publicações desde </strong>
                                 </p>
                                 <div class="chart">
-                                    <!-- Sales Chart Canvas -->
+                                     Sales Chart Canvas 
                                     <canvas id="salesChart" style="height: 180px;"></canvas>
-                                </div><!-- /.chart-responsive -->
-                            </div><!-- /.col -->
+                                </div> /.chart-responsive 
+                            </div> /.col 
                             <div class="col-md-4">
                                 <p class="text-center">
                                     <strong>Status do servidor</strong>
@@ -188,7 +188,7 @@
                                     <div class="progress sm">
                                         <div class="progress-bar progress-bar-aqua" style="width: <?php echo $t_publicacoes ?>%"></div>
                                     </div>
-                                </div><!-- /.progress-group -->
+                                </div> /.progress-group 
                                 <div class="progress-group">
                                     <span class="progress-text">Arquivos publicados</span>
                                     <?php
@@ -199,24 +199,24 @@
                                     <div class="progress sm">
                                         <div class="progress-bar progress-bar-red" style="width: <?php echo $t_publicados ?>%"></div>
                                     </div>
-                                </div><!-- /.progress-group -->
+                                </div> /.progress-group 
                                 <div class="progress-group">
                                     <span class="progress-text">Acessos ao site p/Mês</span>
                                     <span class="progress-number"><b>0</b>/800</span>
                                     <div class="progress sm">
                                         <div class="progress-bar progress-bar-green" style="width: 0%"></div>
                                     </div>
-                                </div><!-- /.progress-group -->
+                                </div> /.progress-group 
                                 <div class="progress-group">
                                     <span class="progress-text">Erros do site </span>
                                     <span class="progress-number"><b>0</b>/500</span>
                                     <div class="progress sm">
                                         <div class="progress-bar progress-bar-yellow" style="width: 0%"></div>
                                     </div>
-                                </div><!-- /.progress-group -->
-                            </div><!-- /.col -->
-                        </div><!-- /.row -->
-                    </div><!-- ./box-body -->
+                                </div> /.progress-group 
+                            </div> /.col 
+                        </div> /.row 
+                    </div> ./box-body 
                     <div class="box-footer">
                         <div class="row">
                             <div class="col-sm-3 col-xs-6">
@@ -238,39 +238,39 @@
                                     <h5 class="description-header">R$ <?php echo $saldototal ?></h5>
 
                                     <span class="description-text">TOTAL RECEITA</span>
-                                </div><!-- /.description-block -->
-                            </div><!-- /.col -->
+                                </div> /.description-block 
+                            </div> /.col 
                             <div class="col-sm-3 col-xs-6">
                                 <div class="description-block border-right">
                                     <span class="description-percentage text-yellow"><i class="fa fa-caret-left"></i> 0%</span>
                                     <h5 class="description-header">R$ 00,00</h5>
                                     <span class="description-text">TOTAL DESPESA</span>
-                                </div><!-- /.description-block -->
-                            </div><!-- /.col -->
+                                </div> /.description-block 
+                            </div> /.col 
                             <div class="col-sm-3 col-xs-6">
                                 <div class="description-block border-right">
                                     <span class="description-percentage text-green"><i class="fa fa-caret-up"></i> 20%</span>
                                     <h5 class="description-header">R$3.000,00</h5>
                                     <span class="description-text">TOTAL A PAGAR</span>
-                                </div><!-- /.description-block -->
-                            </div><!-- /.col -->
+                                </div> /.description-block 
+                            </div> /.col 
                             <div class="col-sm-3 col-xs-6">
                                 <div class="description-block">
                                     <span class="description-percentage text-red"><i class="fa fa-caret-down"></i> 18%</span>
                                     <h5 class="description-header">R$ 350,00</h5>
                                     <span class="description-text">TOTAL A RECEBER</span>
-                                </div><!-- /.description-block -->
+                                </div> /.description-block 
                             </div>
-                        </div><!-- /.row -->
-                    </div><!-- /.box-footer -->
-                </div><!-- /.box -->
-            </div><!-- /.col -->
-        </div><!-- /.row -->
+                        </div> /.row 
+                    </div> /.box-footer 
+                </div> /.box 
+            </div> /.col 
+        </div> /.row 
 
-        <!-- Main row -->
+         Main row 
         
 
-    </section><!-- /.content -->
+    </section> /.content -->
 </div><!-- /.content-wrapper -->
 
 <script>
