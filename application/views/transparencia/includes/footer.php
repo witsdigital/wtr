@@ -57,7 +57,7 @@ $query = $this->db->get('configuracoes')->result();
                 Desenvolvido por <a href="http://witsdigital.com.br" target="_blank">WitsDigital</a>	
             </div>
             <div class="footer-bottom__right">
-                &copy; 20<?php echo date('y'); ?><strong> Prefeitura</strong> Municipal de Poções - Bahia	
+                &copy; 20<?php echo date('y'); ?><strong> <?= $query[0]->entidade ?>
             </div>
         </div>
     </div>
