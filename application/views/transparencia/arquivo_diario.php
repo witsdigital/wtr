@@ -1,3 +1,8 @@
+   
+   <?php
+$query = $this->db->get('configuracoes')->result();
+?>
+
    <?php $entidade = $this->uri->segment(2);
    
        ?>
@@ -23,7 +28,7 @@ $query = $this->db->get('configuracoes')->result();
 		<div class="container">
 			<div class="logo">
 				<a href="<?=  base_url()?>">
-					<img src="<?=  base_url()?>/assets/images/logo.png" alt="BuildPress" class="img-responsive"/>
+					<img src="<?= $query[0]->logo ?>" alt="BuildPress" class="img-responsive"/>
 				</a>
 			</div>
 		
