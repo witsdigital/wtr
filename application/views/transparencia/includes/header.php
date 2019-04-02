@@ -252,7 +252,8 @@ $query = $this->db->get('configuracoes')->result();
                                  <li class="menu-item-has-children">
                                     <a href="#">RECEITA</a>
                                     <ul class="sub-menu">
-                                        <li><a href="#">ARRECADAÇÃO</a></li>
+                                          <li><a href="<?= site_url('transparencia/receitas') ?>">ARRECADAÇÃO</a></li>
+                                     
                                        
                                        
 

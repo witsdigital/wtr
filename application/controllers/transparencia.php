@@ -242,6 +242,102 @@ class Transparencia extends CI_Controller {
 	
 	
 
+    public function receitas() {
+
+        $this->session->unset_userdata('pesquisa');
+		
+        $this->load->model('um3um_model');
+
+        $this->load->library('pagination');
+        $config = array(
+            "base_url" => base_url('transparencia/receitas/'),
+            "per_page" => 8,
+            "num_links" => 3,
+            "uri_segment" => 3,
+            "total_rows" => $this->um3um_model->CountAll(),
+            "full_tag_open" => "<ul class='pagination'>",
+            "full_tag_close" => "</ul>",
+            "first_link" => FALSE,
+            "last_link" => FALSE,
+            "first_tag_open" => "<li>",
+            "first_tag_close" => "</li>",
+            "prev_link" => "←",
+            "prev_tag_open" => "<li class='prev'>",
+            "prev_tag_close" => "</li>",
+            "next_link" => "→",
+            "next_tag_open" => "<li class='next'>",
+            "next_tag_close" => "</li>",
+            "last_tag_open" => "<li>",
+            "last_tag_close" => "</li>",
+            "cur_tag_open" => "<li class='active'><a href='#'>",
+            "cur_tag_close" => "</a></li>",
+            "num_tag_open" => "<li>",
+            "num_tag_close" => "</li>"
+        );
+        $this->pagination->initialize($config);
+        $data['pagination'] = $this->pagination->create_links();
+        $offset = ($this->uri->segment(3)) ? $this->uri->segment(3) : 0; 
+
+
+        $data['despesas'] = $this->um3um_model->geReceitaPortal('id', 'desc', $config['per_page'], $offset);
+        $this->load->view('transparencia/includes/imports');
+        $this->load->view('transparencia/includes/header', $data);
+        $this->load->view('transparencia/receitas', $data);
+        $this->load->view('transparencia/includes/footer');
+    }
+    public function filtrarreceita() {
+
+        $filtro['ano'] =  $this->input->post('ano');
+        $filtro['credor'] =  $this->input->post('credor');
+        $filtro['key'] =  $this->input->post('key');
+        $filtro['competencia1'] =  $this->input->post('competencia1');
+        $filtro['tipo'] =  $this->input->post('tipo');
+
+
+     
+
+        $this->session->unset_userdata('pesquisa');
+		
+        $this->load->model('um3um_model');
+
+        $this->load->library('pagination');
+        $config = array(
+            "base_url" => base_url('transparencia/filtrarreceita/'),
+            "per_page" => 10,
+            "num_links" => 3,
+            "uri_segment" => 3,
+            "total_rows" => $this->um3um_model->CountAll(),
+            "full_tag_open" => "<ul class='pagination'>",
+            "full_tag_close" => "</ul>",
+            "first_link" => FALSE,
+            "last_link" => FALSE,
+            "first_tag_open" => "<li>",
+            "first_tag_close" => "</li>",
+            "prev_link" => "←",
+            "prev_tag_open" => "<li class='prev'>",
+            "prev_tag_close" => "</li>",
+            "next_link" => "→",
+            "next_tag_open" => "<li class='next'>",
+            "next_tag_close" => "</li>",
+            "last_tag_open" => "<li>",
+            "last_tag_close" => "</li>",
+            "cur_tag_open" => "<li class='active'><a href='#'>",
+            "cur_tag_close" => "</a></li>",
+            "num_tag_open" => "<li>",
+            "num_tag_close" => "</li>"
+        );
+        $this->pagination->initialize($config);
+        $data['pagination'] = $this->pagination->create_links();
+        $offset = ($this->uri->segment(3)) ? $this->uri->segment(3) : 0; 
+
+
+        $data['despesas'] = $this->um3um_model->geReceitaPortalFilter('id', 'desc', $filtro, $config['per_page'], $offset);
+		$this->load->view('transparencia/includes/imports');
+			$this->load->view('transparencia/includes/header', $data);
+			$this->load->view('transparencia/receitas', $data);
+			$this->load->view('transparencia/includes/footer');
+    
+    }
     public function despesas() {
 
         $this->session->unset_userdata('pesquisa');
@@ -254,7 +350,7 @@ class Transparencia extends CI_Controller {
             "per_page" => 8,
             "num_links" => 3,
             "uri_segment" => 3,
-            "total_rows" => $this->um3um_model->CountAll(),
+            "total_rows" => $this->um3um_model->CountAllDesp(),
             "full_tag_open" => "<ul class='pagination'>",
             "full_tag_close" => "</ul>",
             "first_link" => FALSE,
@@ -302,8 +398,8 @@ class Transparencia extends CI_Controller {
 
         $this->load->library('pagination');
         $config = array(
-            "base_url" => base_url('transparencia/despesas/'),
-            "per_page" => 8,
+            "base_url" => base_url('transparencia/filtrardespesa/'),
+            "per_page" => 10,
             "num_links" => 3,
             "uri_segment" => 3,
             "total_rows" => $this->um3um_model->CountAll(),

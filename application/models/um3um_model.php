@@ -87,6 +87,35 @@ class um3um_model extends CI_Model {
         return $this->db->count_all("131_receita_dados");
 
     }
+    function CountAllDesp() {
+
+        return $this->db->count_all("131_despesa_dados");
+
+    }
+    function CountAllFilterReceita($sort = 'id', $order = 'desc', $filtro, $limit = null, $offset = null) {
+         if($filtro['ano']){
+                $this->db->where('ano',$filtro['ano']);
+               
+            }
+          
+            if($filtro['tipo']){
+                $this->db->where('tipo',$filtro['tipo']);
+               
+            }
+            if($filtro['competencia1']){
+                $this->db->where('competencia',$filtro['competencia1']);
+               
+            }
+            if($filtro['key']){
+                $this->db->like('descricao', $filtro['key'],'both');
+                $this->db->or_like('descricao', $filtro['key'],'after');
+               
+               
+            }
+
+        return $this->db->count_all("131_despesa_dados");
+
+    }
 
     function geDespesasPortal($sort = 'id', $order = 'desc', $limit = null, $offset = null) {
 
@@ -116,6 +145,74 @@ class um3um_model extends CI_Model {
 
         }
  
+    }
+    function geReceitaPortal($sort = 'id', $order = 'desc', $limit = null, $offset = null) {
+
+        $this->db->order_by($sort, $order);
+        if ($limit)
+            $this->db->limit($limit, $offset);
+        $query = $this->db->get("131_receita_dados");
+
+        if ($query->num_rows() > 0) {
+
+
+
+            return $query->result();
+
+        } else {
+
+
+
+            return null;
+
+        }
+ 
+    }
+    function geReceitaPortalFilter($sort = 'id', $order = 'desc', $filtro, $limit = null, $offset = null) {
+
+
+
+        $this->db->order_by($sort, $order);
+        if ($limit)
+            $this->db->limit($limit, $offset);
+            if($filtro['ano']){
+                $this->db->where('ano',$filtro['ano']);
+               
+            }
+            if($filtro['credor']){
+                $this->db->where('credor',$filtro['credor']);
+               
+            }
+            if($filtro['tipo']){
+                $this->db->where('tipo',$filtro['tipo']);
+               
+            }
+            if($filtro['competencia1']){
+                $this->db->where('competencia',$filtro['competencia1']);
+               
+            }
+            if($filtro['key']){
+                $this->db->like('credor', $filtro['key'],'both');
+                $this->db->or_like('valor', $filtro['key'],'after');
+               
+               
+            }
+        $query = $this->db->get("131_despesa_dados");
+      
+
+       
+
+        if ($query->num_rows() > 0) {
+            return $query->result();
+
+        } else {
+
+
+
+            return null;
+
+        }
+
     }
     function geDespesasPortalFilter($sort = 'id', $order = 'desc', $filtro, $limit = null, $offset = null) {
 
