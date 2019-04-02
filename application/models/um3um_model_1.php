@@ -260,44 +260,6 @@ class um3um_model extends CI_Model {
         }
 
     }
-	
-	
-	function count_despesas($filtro) {
-
-        
-            if($filtro['ano']){
-                $this->db->where('ano',$filtro['ano']);
-               
-            }
-            if($filtro['credor']){
-                $this->db->where('credor',$filtro['credor']);
-               
-            }
-            if($filtro['tipo']){
-                $this->db->where('tipo',$filtro['tipo']);
-               
-            }
-            if($filtro['competencia1']){
-                $this->db->where('competencia',$filtro['competencia1']);
-               
-            }
-            if($filtro['key']){
-                $this->db->like('credor', $filtro['key'],'both');
-                $this->db->or_like('valor', $filtro['key'],'after');
-               
-               
-            }
-        $query = $this->db->get("131_despesa_dados");
-      
-
-       
-
-       
-        return $query->num_rows();
-
-       
-
-    }
 
     public function getDespesaReport($filtro) {
         $this->db->where('competencia',$filtro['inicio']);

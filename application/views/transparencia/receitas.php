@@ -93,8 +93,7 @@ $mes[12] = 'Dezembro';
                                         <p><b>Ano:</b> <?php echo $row->ano ?></p>
                                         <p><b>Data: </b> <?php echo $row->data_registro ?></p>
                                         <p><b>Valor: </b> <?php echo $row->valor ?></p>
-                                        <p><b>Competencia: </b> <?php echo $mes[$row->competencia]; ?></p>
-                                       
+                                        <p><b>Competência: </b> <?php echo $mes[$row->competencia]; ?></p>
                                         <p><b>Descrição: </b><br> <?php echo $row->descricao ?></p>
                                     </div>
                                     <div class="modal-footer">

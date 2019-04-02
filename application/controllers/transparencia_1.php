@@ -340,7 +340,7 @@ class Transparencia extends CI_Controller {
     }
     public function despesas() {
 
-        $this->session->unset_userdata('filtro');
+        $this->session->unset_userdata('pesquisa');
 		
         $this->load->model('um3um_model');
 
@@ -383,21 +383,14 @@ class Transparencia extends CI_Controller {
     }
     public function filtrardespesa() {
 
-	
-		$filtro['ano'] =  $this->input->post('ano');
+        $filtro['ano'] =  $this->input->post('ano');
         $filtro['credor'] =  $this->input->post('credor');
         $filtro['key'] =  $this->input->post('key');
         $filtro['competencia1'] =  $this->input->post('competencia1');
         $filtro['tipo'] =  $this->input->post('tipo');
-		
-		if(isset($filtro)){
-			 $sessiondata = array(
-                'filtro' => $filtro,           
-             );
-             $this->session->set_userdata($sessiondata);
-		 } else {
-			 $filtro = $this->session->userdata('filtro');
-		 }
+
+
+     
 
         $this->session->unset_userdata('pesquisa');
 		
@@ -409,7 +402,7 @@ class Transparencia extends CI_Controller {
             "per_page" => 10,
             "num_links" => 3,
             "uri_segment" => 3,
-            "total_rows" => $this->um3um_model->count_despesas($filtro),
+            "total_rows" => $this->um3um_model->CountAll(),
             "full_tag_open" => "<ul class='pagination'>",
             "full_tag_close" => "</ul>",
             "first_link" => FALSE,

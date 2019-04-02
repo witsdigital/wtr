@@ -85,6 +85,17 @@
 			</ul>
 		</li>
 		<li class="treeview">
+			<a href="#">
+				<i class="fa  fa-file-text-o"></i> <span>Diárias</span> <i class="fa fa-angle-left pull-right"></i>
+			</a>
+			<ul class="treeview-menu">
+
+				<li><a href="<?= site_url() ?>diaria/cadastro"><i class="fa fa-circle-o"></i> Cadastrar</a></li>
+				<li><a href="<?= site_url() ?>diaria"><i class="fa fa-circle-o"></i>Visualizar</a></li>
+				<li><a href="<?= site_url() ?>Um3Um/reportPdf"><i class="fa fa-circle-o"></i>Exportar</a></li>
+			</ul>
+		</li>
+		<li class="treeview">
 		<a href="#"> 
 		<i class="fa  fa-file-text-o"></i>
 		<span>Diario oficial</span>
