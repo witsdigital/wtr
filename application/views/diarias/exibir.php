@@ -56,7 +56,7 @@
     <div class="box-body">
         <div class="box">
             <div class="box-header">
-                <div align="right"><input  onclick="window.location.href = '<?= site_url() ?>Um3Um/cadastro'" type="button" value="Novo Envio" class="btn btn-success"></button></div>
+                <div align="right"><input  onclick="window.location.href = '<?= site_url() ?>diaria/cadastro'" type="button" value="Novo Envio" class="btn btn-success"></button></div>
 
                 <!--                  <h3 class="box-title">Data Table With Full Features</h3>-->
             </div><!-- /.box-header -->
@@ -64,7 +64,7 @@
                 <table id="example1" class="table table-bordered table-striped">
                     <thead>
                         <tr>
-                            <th style="width: 20px;">Id</th>
+                            <th style="width: 20px;">Matrícula</th>
 
                             <th>Beneficário</th>
 
@@ -84,7 +84,7 @@
 
 
 
-                                <td><?php echo $row->id ?></td>
+                                <td><?php echo $row->matricula ?></td>
 
                                 <td><?php echo $row->nome ?></td>
                                 
