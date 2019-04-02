@@ -111,8 +111,8 @@ class Diaria extends CI_Controller {
                   $query['ano'] =  $ano ;
                   $query['nome'] = utf8_encode(substr($arquivo[$i], 41, 50));
                   $query['objetivo'] =  utf8_encode(substr($arquivo[$i], 191, 200));
-                  $query['dt_saida'] = substr($arquivo[$i], 391, 8);
-                  $query['dt_retorno'] = substr($arquivo[$i], 404, 8);
+                  $query['dt_saida'] = substr($arquivo[$i], 391, 9);
+                  $query['dt_retorno'] = substr($arquivo[$i], 404, 9);
                   $query['qtd_diarias'] = substr($arquivo[$i], 417, 3);
                   $query['valor_total'] = substr($arquivo[$i], 420, 16);
                    $query['competencia'] = $competencia;
@@ -123,7 +123,9 @@ class Diaria extends CI_Controller {
 
                     $this->db->insert('diarias', $query);
                 }
-        
+                
+                
+         redirect(site_url('Diaria/1'));
        
     }
 

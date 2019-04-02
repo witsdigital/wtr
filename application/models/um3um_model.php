@@ -87,6 +87,11 @@ class um3um_model extends CI_Model {
         return $this->db->count_all("131_receita_dados");
 
     }
+    function CountAllDiaria() {
+
+        return $this->db->count_all("diarias");
+
+    }
     function CountAllDesp() {
 
         return $this->db->count_all("131_despesa_dados");
@@ -168,6 +173,28 @@ class um3um_model extends CI_Model {
         }
  
     }
+    function geDiariasPortal($sort = 'id', $order = 'desc', $limit = null, $offset = null) {
+
+        $this->db->order_by($sort, $order);
+        if ($limit)
+            $this->db->limit($limit, $offset);
+        $query = $this->db->get("diarias");
+
+        if ($query->num_rows() > 0) {
+
+
+
+            return $query->result();
+
+        } else {
+
+
+
+            return null;
+
+        }
+ 
+    }
     function geReceitaPortalFilter($sort = 'id', $order = 'desc', $filtro, $limit = null, $offset = null) {
 
 
@@ -197,7 +224,7 @@ class um3um_model extends CI_Model {
                
                
             }
-        $query = $this->db->get("131_despesa_dados");
+        $query = $this->db->get("131_receita_dados");
       
 
        

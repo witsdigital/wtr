@@ -242,6 +242,49 @@ class Transparencia extends CI_Controller {
 	
 	
 
+    public function diarias() {
+
+        $this->session->unset_userdata('pesquisa');
+		
+        $this->load->model('um3um_model');
+
+        $this->load->library('pagination');
+        $config = array(
+            "base_url" => base_url('transparencia/diarias/'),
+            "per_page" => 8,
+            "num_links" => 3,
+            "uri_segment" => 3,
+            "total_rows" => $this->um3um_model->CountAllDiaria(),
+            "full_tag_open" => "<ul class='pagination'>",
+            "full_tag_close" => "</ul>",
+            "first_link" => FALSE,
+            "last_link" => FALSE,
+            "first_tag_open" => "<li>",
+            "first_tag_close" => "</li>",
+            "prev_link" => "←",
+            "prev_tag_open" => "<li class='prev'>",
+            "prev_tag_close" => "</li>",
+            "next_link" => "→",
+            "next_tag_open" => "<li class='next'>",
+            "next_tag_close" => "</li>",
+            "last_tag_open" => "<li>",
+            "last_tag_close" => "</li>",
+            "cur_tag_open" => "<li class='active'><a href='#'>",
+            "cur_tag_close" => "</a></li>",
+            "num_tag_open" => "<li>",
+            "num_tag_close" => "</li>"
+        );
+        $this->pagination->initialize($config);
+        $data['pagination'] = $this->pagination->create_links();
+        $offset = ($this->uri->segment(3)) ? $this->uri->segment(3) : 0; 
+
+
+        $data['despesas'] = $this->um3um_model->geDiariasPortal('id_diarias', 'desc', $config['per_page'], $offset);
+        $this->load->view('transparencia/includes/imports');
+        $this->load->view('transparencia/includes/header', $data);
+        $this->load->view('transparencia/diarias', $data);
+        $this->load->view('transparencia/includes/footer');
+    }
     public function receitas() {
 
         $this->session->unset_userdata('pesquisa');
@@ -289,11 +332,28 @@ class Transparencia extends CI_Controller {
 
        $filtro = $this->session->userdata('filtro');
 
-		$filtro['ano'] =  $this->input->post('ano');
-        $filtro['credor'] =  $this->input->post('credor');
-        $filtro['key'] =  $this->input->post('key');
-        $filtro['competencia1'] =  $this->input->post('competencia1');
-        $filtro['tipo'] =  $this->input->post('tipo');
+				$filtro = $this->session->userdata('filtro');
+
+		if(isset($_POST['ano'])){
+			$filtro['ano'] =  $this->input->post('ano');
+		}
+		
+		if(isset($_POST['credor'])){
+			$filtro['credor'] =  $this->input->post('credor');
+		}
+		
+		if(isset($_POST['key'])){
+			$filtro['key'] =  $this->input->post('key');
+		}
+		
+		if(isset($_POST['competencia1'])){
+			$filtro['competencia1'] =  $this->input->post('competencia1');
+		}
+		
+		if(isset($_POST['tipo'])){
+			$filtro['tipo'] =  $this->input->post('tipo');
+		}
+
 		$sessiondata = array(
                 'filtro' => $filtro,           
         );
@@ -386,11 +446,26 @@ class Transparencia extends CI_Controller {
 
 		$filtro = $this->session->userdata('filtro');
 
-		$filtro['ano'] =  $this->input->post('ano');
-        $filtro['credor'] =  $this->input->post('credor');
-        $filtro['key'] =  $this->input->post('key');
-        $filtro['competencia1'] =  $this->input->post('competencia1');
-        $filtro['tipo'] =  $this->input->post('tipo');
+		if(isset($_POST['ano'])){
+			$filtro['ano'] =  $this->input->post('ano');
+		}
+		
+		if(isset($_POST['credor'])){
+			$filtro['credor'] =  $this->input->post('credor');
+		}
+		
+		if(isset($_POST['key'])){
+			$filtro['key'] =  $this->input->post('key');
+		}
+		
+		if(isset($_POST['competencia1'])){
+			$filtro['competencia1'] =  $this->input->post('competencia1');
+		}
+		
+		if(isset($_POST['tipo'])){
+			$filtro['tipo'] =  $this->input->post('tipo');
+		}
+
 		$sessiondata = array(
                 'filtro' => $filtro,           
         );

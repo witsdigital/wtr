@@ -1,5 +1,17 @@
 
+<?php 
 
+
+function formatadata($data){
+     $dia = substr($data, 0, 2);
+     $mes = substr($data, 2, 2);
+     $ano = substr($data, 4, 4);
+     
+     return $dia.'/'.$mes.'/'.$ano;
+    
+    
+}
+?>
 
 <script type="text/javascript">
     $(document).ready(function () {
@@ -108,8 +120,8 @@
                                         <p><b>Nome: </b> <?php echo $row->nome ?></p>
                                         <p><b>Valor: </b> <?php echo number_format($row->valor_total , 2, ',', '.'); ?></p>
                                         <p><b>Empenho: </b>  <?php echo $row->empenho ?></p>
-                                        <p><b>Saída: </b>  <?php echo $row->dt_saida ?></p>
-                                        <p><b>Retorno: </b> <?php echo $row->dt_retorno ?></p>
+                                        <p><b>Saída: </b>  <?php echo formatadata( $row->dt_saida) ?></p>
+                                        <p><b>Retorno: </b> <?php echo formatadata( $row->dt_retorno) ?></p>
                                         <p><b>Motivo: </b><br> <?php echo $row->objetivo ?></p>
 
                                     </div>

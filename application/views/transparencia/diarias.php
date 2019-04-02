@@ -17,6 +17,17 @@ $mes[11] = 'Novembro';
 $mes[12] = 'Dezembro';
 
 
+function formatadata($data){
+     $dia = substr($data, 0, 2);
+     $mes = substr($data, 2, 2);
+     $ano = substr($data, 4, 4);
+     
+     return $dia.'/'.$mes.'/'.$ano;
+    
+    
+}
+
+
 ?>
 <script>
     function enviardados() {
@@ -53,12 +64,12 @@ $mes[12] = 'Dezembro';
     <br><br><br><br><div class="master-container">
         <div class="container">
             <div class="row">
-                <div class="col-md-3">
+<!--                <div class="col-md-3">
 				
                      <?php $this->load->view('transparencia/includes/menuFiltroReceitas'); ?> 
-                </div>
+                </div>-->
 
-                <div class="col-md-9">
+                <div class="col-md-12">
                     <?php
                     if (count($despesas) == 0) {
                         echo '<br><br><br><br><div align="center"><h3 style="color: #00a65a">Sem Resultados para esta consulta</h></div>';
@@ -68,21 +79,27 @@ $mes[12] = 'Dezembro';
                         foreach ($despesas as $row) {
                             ?>
                             <div class="row">
-                                <div class="col-md-8">
-                                <span><strong><i class="icon-list-alt"></i> Natureza:</strong><br> <a  href="#"><?php echo $row->natureza ?></a></span>
+                                <div class="col-md-4">
+                                <span><strong><i class="icon-list-alt"></i> Beneficiário:</strong><br> <a  href="#"><?php echo $row->nome ?></a></span>
+                                
+                                
+                                
+                                </div>
+                                <div class="col-md-4">
+                                <span><strong><i class="icon-list-alt"></i> Objetivo:</strong><br> <a  href="#"><?php echo $row->objetivo ?></a></span>
                                 
                                 
                                 
                                 </div>
                                 <div class="col-md-2">
-                                <span><strong><i class="icon-list-alt"></i> Valor:</strong><br> <a  href="#"><?php echo $row->valor ?></a></span>
+                                <span><strong><i class="icon-list-alt"></i> Valor:</strong><br> <a  href="#"> <?php echo number_format($row->valor_total , 2, ',', '.'); ?></a></span>
                                 
                                 
                                 
                                 </div>
-                                <br><div class="col-md-2"><button type="buttom" data-toggle="modal" data-target="#<?php echo $row->id ?>" type="button" class="btn btn-sm btn-primary" >Consultar</button></div>
+                                <br><div class="col-md-2"><button type="buttom" data-toggle="modal" data-target="#<?php echo $row->id_diarias ?>" type="button" class="btn btn-sm btn-primary" >Consultar</button></div>
                             </div>
-                            <div class="modal fade" id="<?php echo $row->id ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+                            <div class="modal fade" id="<?php echo $row->id_diarias ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
                             <div class="modal-dialog" role="document">
                                 <div class="modal-content">
                                     <div class="modal-header">
@@ -91,10 +108,16 @@ $mes[12] = 'Dezembro';
                                     </div>
                                     <div class="modal-body">
                                         <p><b>Ano:</b> <?php echo $row->ano ?></p>
-                                        <p><b>Data: </b> <?php echo $row->data_registro ?></p>
-                                        <p><b>Valor: </b> <?php echo $row->valor ?></p>
+                                        <p><b>Beneficiário:</b> <?php echo $row->nome ?></p>
+                                        <p><b>Data: </b> <?php echo formatadata($row->dt_pagamento_empenho);  ?></p>
+                                        <p><b>Valor: </b> <?php echo number_format($row->valor_total , 2, ',', '.'); ?></p>
                                         <p><b>Competência: </b> <?php echo $mes[$row->competencia]; ?></p>
-                                        <p><b>Descrisção: </b><br> <?php echo $row->descricao ?></p>
+                                        <p><b>Descrição: </b><br> <?php echo $row->objetivo ?></p>
+                                        <p><b>Data Saída: </b><br> <?php echo formatadata($row->dt_saida) ?></p>
+                                        <p><b>Data Retorno: </b><br> <?php echo formatadata($row->dt_retorno) ?></p>
+                                        <p><b>Unidade Orçamentária: </b><br> <?php echo $row->cod_unidade_orcamentaria ?></p>
+                                        <p><b>Empenho: </b><br> <?php echo $row->empenho ?></p>
+                                        <p><b>Quantidade: </b><br> <?php echo $row->qtd_diarias ?></p>
                                     </div>
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>

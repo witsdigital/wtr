@@ -243,7 +243,7 @@ $query = $this->db->get('configuracoes')->result();
                                  <li class="menu-item-has-children">
                                     <a href="#">DESPESA</a>
                                     <ul class="sub-menu">
-                                        <li><a href="#">DIÁRIAS</a></li>
+                                        <li><a href="<?= site_url('transparencia/diarias') ?>">DIÁRIAS</a></li>
                                         <li><a href="<?= site_url('transparencia/despesas') ?>">PAGAMENTOS</a></li>
                                        
 
