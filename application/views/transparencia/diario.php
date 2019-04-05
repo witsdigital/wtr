@@ -60,14 +60,14 @@
                         foreach ($diario_oficial as $row) {
                             ?>
                             <div class="row" style="margin-bottom: 20px; padding: 20px; ">
-                                <div class="col-md-2">
+                                <div class="col-md-3">
                                 <span><strong><i class="icon-list-alt"></i> Titulo:</strong><br> <a  href="#"><?php echo $row->titulo ?></a></span>
                                 
                                 
                                 
                                 </div>
                                 <div class="col-md-4">
-                                <span><strong><i class="icon-list-alt"></i> Descrição:</strong><br> <a  href="#"><?php echo $row->descricao ?></a></span>
+                                    <span><strong><i class="icon-list-alt"></i> Descrição:</strong><br> <a  style="font-size:12px" href="#"><?php echo $row->descricao ?></a></span>
                                 
                                 
                                 
@@ -78,7 +78,7 @@
                                 
                                 
                                 </div>
-								 <div class="col-md-2">
+								 <div class="col-md-1">
                                 <span><strong><i class="icon-list-alt"></i> Edição:</strong><br> <a  href="#"><?php echo $row->edicao ?></a></span>
                                 
                                 
