@@ -27,7 +27,7 @@
     }
     function confirma(id) {
 
-      window.open('<?= site_url('camaras/prefeitura/diario') ?>/' + id, '_blank');
+      window.open('<?= site_url('prefeitura/diario') ?>/' + id, '_blank');
 
     }
 </script>
