@@ -198,7 +198,7 @@ class Transparencia extends CI_Controller {
 
         $this->session->unset_userdata('pesquisa');
 		
-        $query = $this->db->query('select * from diario_oficial where status = 1')->result();
+        $query = $this->db->query('select * from diario_oficial where status = 1 order by data DESC ')->result();
 
         $this->load->library('pagination');
         $config = array(
