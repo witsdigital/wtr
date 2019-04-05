@@ -198,7 +198,7 @@ class Transparencia extends CI_Controller {
 
         $this->session->unset_userdata('pesquisa');
 		
-        $query = $this->db->query('select * from diario_oficial where status = 1 order by data DESC ')->result();
+        $query = $this->db->query('select * from diario_oficial where status = 1')->result();
 
         $this->load->library('pagination');
         $config = array(
@@ -230,7 +230,7 @@ class Transparencia extends CI_Controller {
         $data['pagination'] = $this->pagination->create_links();
         $offset = ($this->uri->segment(3)) ? $this->uri->segment(3) : 0; 
 
-		$data['diario_oficial']  = $this->db->query('select * from diario_oficial where status = 1 order by edicao desc limit '.$config['per_page'].' offset '.$offset)->result();
+		$data['diario_oficial']  = $this->db->query('select * from diario_oficial where status = 1 order by data desc limit '.$config['per_page'].' offset '.$offset)->result();
         
         $this->load->view('transparencia/includes/imports');
         $this->load->view('transparencia/includes/header', $data);
