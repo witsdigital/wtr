@@ -18,6 +18,14 @@ $query = $this->db->get('configuracoes')->result();
 	
 	<title><?= $query[0]->entidade ?></title>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        
+        
+         <title><?= $query[0]->entidade ?> </title>
+            <meta property="og:image" content="<?= $query[0]->logo ?>">
+            <meta property="og:title" content=" <?php echo $publicadas[0]->titulo ?>">
+            <meta property="og:description" content="<?= $query[0]->entidade ?>">
+            <meta property="og:type" content="website">
+            <meta property="og:url" content="<?php echo $publicadas[0]->file ?>">
 	
 </head>
 <body class="home page">
@@ -31,6 +39,7 @@ $query = $this->db->get('configuracoes')->result();
 					<img src="<?= $query[0]->logo ?>" alt="BuildPress" class="img-responsive"/>
 				</a>
 			</div>
+                   
 		
 			<!-- Toggle Button for Mobile Navigation -->
 		

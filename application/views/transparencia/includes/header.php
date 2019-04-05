@@ -153,7 +153,7 @@ $query = $this->db->get('configuracoes')->result();
             <title><?= $query[0]->entidade ?> </title>
             <meta property="og:image" content="<?= $query[0]->logo ?>">
             <meta property="og:title" content="<?= $query[0]->entidade ?>">
-            <meta property="og:description" content="Transparência municipal do poder executivo de Poções - BA">
+            <meta property="og:description" content="<?= $query[0]->entidade ?>">
             <meta property="og:type" content="website">
             <meta property="og:url" content="<?php echo base_url() ?>">
         <?php } ?>
