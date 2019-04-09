@@ -1,3 +1,6 @@
+<?php
+$query = $this->db->get('configuracoes')->result();
+?>
 
 
 <div style="background-color:  #FFFFFF;"  >
@@ -13,7 +16,7 @@
 <h4>O que é o Sic?</h4> <br>	
 
 
-<p>1.	Para fazer um requerimento presencial, dirija-se à Sede da Prefeitura Municipal de Mirante, situada na  Pca Humberto de Campos, 198 - Centro, Mirante - BA, no horário de 8:00 às 13:00 h, e preencha o formulário que será fornecido pelo servidor(a) responsável no setor de Protocolo;
+<p>1.	Para fazer um requerimento presencial, dirija-se à Sede da <?= $query[0]->entidade ?>, situada em  <?= $query[0]->endereco ?>, no horário de 8:00 às 13:00 h, e preencha o formulário que será fornecido pelo servidor(a) responsável no setor de Protocolo;
 </p>
 
 <p>2.	Para sua comodidade, este formulário se encontra também disponível no link: Formulário 
@@ -21,7 +24,7 @@
 <p>3.	Entregue o formulário preenchido ao servidor responsável para ele possa inserir as informações no sistema e gerar o seu n° de protocolo
 </p>
 <p>
-4.	Para acompanhar o andamento de seu pedido entre em contato pelo telefone (75) 98857-9535, ou dirija-se a sede da Prefeitura e informe seu nº de protocolo.
+4.	Para acompanhar o andamento de seu pedido entre em contato pelo telefone <?= $query[0]->telefone ?>, ou dirija-se a sede da Prefeitura e informe seu nº de protocolo.
 </p>	
 				</div>					
 </div>
