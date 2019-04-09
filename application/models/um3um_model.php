@@ -130,9 +130,13 @@ class um3um_model extends CI_Model {
 
             $this->db->limit($limit, $offset);
 
-
-
-        $query = $this->db->get("131_despesa_dados");
+    $this->db->select('*');
+            $this->db->from('131_despesa_dados dd, unidade_gestora ug');
+            $this->db->where('dd.unid_orc = ug.cod_unidade');
+ $query = $this->db->get();
+ 
+ 
+        //$query = $this->db->get("131_despesa_dados");
 
 
 
@@ -156,7 +160,10 @@ class um3um_model extends CI_Model {
         $this->db->order_by($sort, $order);
         if ($limit)
             $this->db->limit($limit, $offset);
-        $query = $this->db->get("131_receita_dados");
+        $this->db->select('*');
+            $this->db->from('131_receita_dados dd, unidade_gestora ug');
+            $this->db->where('dd.unidade_gestora = ug.cod_unidade');
+ $query = $this->db->get();
 
         if ($query->num_rows() > 0) {
 

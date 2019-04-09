@@ -74,6 +74,8 @@
                                     
                                     </div>
                                     <div class="modal-body">
+                                        <p><b>Unidade Gestora:</b> <?php echo $row->unid_orc ?> - <?php echo $row->secretaria ?></p>
+                                    
                                         <p><b>CPF/CNPJ:</b> <?php echo $row->doc ?></p>
                                         <p><b>Fonte: </b> <?php echo $row->fonte ?></p>
                                         <p><b>Valor: </b> <?php echo $row->valor ?></p>

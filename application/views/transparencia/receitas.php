@@ -90,6 +90,8 @@ $mes[12] = 'Dezembro';
                                     
                                     </div>
                                     <div class="modal-body">
+                                        <p><b>Unidade Gestora:</b> <?php echo $row->unidade_gestora ?> - <?php echo $row->secretaria ?></p>
+                                    
                                         <p><b>Ano:</b> <?php echo $row->ano ?></p>
                                         <p><b>Data: </b> <?php echo $row->data_registro ?></p>
                                         <p><b>Valor: </b> <?php echo $row->valor ?></p>
