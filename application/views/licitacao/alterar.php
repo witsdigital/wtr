@@ -103,6 +103,7 @@
                                 <label for="exampleInputEmail1">Processo Administrativo</label>
                                 <input type="text" name="numero_processo_adm" value="<?php echo $licitacao[0]->numero_processo_adm?>"  class="form-control" required placeholder="ABC-2030">
                             </div>
+                          
                             <div class="form-group col-md-3">
                                 <label for="exampleInputEmail1">Número Edital</label>
                                 <input type="text" name="numero_edital" value="<?php echo $licitacao[0]->numero_edital?>"  class="form-control" required placeholder="abca-2000">
@@ -143,9 +144,17 @@
                     <div class="col-md-6">
 
                         <div class="box-body">
-                            <div class="form-group col-md-12">
+                            <div class="form-group col-md-9">
                                 <label for="exampleInputEmail1">Razão Social Vencedor</label>
                                 <input type="text" name="razao_social_vencedor" value="<?php echo $licitacao[0]->razao_social_vencedor?>"   class="form-control"  placeholder="Jose da silva">
+                            </div>
+                              <div class="form-group col-md-3">
+                                <label for="exampleInputEmail1">Número Contrato</label>
+                                <input type="text" name="numero_contrato" value="<?php echo $licitacao[0]->numero_contrato?>"  class="form-control" required placeholder="abca-2000">
+                            </div>
+                              <div class="form-group col-md-12">
+                                <label for="exampleInputEmail1">Url Contrato</label>
+                                <input type="text" name="url_contrato" value="<?php echo $licitacao[0]->url_contrato?>"  class="form-control" required placeholder="http://.....">
                             </div>
 
                              <div class="form-group col-md-12">

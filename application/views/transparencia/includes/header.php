@@ -261,6 +261,7 @@ $query = $this->db->get('configuracoes')->result();
                                 </li>
                                 	<li><a href="#">PESSOAL</a></li>
 								
+								<li><a href="<?= site_url('transparencia/licitacao') ?>">LICITAÇÕES</a></li>
 								<li><a href="<?= site_url('transparencia/diario') ?>">DIÁRIO OFICIAL</a></li>
 								<li><a href="<?= site_url('transparencia/sic') ?>">SIC | E-Sic</a></li>
                             </ul>	

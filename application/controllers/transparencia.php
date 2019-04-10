@@ -194,6 +194,59 @@ class Transparencia extends CI_Controller {
     }
 	
 	
+    public function licitacao() {
+
+        $this->session->unset_userdata('pesquisa');
+		
+        $query = $this->db->query('select * from licitacao')->result();
+
+        $this->load->library('pagination');
+        $config = array(
+            "base_url" => base_url('transparencia/licitacao/'),
+            "per_page" => 8,
+            "num_links" => 3,
+            "uri_segment" => 3,
+            "total_rows" => count($query),
+            "full_tag_open" => "<ul class='pagination'>",
+            "full_tag_close" => "</ul>",
+            "first_link" => FALSE,
+            "last_link" => FALSE,
+            "first_tag_open" => "<li>",
+            "first_tag_close" => "</li>",
+            "prev_link" => "←",
+            "prev_tag_open" => "<li class='prev'>",
+            "prev_tag_close" => "</li>",
+            "next_link" => "→",
+            "next_tag_open" => "<li class='next'>",
+            "next_tag_close" => "</li>",
+            "last_tag_open" => "<li>",
+            "last_tag_close" => "</li>",
+            "cur_tag_open" => "<li class='active'><a href='#'>",
+            "cur_tag_close" => "</a></li>",
+            "num_tag_open" => "<li>",
+            "num_tag_close" => "</li>"
+        );
+        $this->pagination->initialize($config);
+        $data['pagination'] = $this->pagination->create_links();
+        $offset = ($this->uri->segment(3)) ? $this->uri->segment(3) : 0; 
+        
+        
+          $this->db->limit($config['per_page'], $offset);
+
+    $this->db->from('licitacao lc, modalidade_licitacao ml, unidade_gestora ug');
+            $this->db->where('lc.modalidade = ml.id_modalidade_licitacao');
+            $this->db->where('lc.cod_unidade = ug.id_unidade_gestora');
+    $data['diario_oficial'] = $this->db->get()->result();
+
+
+//		$data['diario_oficial']  = $this->db->query('select * from licitacao limit '.$config['per_page'].' offset '.$offset)->result();
+        
+        $this->load->view('transparencia/includes/imports');
+        $this->load->view('transparencia/includes/header', $data);
+        $this->load->view('transparencia/licitacao', $data);
+        $this->load->view('transparencia/includes/footer');
+    
+    }
     public function diario() {
 
         $this->session->unset_userdata('pesquisa');

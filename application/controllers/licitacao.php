@@ -89,10 +89,12 @@ class Licitacao extends CI_Controller {
         $dados['data_publicacao'] = $this->converteData($this->input->post('data_publicacao'));
         $dados['url_edital'] = $this->input->post('url_edital');
         $dados['numero_edital'] = $this->input->post('numero_edital');
+        $dados['numero_contrato'] = $this->input->post('numero_contrato');
+        $dados['url_contrato'] = $this->input->post('url_contrato');
         $dados['data_limite'] = $this->converteData($this->input->post('data_limite'));
         $dados['data_abertura'] = $this->converteData($this->input->post('data_abertura'));
         $dados['horario'] = $this->input->post('horario');
-        $dados['status'] = $this->input->post('status');
+        $dados['status_licitacao'] = $this->input->post('status');
         $dados['cod_unidade'] = $this->input->post('cod_unidade');
 
         if ($this->db->insert('licitacao', $dados)) {
@@ -132,10 +134,12 @@ public function update(){
         $dados['data_publicacao'] = $this->converteData($this->input->post('data_publicacao'));
         $dados['url_edital'] = $this->input->post('url_edital');
         $dados['numero_edital'] = $this->input->post('numero_edital');
+        $dados['numero_contrato'] = $this->input->post('numero_contrato');
+        $dados['url_contrato'] = $this->input->post('url_contrato');
         $dados['data_limite'] = $this->converteData($this->input->post('data_limite'));
         $dados['data_abertura'] = $this->converteData($this->input->post('data_abertura'));
         $dados['horario'] = $this->input->post('horario');
-        $dados['status'] = $this->input->post('status');
+        $dados['status_licitacao'] = $this->input->post('status');
         $dados['cod_unidade'] = $this->input->post('cod_unidade');
         
         
