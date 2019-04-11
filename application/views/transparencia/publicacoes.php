@@ -63,7 +63,10 @@
                         foreach ($publicadas as $row) {
                             ?>
                             <div class="row">
-                                <div class="col-md-10"><span><strong><i class="icon-list-alt"></i> Titulo:</strong><br>  <a  data-toggle="modal" data-target="#<?php echo $row->id ?>"><?php echo $row->titulo ?></a></span>
+                                <div class="col-md-8">
+                                    <span><strong>
+                                            <i class="icon-list-alt"></i> Titulo:</strong><br>
+                                            <a style="font-size:13px"  data-toggle="modal" data-target="#<?php echo $row->id ?>"><?php echo $row->titulo ?></a></span>
                                 
                                 <div class="container">
 
@@ -93,7 +96,10 @@
                                 
                                 
                                 </div>
-                                <br><div class="col-md-2"><button type="buttom" class="btn btn-success" onclick="javascript:confirma(<?php echo $row->id ?>);" >Consultar</button></div>
+                             <div class="col-md-2">     <span><strong>
+                                            <i class="icon-list-alt"></i> Data:</strong><br>
+                                            <a style="font-size:13px" > <?php echo date('d/m/Y',strtotime($row->data)) ?></a></span></div>
+                           <div class="col-md-2"><button type="buttom" class="btn btn-success" onclick="javascript:confirma(<?php echo $row->id ?>);" >Consultar</button></div>
                             </div>
                             
                             <?php

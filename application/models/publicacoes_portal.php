@@ -61,7 +61,7 @@ class publicacoes_portal extends CI_Model {
     }
 
     function Getpublicaportal($sort = 'id', $order = 'desc', $limit = null, $offset = null) {
-        $this->db->order_by($sort, $order);
+        $this->db->order_by("data", "DESC");
         if ($limit)
             $this->db->limit($limit, $offset);
 

@@ -237,7 +237,6 @@ $query = $this->db->get('configuracoes')->result();
                     <div class="navigation">
                         <div class="collapse  navbar-collapse" id="buildpress-navbar-collapse">
                             <ul id="menu-main-menu" class="navigation--main">
-							 <li class="current-menu-item"><a href="<?= site_url() ?>">INÍCIO</a></li>
 							 
                                 <li><a href="<?= site_url() ?>">TRANSPARÊNCIA</a></li>
                                  <li class="menu-item-has-children">
@@ -259,7 +258,21 @@ $query = $this->db->get('configuracoes')->result();
 
                                     </ul>
                                 </li>
-                                	<li><a href="#">PESSOAL</a></li>
+                                	  <li class="menu-item-has-children">
+                                    <a href="#">GESTÃO FISCAL</a>
+                                    <ul class="sub-menu">
+                                        <li><a href="<?= site_url('portal/get/leis') ?>">LEIS</a></li>
+                                        <li><a href="<?= site_url('portal/get/PPA') ?>">PPA</a></li>
+                                        <li><a href="<?= site_url('portal/get/loa') ?>">LOA</a></li>
+                                        <li><a href="<?= site_url('portal/get/ldo') ?>">LDO</a></li>
+                                        <li><a href="<?= site_url('portal/get/rgf') ?>">RGF</a></li>
+                                        <li><a href="<?= site_url('portal/get/rreo') ?>">RREO</a></li>
+                                        <li><a href="<?= site_url('portal/get/contratos') ?>">CONTRATOS</a></li>
+                                        <li><a href="<?= site_url('portal/get/licitacao') ?>">LICITAÇÃO</a></li>
+                                       
+
+                                    </ul>
+                                </li>
 								
 								<li><a href="<?= site_url('transparencia/licitacao') ?>">LICITAÇÕES</a></li>
 								<li><a href="<?= site_url('transparencia/diario') ?>">DIÁRIO OFICIAL</a></li>

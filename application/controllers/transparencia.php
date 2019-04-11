@@ -13,7 +13,7 @@ class Transparencia extends CI_Controller {
         $this->load->library('pagination');
         $config = array(
             "base_url" => base_url('portal/publicacoes/'),
-            "per_page" => 8,
+            "per_page" => 12,
             "num_links" => 3,
             "uri_segment" => 3,
             "total_rows" => $this->publicacoes_portal->CountAll(),
