@@ -875,8 +875,8 @@ class Transparencia extends CI_Controller {
             $this->db->where('data', $this->input->post('data'));
         }
         if ($this->input->post('key')) {
-            $this->db->like('descricao', $this->input->post('key'), 'after');
-            $this->db->or_like('titulo', $this->input->post('key'), 'after');
+            $this->db->like('descricao', $this->input->post('key'), 'both');
+            $this->db->or_like('titulo', $this->input->post('key'), 'both');
         }
         
         if ($this->input->post('edicao')) {
