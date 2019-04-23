@@ -27,7 +27,11 @@ $query = $this->db->get('configuracoes')->result();
                             <ul id="menu-top-menu-1" class="menu">
                                 <li><a target="_blank" href="http://www.tcm.ba.gov.br">TCM</a></li>
                                 <li><a target="_blank" href="<?= site_url('portal/publicacoes') ?>">Transparência</a></li>
-                                <li><a target="_blank" href="https://camarapocoes.ba.gov.br"> Câmara de Poções</a></li>
+                                <li><a target="_blank" href="http://servicos.receita.fazenda.gov.br/Servicos/certidao/CndConjuntaInter/InformaNICertidao.asp?Tipo=1">Certidão Federal</a></li>
+                                <li><a target="_blank" href="http://servicos.receita.fazenda.gov.br/Servicos/certidao/CndConjuntaInter/InformaNICertidao.asp?Tipo=1">Certidão Federal</a></li>
+                                <li><a target="_blank" href="https://sistemas.sefaz.ba.gov.br/sistemas/sigat/Default.Aspx?Modulo=CREDITO&Tela=DocEmissaoCertidaoInternet&limparSessao=1&sts_link_externo=2">Certidão Estadual</a></li>
+                                <li><a target="_blank" href="http://www.tst.jus.br/certidao">Certidão Trabalhista</a></li>
+                              
                                 
 
                             </ul>
