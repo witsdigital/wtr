@@ -15,6 +15,7 @@ $query = $this->db->get('configuracoes')->result();
                             <br><br>
                             <p style="text-align: justify;"> <?= $query[0]->infopm ?></p>
                             <br><br>
+                              <img  style="width: 100%;" src="<?= base_url()?>/uploads/icp.png" alt=""> 
 
                         </div>
                     </div>
@@ -27,7 +28,7 @@ $query = $this->db->get('configuracoes')->result();
                                 <li><a target="_blank" href="http://www.tcm.ba.gov.br">TCM</a></li>
                                 <li><a target="_blank" href="<?= site_url('portal/publicacoes') ?>">Transparência</a></li>
                                 <li><a target="_blank" href="https://camarapocoes.ba.gov.br"> Câmara de Poções</a></li>
-
+                                
 
                             </ul>
                         </div>
@@ -53,6 +54,31 @@ $query = $this->db->get('configuracoes')->result();
 
     <div class="footer-bottom">
         <div class="container">
+          
+           
+           
+        </div>
+        <div class="container">
+            
+            <div class="row">
+                <div class="col-xs-12  col-md-4">
+                     <a href="https://transparencyreport.google.com/safe-browsing/search?url=<?= base_url()?>" target="_blank"><img  style="width: 100%;" src="<?= base_url()?>/uploads/selo.png" alt=""> </a>
+          
+                </div>
+                <div class=" col-xs-12 col-md-4">
+                  
+                </div>
+                <div class=" col-xs-12 col-md-4">
+                 
+                </div>
+                
+            </div>
+            
+            
+            
+        </div>
+        <div class="container">
+          
             <div class="footer-bottom__left">
                 Desenvolvido por <a href="http://witsdigital.com.br" target="_blank">WitsDigital</a>	
             </div>

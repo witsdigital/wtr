@@ -14,7 +14,7 @@
                     $total = $query->num_rows();
                     ?>
 
-                    <li><a href="<?php echo site_url() . 'portal/get/' . tirarAcentos($rowtipo->nome) ?>"><?php echo $rowtipo->nome; ?><div><span  >    <?php echo "( " . $total . " ) "; ?></span><a href="#" title="4 topics" style="font-size: 8pt;">Arquivos</a></div></a></li>
+                    <li><a href="<?php echo site_url() . 'transparencia/get/' . tirarAcentos($rowtipo->nome) ?>"><?php echo $rowtipo->descricao; ?><div><span  >    <?php echo "( " . $total . " ) "; ?></span><a href="#" title="4 topics" style="font-size: 8pt;">Arquivos</a></div></a></li>
 
                     <?php
                 }

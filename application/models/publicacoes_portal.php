@@ -76,13 +76,12 @@ class publicacoes_portal extends CI_Model {
         }
     }
 
-    function Getpublicaportaltipo($sort = 'id', $order = 'desc', $limit = null, $offset = null, $tipo) {
+    function Getpublicaportaltipo($sort = 'id', $order = 'desc', $limit , $offset , $tipo) {
         $this->db->order_by($sort, $order);
-        if ($limit)
-            $this->db->limit($limit, $offset);
+      $this->db->limit($limit, $offset);
         $this->db->where('tipo', $tipo);
         $query = $this->db->get("publicacao");
-
+        
         if ($query->num_rows() > 0) {
 
             return $query->result();

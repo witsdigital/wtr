@@ -6,14 +6,14 @@ class Transparencia extends CI_Controller {
 
     public function index() {
 
-		$this->session->unset_userdata('pesquisa');
-		
+        $this->session->unset_userdata('pesquisa');
+
         $this->load->model('publicacoes_portal');
 
         $this->load->library('pagination');
         $config = array(
             "base_url" => base_url('portal/publicacoes/'),
-            "per_page" => 12,
+            "per_page" => 14,
             "num_links" => 3,
             "uri_segment" => 3,
             "total_rows" => $this->publicacoes_portal->CountAll(),
@@ -38,7 +38,7 @@ class Transparencia extends CI_Controller {
         );
         $this->pagination->initialize($config);
         $data['pagination'] = $this->pagination->create_links();
-        $offset = ($this->uri->segment(3)) ? $this->uri->segment(3) : 0; 
+        $offset = ($this->uri->segment(3)) ? $this->uri->segment(3) : 0;
 
 
         $data['publicadas'] = $this->publicacoes_portal->Getpublicaportal('id', 'desc', $config['per_page'], $offset);
@@ -47,36 +47,35 @@ class Transparencia extends CI_Controller {
         $this->load->view('transparencia/includes/imports');
         $this->load->view('transparencia/includes/header', $data);
         $this->load->view('transparencia/publicacoes', $data);
-          $this->load->view('transparencia/includes/footer');
+        $this->load->view('transparencia/includes/footer');
     }
-	
-	public function sic($conf = null, $chave=null) {
-		
-		$data['mensagem'] = null;
-		
-		if($conf==1){
-			$data['mensagem'] = "<h2 style='color:green;'>Solicitação enviado com sucesso. Sua chave para consulta é: ".$chave.". Uma copia da chave de segurança foi enviada para seu email.</h2>";
-		}
-		if($conf==2){
-			$data['mensagem'] = "<h2 style='color:red;'>Não foi possivel enviar a solicitação, tente novamente mais tarde</h2>";
-		}
-		
-		if($conf==4){
-			$data['mensagem'] = "<h2 style='color:red;'>Não foi possivel enviar a solicitação, escolha pelo menos um arquivo</h2>";
-		}
-		
-	
+
+    public function sic($conf = null, $chave = null) {
+
+        $data['mensagem'] = null;
+
+        if ($conf == 1) {
+            $data['mensagem'] = "<h2 style='color:green;'>Solicitação enviado com sucesso. Sua chave para consulta é: " . $chave . ". Uma copia da chave de segurança foi enviada para seu email.</h2>";
+        }
+        if ($conf == 2) {
+            $data['mensagem'] = "<h2 style='color:red;'>Não foi possivel enviar a solicitação, tente novamente mais tarde</h2>";
+        }
+
+        if ($conf == 4) {
+            $data['mensagem'] = "<h2 style='color:red;'>Não foi possivel enviar a solicitação, escolha pelo menos um arquivo</h2>";
+        }
+
+
         $this->load->view('transparencia/includes/imports');
         $this->load->view('/transparencia/includes/header');
         $this->load->view('transparencia/sic', $data);
         $this->load->view('transparencia/includes/footer');
     }
 
+    public function testprint() {
 
-    public function testprint(){
 
 
-  
 
         require_once('vendor/autoload.php');
 
@@ -84,120 +83,112 @@ class Transparencia extends CI_Controller {
         $mpdf->WriteHTML('<h1>Hello world!</h1>');
         $mpdf->Output();
     }
-	
-	public function consultar_sic() {
-		
-		$data['mensagem'] = null;
-		$data['dados'] = [];
-		if(isset($_POST["cpf"]) and isset($_POST["chave"])){
-			$cpf = $_POST["cpf"];
-			$chave = $_POST["chave"];
-			$data['dados'] = $this->db->query('select * from sic where cpf = "'.$cpf.'" and chave = '.$chave)->result();
-			if(count($data['dados'])==0){
-				$data['mensagem'] = "Desculpe, nenhuma informação encontrada. Verifique o numero de CPF e a chave de segurança";
-			}
-		}
-		
-	
-	
-	
+
+    public function consultar_sic() {
+
+        $data['mensagem'] = null;
+        $data['dados'] = [];
+        if (isset($_POST["cpf"]) and isset($_POST["chave"])) {
+            $cpf = $_POST["cpf"];
+            $chave = $_POST["chave"];
+            $data['dados'] = $this->db->query('select * from sic where cpf = "' . $cpf . '" and chave = ' . $chave)->result();
+            if (count($data['dados']) == 0) {
+                $data['mensagem'] = "Desculpe, nenhuma informação encontrada. Verifique o numero de CPF e a chave de segurança";
+            }
+        }
+
+
+
+
         $this->load->view('transparencia/includes/imports');
         $this->load->view('/transparencia/includes/header');
         $this->load->view('transparencia/consultarsic', $data);
         $this->load->view('transparencia/includes/footer');
     }
-	
-	
-	
-	public function solicitar_sic($conf = null, $chave=null) {
-		
-		$data['mensagem'] = null;
-		
-		if($conf==1){
-			$data['mensagem'] = "<h2 style='color:green;'>Solicitação enviado com sucesso. Sua chave para consulta é: ".$chave." <h2>";
-		}
-		if($conf==2){
-			$data['mensagem'] = "<h2 style='color:red;'>Não foi possivel enviar a solicitação, tente novamente mais tarde<h2>";
-		}
-		
-		if($conf==4){
-			$data['mensagem'] = "<h2 style='color:red;'>Não foi possivel enviar a solicitação, escolha pelo menos um arquivo<h2>";
-		}
-		
-		$data['estados'] = $this->db->query('select * from estado order by uf')->result();
-		$data['secretarias'] = $this->db->query('select * from secretarias order by titulo')->result();
+
+    public function solicitar_sic($conf = null, $chave = null) {
+
+        $data['mensagem'] = null;
+
+        if ($conf == 1) {
+            $data['mensagem'] = "<h2 style='color:green;'>Solicitação enviado com sucesso. Sua chave para consulta é: " . $chave . " <h2>";
+        }
+        if ($conf == 2) {
+            $data['mensagem'] = "<h2 style='color:red;'>Não foi possivel enviar a solicitação, tente novamente mais tarde<h2>";
+        }
+
+        if ($conf == 4) {
+            $data['mensagem'] = "<h2 style='color:red;'>Não foi possivel enviar a solicitação, escolha pelo menos um arquivo<h2>";
+        }
+
+        $data['estados'] = $this->db->query('select * from estado order by uf')->result();
+        $data['secretarias'] = $this->db->query('select * from secretarias order by titulo')->result();
         $this->load->view('transparencia/includes/imports');
         $this->load->view('/transparencia/includes/header');
         $this->load->view('transparencia/solicitarsic', $data);
         $this->load->view('transparencia/includes/footer');
     }
-	
-	public function up_multi_img($id) {
-    
-    
-            $file = $_FILES['ar'];
-            $numFile = count(array_filter($file['name']));
-    
-    
-    
-    
-            if (is_dir("uploads/sic")) {
-                $dir = 'uploads/sic';
-            } else {
-                mkdir("uploads/sic", 0777, true);
-                $dir = 'uploads/sic';
-            }
-    
-    
-    
-            // fim diretorio
-    
-            if ($numFile <= 0) {
-                
-            } else {
-    
-                for ($i = 0; $i < $numFile; $i++) {
-    
-                    $name = $file['name'][$i];
-                    $size = $file['size'][$i];
-                    $error = $file['error'][$i];
-                    $tmp = $file['tmp_name'][$i];
-					
-					move_uploaded_file($tmp, $dir . "/" . $name);
-                    $obj['url'] = base_url(). $dir.'/'.$name;
-                    $obj['cod_sic'] = $id;
-                    $this->db->insert('arquivos_sic', $obj);
-                      
-                  
-    
-                        
-                    
-                }return $id;
-            }
+
+    public function up_multi_img($id) {
+
+
+        $file = $_FILES['ar'];
+        $numFile = count(array_filter($file['name']));
+
+
+
+
+        if (is_dir("uploads/sic")) {
+            $dir = 'uploads/sic';
+        } else {
+            mkdir("uploads/sic", 0777, true);
+            $dir = 'uploads/sic';
         }
-	
-		
-	public function getmunicipios(){
+
+
+
+        // fim diretorio
+
+        if ($numFile <= 0) {
+            
+        } else {
+
+            for ($i = 0; $i < $numFile; $i++) {
+
+                $name = $file['name'][$i];
+                $size = $file['size'][$i];
+                $error = $file['error'][$i];
+                $tmp = $file['tmp_name'][$i];
+
+                move_uploaded_file($tmp, $dir . "/" . $name);
+                $obj['url'] = base_url() . $dir . '/' . $name;
+                $obj['cod_sic'] = $id;
+                $this->db->insert('arquivos_sic', $obj);
+            }return $id;
+        }
+    }
+
+    public function getmunicipios() {
         $id = $this->input->post('id');
-        if($id){
-            $municipio = $this->db->query('select * from cidade where estado = '.$id. ' order by nome')->result();;
+        if ($id) {
+            $municipio = $this->db->query('select * from cidade where estado = ' . $id . ' order by nome')->result();
+            ;
         }
         echo json_encode($municipio);
     }
-	
-	public function nfe() {
+
+    public function nfe() {
 
         $this->load->view('transparencia/includes/imports');
         $this->load->view('/transparencia/includes/header');
         $this->load->view('transparencia/sic');
         $this->load->view('transparencia/includes/footer');
     }
-	
-	
+
     public function licitacao() {
 
         $this->session->unset_userdata('pesquisa');
-		
+
         $query = $this->db->query('select * from licitacao')->result();
 
         $this->load->library('pagination');
@@ -228,29 +219,29 @@ class Transparencia extends CI_Controller {
         );
         $this->pagination->initialize($config);
         $data['pagination'] = $this->pagination->create_links();
-        $offset = ($this->uri->segment(3)) ? $this->uri->segment(3) : 0; 
-        
-        
-          $this->db->limit($config['per_page'], $offset);
+        $offset = ($this->uri->segment(3)) ? $this->uri->segment(3) : 0;
 
-    $this->db->from('licitacao lc, modalidade_licitacao ml, unidade_gestora ug');
-            $this->db->where('lc.modalidade = ml.id_modalidade_licitacao');
-            $this->db->where('lc.cod_unidade = ug.id_unidade_gestora');
-    $data['diario_oficial'] = $this->db->get()->result();
+
+        $this->db->limit($config['per_page'], $offset);
+
+        $this->db->from('licitacao lc, modalidade_licitacao ml, unidade_gestora ug');
+        $this->db->where('lc.modalidade = ml.id_modalidade_licitacao');
+        $this->db->where('lc.cod_unidade = ug.id_unidade_gestora');
+        $data['diario_oficial'] = $this->db->get()->result();
 
 
 //		$data['diario_oficial']  = $this->db->query('select * from licitacao limit '.$config['per_page'].' offset '.$offset)->result();
-        
+
         $this->load->view('transparencia/includes/imports');
         $this->load->view('transparencia/includes/header', $data);
         $this->load->view('transparencia/licitacao', $data);
         $this->load->view('transparencia/includes/footer');
-    
     }
+
     public function diario() {
 
         $this->session->unset_userdata('pesquisa');
-		
+
         $query = $this->db->query('select * from diario_oficial where status = 1')->result();
 
         $this->load->library('pagination');
@@ -281,24 +272,20 @@ class Transparencia extends CI_Controller {
         );
         $this->pagination->initialize($config);
         $data['pagination'] = $this->pagination->create_links();
-        $offset = ($this->uri->segment(3)) ? $this->uri->segment(3) : 0; 
+        $offset = ($this->uri->segment(3)) ? $this->uri->segment(3) : 0;
 
-		$data['diario_oficial']  = $this->db->query('select * from diario_oficial where status = 1 order by data desc limit '.$config['per_page'].' offset '.$offset)->result();
-        
+        $data['diario_oficial'] = $this->db->query('select * from diario_oficial where status = 1 order by data desc limit ' . $config['per_page'] . ' offset ' . $offset)->result();
+
         $this->load->view('transparencia/includes/imports');
         $this->load->view('transparencia/includes/header', $data);
         $this->load->view('transparencia/diario', $data);
         $this->load->view('transparencia/includes/footer');
-    
     }
-	
-	
-	
 
     public function diarias() {
 
         $this->session->unset_userdata('pesquisa');
-		
+
         $this->load->model('um3um_model');
 
         $this->load->library('pagination');
@@ -329,7 +316,7 @@ class Transparencia extends CI_Controller {
         );
         $this->pagination->initialize($config);
         $data['pagination'] = $this->pagination->create_links();
-        $offset = ($this->uri->segment(3)) ? $this->uri->segment(3) : 0; 
+        $offset = ($this->uri->segment(3)) ? $this->uri->segment(3) : 0;
 
 
         $data['despesas'] = $this->um3um_model->geDiariasPortal('id_diarias', 'desc', $config['per_page'], $offset);
@@ -338,10 +325,11 @@ class Transparencia extends CI_Controller {
         $this->load->view('transparencia/diarias', $data);
         $this->load->view('transparencia/includes/footer');
     }
+
     public function receitas() {
 
         $this->session->unset_userdata('pesquisa');
-		
+
         $this->load->model('um3um_model');
 
         $this->load->library('pagination');
@@ -372,7 +360,7 @@ class Transparencia extends CI_Controller {
         );
         $this->pagination->initialize($config);
         $data['pagination'] = $this->pagination->create_links();
-        $offset = ($this->uri->segment(3)) ? $this->uri->segment(3) : 0; 
+        $offset = ($this->uri->segment(3)) ? $this->uri->segment(3) : 0;
 
 
         $data['despesas'] = $this->um3um_model->geReceitaPortal('id', 'desc', $config['per_page'], $offset);
@@ -381,37 +369,38 @@ class Transparencia extends CI_Controller {
         $this->load->view('transparencia/receitas', $data);
         $this->load->view('transparencia/includes/footer');
     }
+
     public function filtrarreceita() {
 
-       $filtro = $this->session->userdata('filtro');
+        $filtro = $this->session->userdata('filtro');
 
-				$filtro = $this->session->userdata('filtro');
+        $filtro = $this->session->userdata('filtro');
 
-		if(isset($_POST['ano'])){
-			$filtro['ano'] =  $this->input->post('ano');
-		}
-		
-		if(isset($_POST['credor'])){
-			$filtro['credor'] =  $this->input->post('credor');
-		}
-		
-		if(isset($_POST['key'])){
-			$filtro['key'] =  $this->input->post('key');
-		}
-		
-		if(isset($_POST['competencia1'])){
-			$filtro['competencia1'] =  $this->input->post('competencia1');
-		}
-		
-		if(isset($_POST['tipo'])){
-			$filtro['tipo'] =  $this->input->post('tipo');
-		}
+        if (isset($_POST['ano'])) {
+            $filtro['ano'] = $this->input->post('ano');
+        }
 
-		$sessiondata = array(
-                'filtro' => $filtro,           
+        if (isset($_POST['credor'])) {
+            $filtro['credor'] = $this->input->post('credor');
+        }
+
+        if (isset($_POST['key'])) {
+            $filtro['key'] = $this->input->post('key');
+        }
+
+        if (isset($_POST['competencia1'])) {
+            $filtro['competencia1'] = $this->input->post('competencia1');
+        }
+
+        if (isset($_POST['tipo'])) {
+            $filtro['tipo'] = $this->input->post('tipo');
+        }
+
+        $sessiondata = array(
+            'filtro' => $filtro,
         );
         $this->session->set_userdata($sessiondata);
-		
+
         $this->load->model('um3um_model');
 
         $this->load->library('pagination');
@@ -442,20 +431,20 @@ class Transparencia extends CI_Controller {
         );
         $this->pagination->initialize($config);
         $data['pagination'] = $this->pagination->create_links();
-        $offset = ($this->uri->segment(3)) ? $this->uri->segment(3) : 0; 
+        $offset = ($this->uri->segment(3)) ? $this->uri->segment(3) : 0;
 
 
         $data['despesas'] = $this->um3um_model->geReceitaPortalFilter('id', 'desc', $filtro, $config['per_page'], $offset);
-		$this->load->view('transparencia/includes/imports');
-			$this->load->view('transparencia/includes/header', $data);
-			$this->load->view('transparencia/receitas', $data);
-			$this->load->view('transparencia/includes/footer');
-    
+        $this->load->view('transparencia/includes/imports');
+        $this->load->view('transparencia/includes/header', $data);
+        $this->load->view('transparencia/receitas', $data);
+        $this->load->view('transparencia/includes/footer');
     }
+
     public function despesas() {
 
         $this->session->unset_userdata('filtro');
-		
+
         $this->load->model('um3um_model');
 
         $this->load->library('pagination');
@@ -486,7 +475,7 @@ class Transparencia extends CI_Controller {
         );
         $this->pagination->initialize($config);
         $data['pagination'] = $this->pagination->create_links();
-        $offset = ($this->uri->segment(3)) ? $this->uri->segment(3) : 0; 
+        $offset = ($this->uri->segment(3)) ? $this->uri->segment(3) : 0;
 
 
         $data['despesas'] = $this->um3um_model->geDespesasPortal('id', 'desc', $config['per_page'], $offset);
@@ -495,35 +484,36 @@ class Transparencia extends CI_Controller {
         $this->load->view('transparencia/despesas', $data);
         $this->load->view('transparencia/includes/footer');
     }
+
     public function filtrardespesa() {
 
-		$filtro = $this->session->userdata('filtro');
+        $filtro = $this->session->userdata('filtro');
 
-		if(isset($_POST['ano'])){
-			$filtro['ano'] =  $this->input->post('ano');
-		}
-		
-		if(isset($_POST['credor'])){
-			$filtro['credor'] =  $this->input->post('credor');
-		}
-		
-		if(isset($_POST['key'])){
-			$filtro['key'] =  $this->input->post('key');
-		}
-		
-		if(isset($_POST['competencia1'])){
-			$filtro['competencia1'] =  $this->input->post('competencia1');
-		}
-		
-		if(isset($_POST['tipo'])){
-			$filtro['tipo'] =  $this->input->post('tipo');
-		}
+        if (isset($_POST['ano'])) {
+            $filtro['ano'] = $this->input->post('ano');
+        }
 
-		$sessiondata = array(
-                'filtro' => $filtro,           
+        if (isset($_POST['credor'])) {
+            $filtro['credor'] = $this->input->post('credor');
+        }
+
+        if (isset($_POST['key'])) {
+            $filtro['key'] = $this->input->post('key');
+        }
+
+        if (isset($_POST['competencia1'])) {
+            $filtro['competencia1'] = $this->input->post('competencia1');
+        }
+
+        if (isset($_POST['tipo'])) {
+            $filtro['tipo'] = $this->input->post('tipo');
+        }
+
+        $sessiondata = array(
+            'filtro' => $filtro,
         );
         $this->session->set_userdata($sessiondata);
-		
+
         $this->load->model('um3um_model');
 
         $this->load->library('pagination');
@@ -554,20 +544,20 @@ class Transparencia extends CI_Controller {
         );
         $this->pagination->initialize($config);
         $data['pagination'] = $this->pagination->create_links();
-        $offset = ($this->uri->segment(3)) ? $this->uri->segment(3) : 0; 
+        $offset = ($this->uri->segment(3)) ? $this->uri->segment(3) : 0;
 
 
         $data['despesas'] = $this->um3um_model->geDespesasPortalFilter('id', 'desc', $filtro, $config['per_page'], $offset);
-		$this->load->view('transparencia/includes/imports');
-			$this->load->view('transparencia/includes/header', $data);
-			$this->load->view('transparencia/despesas', $data);
-			$this->load->view('transparencia/includes/footer');
-    
+        $this->load->view('transparencia/includes/imports');
+        $this->load->view('transparencia/includes/header', $data);
+        $this->load->view('transparencia/despesas', $data);
+        $this->load->view('transparencia/includes/footer');
     }
+
     public function publicacoes() {
 
-		$this->session->unset_userdata('pesquisa');
-		
+        $this->session->unset_userdata('pesquisa');
+
         $this->load->model('publicacoes_portal');
 
         $this->load->library('pagination');
@@ -598,7 +588,7 @@ class Transparencia extends CI_Controller {
         );
         $this->pagination->initialize($config);
         $data['pagination'] = $this->pagination->create_links();
-        $offset = ($this->uri->segment(3)) ? $this->uri->segment(3) : 0; 
+        $offset = ($this->uri->segment(3)) ? $this->uri->segment(3) : 0;
 
 
         $data['publicadas'] = $this->publicacoes_portal->Getpublicaportal('id', 'desc', $config['per_page'], $offset);
@@ -609,27 +599,26 @@ class Transparencia extends CI_Controller {
         $this->load->view('transparencia/publicacoes', $data);
         $this->load->view('transparencia/includes/footer');
     }
-	
-	
-	public function pesquisapublicacoes() {
+
+    public function pesquisapublicacoes() {
 
         $data['entidade'] = 'condeuba';
         $entidade = "7";
         $this->load->model('publicacoes_portal');
 
         $this->load->library('pagination');
-		
-		if(isset($_GET['txt_busca'])){
-			 $pesquisa = $_GET['txt_busca'];
-			 $sessiondata = array(
-                'pesquisa' => $pesquisa,           
-             );
-             $this->session->set_userdata($sessiondata);
-		 } else {
-			 $pesquisa = $this->session->userdata('pesquisa');
-		 }
-		
-		
+
+        if (isset($_GET['txt_busca'])) {
+            $pesquisa = $_GET['txt_busca'];
+            $sessiondata = array(
+                'pesquisa' => $pesquisa,
+            );
+            $this->session->set_userdata($sessiondata);
+        } else {
+            $pesquisa = $this->session->userdata('pesquisa');
+        }
+
+
         $config = array(
             "base_url" => base_url('portal/pesquisapublicacoes/'),
             "per_page" => 8,
@@ -721,55 +710,55 @@ class Transparencia extends CI_Controller {
     public function salvarsic() {
 
         $dados = [];
-		
-		$dados['nome'] = $_POST['nome'];
-		$dados['cpf'] = $_POST['cpf'];
-		$dados['data_nascimento'] = $_POST['data'];
-		$dados['sexo'] = $_POST['sexo'];
-		$dados['email'] = $_POST['email'];
-		$dados['tel1'] = $_POST['telefone1'];
-		$dados['tel2'] = $_POST['telefone2'];
-		$dados['tel3'] = $_POST['telefone3'];
-		$dados['pais'] = $_POST['pais'];
-		$dados['cep'] = $_POST['cep'];
-		$dados['logradouro'] = $_POST['logradouro'];
-		$dados['numero'] = $_POST['numero'];
-		$dados['bairro'] = $_POST['bairro'];
-		$dados['estado'] = $_POST['estado'];
-		$dados['cidade'] = $_POST['municipio'];
-		$dados['complemento'] = $_POST['complemento'];
-		$dados['referencia'] = $_POST['ref'];
-		$dados['cod_secretarias'] = $_POST['departamento'];
-		$dados['tp_resposta'] = $_POST['forma'];
-		$dados['assunto'] = $_POST['assunto'];
-		$dados['descricao'] = $_POST['solicitacao'];
-		$dados['chave'] = rand(1000000000, 9999999999);
-		$dados['status'] = 1;
-		
-		
-		
-		
-		
-		$this->db->trans_begin();
+
+        $dados['nome'] = $_POST['nome'];
+        $dados['cpf'] = $_POST['cpf'];
+        $dados['data_nascimento'] = $_POST['data'];
+        $dados['sexo'] = $_POST['sexo'];
+        $dados['email'] = $_POST['email'];
+        $dados['tel1'] = $_POST['telefone1'];
+        $dados['tel2'] = $_POST['telefone2'];
+        $dados['tel3'] = $_POST['telefone3'];
+        $dados['pais'] = $_POST['pais'];
+        $dados['cep'] = $_POST['cep'];
+        $dados['logradouro'] = $_POST['logradouro'];
+        $dados['numero'] = $_POST['numero'];
+        $dados['bairro'] = $_POST['bairro'];
+        $dados['estado'] = $_POST['estado'];
+        $dados['cidade'] = $_POST['municipio'];
+        $dados['complemento'] = $_POST['complemento'];
+        $dados['referencia'] = $_POST['ref'];
+        $dados['cod_secretarias'] = $_POST['departamento'];
+        $dados['tp_resposta'] = $_POST['forma'];
+        $dados['assunto'] = $_POST['assunto'];
+        $dados['descricao'] = $_POST['solicitacao'];
+        $dados['chave'] = rand(1000000000, 9999999999);
+        $dados['status'] = 1;
+
+
+
+
+
+        $this->db->trans_begin();
         $this->db->insert('sic', $dados);
-		$id = $this->db->insert_id();
-		$this->up_multi_img($id);
+        $id = $this->db->insert_id();
+        $this->up_multi_img($id);
 
-       if ($this->db->trans_status() === FALSE){
-        $this->db->trans_rollback();
-		redirect (site_url('transparencia/sic/2'));
-       } else {
-        $this->db->trans_commit();
+        if ($this->db->trans_status() === FALSE) {
+            $this->db->trans_rollback();
+            redirect(site_url('transparencia/sic/2'));
+        } else {
+            $this->db->trans_commit();
 
-			$nome = 'Prefeitura Municipal';
-			$email = 'email@email.com';
+            $nome = 'Prefeitura Municipal';
+            $email = 'email@email.com';
 
-			$assuntomensagem = 'Portal da transparência';
-			$mensagem = 'mensagem';
-			$data_envio = date('d/m/Y');
-			$hora_envio = date('H:i:s');
+            $assuntomensagem = 'Portal da transparência';
+            $mensagem = 'mensagem';
+            $data_envio = date('d/m/Y');
+            $hora_envio = date('H:i:s');
 
-			$arquivo = '
+            $arquivo = '
 			<html lang="en">
 			<head>
 
@@ -780,11 +769,11 @@ class Transparencia extends CI_Controller {
 			<body> 
 
 			<div class="container">
-			<h2>Chave de segurança referente a solicitação de código :#'.$id.'</h2>
+			<h2>Chave de segurança referente a solicitação de código :#' . $id . '</h2>
 			
 			<hr>
 		 
-			<b>Sua chave de segurança é :</b> ' . $dados['chave']. '<br>
+			<b>Sua chave de segurança é :</b> ' . $dados['chave'] . '<br>
 		 
 			<hr>
 			<div class="well well-sm">Solicitação gerada no dia ' . $data_envio . ' às ' . $hora_envio . ' </div>
@@ -796,35 +785,30 @@ class Transparencia extends CI_Controller {
 			</html>
 			';
 
-			
-			require ('class.phpmailer.php');
 
-			$mail = new PHPMailer();
-			$mail->IsSMTP();
-			$mail->IsHTML(true);
-			$mail->CharSet = 'UTF-8'; 
+            require ('class.phpmailer.php');
 
-			$mail->SMTPDebug = 1;
-			$mail->SMTPAuth = true;
-			$mail->SMTPSecure = "tls";
-			$mail->Port = 587; 
-			$mail->Host = "smtp.gmail.com";
-			$mail->Username = "witsdigital@gmail.com";
-			$mail->Password = 'thiago2828';
-			$mail->SetFrom("witsdigital@gmail.com", "Chave de segurança - portal da transparência");
-			$mail->AddAddress($_POST['email']);
-			$mail->Subject = ("Contato do site");
-			$mail->MsgHTML("$arquivo");
-			$enviado = $mail->Send();
+            $mail = new PHPMailer();
+            $mail->IsSMTP();
+            $mail->IsHTML(true);
+            $mail->CharSet = 'UTF-8';
 
-		
-        redirect (site_url('transparencia/sic/1/'.$dados['chave']));
+            $mail->SMTPDebug = 1;
+            $mail->SMTPAuth = true;
+            $mail->SMTPSecure = "tls";
+            $mail->Port = 587;
+            $mail->Host = "smtp.gmail.com";
+            $mail->Username = "witsdigital@gmail.com";
+            $mail->Password = 'thiago2828';
+            $mail->SetFrom("witsdigital@gmail.com", "Chave de segurança - portal da transparência");
+            $mail->AddAddress($_POST['email']);
+            $mail->Subject = ("Contato do site");
+            $mail->MsgHTML("$arquivo");
+            $enviado = $mail->Send();
 
-       }  
 
-	
-		
-   
+            redirect(site_url('transparencia/sic/1/' . $dados['chave']));
+        }
     }
 
     public function get($tipo) {
@@ -836,8 +820,8 @@ class Transparencia extends CI_Controller {
 
         $this->load->library('pagination');
         $config = array(
-            "base_url" => base_url('portal/get/').'/'.$tipo,
-            "per_page" => 8,
+            "base_url" => base_url('transparencia/get/') . '/' . $tipo,
+            "per_page" => 15,
             "num_links" => 3,
             "uri_segment" => 3,
             "total_rows" => $this->publicacoes_portal->CountAlltipo($tipo),
@@ -883,6 +867,71 @@ class Transparencia extends CI_Controller {
         $this->load->view('/transparencia/includes/header');
         $this->load->view('transparencia/publicacoes', $data);
         $this->load->view('transparencia/includes/footer');
+    }
+
+    public function filtrardiario() {
+
+        if ($this->input->post('data')) {
+            $this->db->where('data', $this->input->post('data'));
+        }
+        if ($this->input->post('key')) {
+            $this->db->like('descricao', $this->input->post('key'), 'after');
+            $this->db->or_like('titulo', $this->input->post('key'), 'after');
+        }
+        
+        if ($this->input->post('edicao')) {
+            $this->db->where('edicao', $this->input->post('edicao'));
+        }
+        $this->db->order_by("data", "desc"); 
+        $data['diario_oficial'] = $this->db->get('diario_oficial')->result();
+        
+        
+        
+       
+
+        $this->load->library('pagination');
+        $config = array(
+            "base_url" => base_url('transparencia/diario/'),
+            "per_page" => 8,
+            "num_links" => 3,
+            "uri_segment" => 3,
+            "total_rows" => count($data['diario_oficial']),
+            "full_tag_open" => "<ul class='pagination'>",
+            "full_tag_close" => "</ul>",
+            "first_link" => FALSE,
+            "last_link" => FALSE,
+            "first_tag_open" => "<li>",
+            "first_tag_close" => "</li>",
+            "prev_link" => "←",
+            "prev_tag_open" => "<li class='prev'>",
+            "prev_tag_close" => "</li>",
+            "next_link" => "→",
+            "next_tag_open" => "<li class='next'>",
+            "next_tag_close" => "</li>",
+            "last_tag_open" => "<li>",
+            "last_tag_close" => "</li>",
+            "cur_tag_open" => "<li class='active'><a href='#'>",
+            "cur_tag_close" => "</a></li>",
+            "num_tag_open" => "<li>",
+            "num_tag_close" => "</li>"
+        );
+        $this->pagination->initialize($config);
+        $data['pagination'] = $this->pagination->create_links();
+        $offset = ($this->uri->segment(3)) ? $this->uri->segment(3) : 0;
+
+    
+        
+        
+        
+        
+        $this->load->view('transparencia/includes/imports');
+        $this->load->view('transparencia/includes/header', $data);
+        $this->load->view('transparencia/diario', $data);
+        $this->load->view('transparencia/includes/footer');
+        
+        
+        
+        
     }
 
     public function buscatitulo($titulo = NULL) {
@@ -969,7 +1018,7 @@ class Transparencia extends CI_Controller {
         $this->load->view('portal/includes/footer');
     }
 
-    public function infoph(){
+    public function infoph() {
         phpinfo();
     }
 

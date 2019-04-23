@@ -31,12 +31,45 @@
 
     }
 </script>
+<div class="main-title" style="background-color: #f2f2f2; ">
+    <div class="container">
+        <h1 class="main-title__primary">Diário Oficial</h1>
+        <h3 class="main-title__secondary">Acompanhe o diário Oficial do município. </h3>
+
+
+    </div>
+</div>
 
 
 <div style="background-color:  #FFFFFF;">
-    <br><br><br><br><div class="master-container">
+  <br><div class="master-container">
         <div class="container">
             <div class="row">
+                 <form id="frm" name="frm" action="<?= site_url(); ?>transparencia/filtrardiario"  enctype="multipart/form-data" method="post">
+                    <div class="col-md-2">
+                        <label for="data">Data:</label>
+                        <input type="date" class="form-control" id="nome" name="data" placeholder="">
+                    </div>
+                   
+                    <div class="col-md-2">
+                        <label for="data">Edição:</label>
+                        <input type="text" class="form-control" id="nome" name="edicao" placeholder="">
+                    </div>
+                    <div class="col-md-5">
+                        <label for="data">Palavra Chave:</label>
+                        <input type="text" class="form-control" id="nome" name="key" placeholder="">
+                    </div>
+
+              
+             
+                <div class="col-md-3">
+                    <button type="submit" style="margin:20px;" class="btn btn-sm btn-primary btn-block" >Consultar</button>
+                </div>
+                      </form>
+                  <div class="col-md-12">
+                    <hr>
+                </div>
+
                 <div class="col-md-3">
 				 <div class="widget  widget_search  push-down-30">
             <!-- <form role="search" action="<?=  site_url('portal/pesquisapublicacoes')?>" method="get" class="search-form">
@@ -84,7 +117,7 @@
                                 
                                 
                                 </div>
-                                <div class="col-md-2"><button type="buttom" class="btn btn-success" onclick="javascript:confirma(<?php echo $row->id_diario_oficial ?>);" >Consultar</button></div>
+                                <div class="col-md-2"><button type="buttom" class="btn btn-sm btn-primary btn-block" onclick="javascript:confirma(<?php echo $row->id_diario_oficial ?>);" >Consultar</button></div>
                             </div>
                         
                             <?php

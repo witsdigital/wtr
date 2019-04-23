@@ -38,14 +38,61 @@ $status[5] = 'Outro';
 
     }
 </script>
+<div class="main-title" style="background-color: #f2f2f2; ">
+    <div class="container">
+        <h1 class="main-title__primary">Licitações</h1>
+        <h3 class="main-title__secondary">Consulte as Licitações Oficiais do município </h3>
+
+
+    </div>
+</div>
+
 
 
 <div style="background-color:  #FFFFFF;">
-    <br><br><br><br><div class="master-container">
+    <div class="master-container">
         <div class="container">
+
+            <br>
+
             <div class="row">
+                <form id="frm" name="frm" action="<?= site_url(); ?>transparencia/buscarlicita"  enctype="multipart/form-data" method="post">
+                    <div class="col-md-3">
+                        <label for="data">Data:</label>
+                        <input type="date" class="form-control" id="nome" name="nome" placeholder="">
+                    </div>
+                    <div class="col-md-3">
+                        <label for="data">Valor:</label>
+                        <input type="text" class="form-control" id="nome" name="nome" placeholder="">
+                    </div>
+
+                    <div class="col-md-3">
+                        <label for="data">Modalidade:</label>
+                        <select name="forma" class="form-control" id="exampleFormControlSelect1">
 
 
+                            <?php
+                            $md = $this->db->get('modalidade_licitacao')->result();
+                            foreach ($md as $row) {
+                                ?>
+
+                                <option value="<?= $row->id_modalidade_licitacao ?>"><?= $row->descricao ?></option>
+                                <?php
+                            }
+                            ?>
+
+                        </select>
+
+                    </div>
+              
+
+                <div class="col-md-3">
+                    <button type="submit" style="margin:20px;" class="btn btn-sm btn-primary btn-block" >Consultar</button>
+                </div>
+                      </form>
+                <div class="col-md-12">
+                    <hr>
+                </div>
                 <div class="col-md-12">
                     <?php
                     if (count($diario_oficial) == 0) {
@@ -68,7 +115,7 @@ $status[5] = 'Outro';
                                 <div class="col-md-2">
                                     <span><strong><i class="icon-list-alt"></i> Data Publicação:</strong><br> <a  href="#"><?php echo date('d/m/Y', strtotime($row->data_publicacao)); ?></a></span>
                                 </div>
-                                <br><div class="col-md-2"><button type="buttom" data-toggle="modal" data-target="#<?php echo $row->id_licitacao ?>" type="button" class="btn btn-sm btn-primary" >Consultar</button></div>
+                                <br><div class="col-md-2"><button type="buttom" data-toggle="modal" data-target="#<?php echo $row->id_licitacao ?>" type="button" class="btn  btn-block btn-sm btn-primary" >Consultar</button></div>
 
                                 <div class="col-md-10">
                                     <span><strong><i class="icon-list-alt"></i> Objeto:</strong><br> <a  href="#"><?php echo $row->objeto ?></a></span>
@@ -84,19 +131,19 @@ $status[5] = 'Outro';
                                             <h4 class="modal-title">Licitação Nº:  <?php echo $row->cod_licitacao ?></h4>
 
                                         </div>
-                                          <div class="modal-body">
+                                        <div class="modal-body">
 
-                                              <h4> <p><b>Status: </b><?php echo $status[$row->status_licitacao] ?></p></h4>
-                                        <p><b>Unidade Gestora:</b> <?php echo $row->secretaria ?></p>
-                                        <p><b>Modalidade: </b> <?php echo $row->descricao ?></p>
-                                        <p><b>Valor: </b> <?php echo number_format($row->valor , 2, ',', '.'); ?></p>
-                                        <p><b>Data Abertura: </b>  <?php echo date('d/m/Y',strtotime($row->data_abertura))  ?></p>
-                                        <p><b>Data Publicação: </b>  <?php echo date('d/m/Y',strtotime($row->data_publicacao))  ?></p>
-                                        <p><b>Nº Edital: </b> <a target="_blank"  href="<?php echo $row->url_edital ?>"><?php echo $row->numero_edital ?></a></p>
-                                        <p><b>Nº Contrato: </b> <a target="_blank"  href="<?php echo $row->url_contrato ?>"><?php echo $row->numero_contrato ?></a></p>
-                                          <p><b>Objeto: </b> <?php echo $row->objeto ?></p> 
+                                            <h4> <p><b>Status: </b><?php echo $status[$row->status_licitacao] ?></p></h4>
+                                            <p><b>Unidade Gestora:</b> <?php echo $row->secretaria ?></p>
+                                            <p><b>Modalidade: </b> <?php echo $row->descricao ?></p>
+                                            <p><b>Valor: </b> <?php echo number_format($row->valor, 2, ',', '.'); ?></p>
+                                            <p><b>Data Abertura: </b>  <?php echo date('d/m/Y', strtotime($row->data_abertura)) ?></p>
+                                            <p><b>Data Publicação: </b>  <?php echo date('d/m/Y', strtotime($row->data_publicacao)) ?></p>
+                                            <p><b>Nº Edital: </b> <a target="_blank"  href="<?php echo $row->url_edital ?>"><?php echo $row->numero_edital ?></a></p>
+                                            <p><b>Nº Contrato: </b> <a target="_blank"  href="<?php echo $row->url_contrato ?>"><?php echo $row->numero_contrato ?></a></p>
+                                            <p><b>Objeto: </b> <?php echo $row->objeto ?></p> 
 
-                                    </div>
+                                        </div>
                                         <div class="modal-footer">
                                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
 
@@ -104,7 +151,7 @@ $status[5] = 'Outro';
                                     </div>
                                 </div>
                             </div>
-                    <hr>
+                            <hr>
                             <?php
                         }
                     }

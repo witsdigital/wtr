@@ -19,7 +19,7 @@
 <script type="text/javascript" src="<?= base_url() ?>/assets/js/header_carousel.js"></script>
 <script type="text/javascript" src="<?= base_url() ?>/assets/js/sticky_navbar.js"></script>
 <script type="text/javascript" src="<?= base_url() ?>/assets/js/simplemap.js"></script>
-<script type="text/javascript" src="<?= base_url() ?>/assets/js/main.min.js"></script>
+
 <script type="text/javascript" src="<?= base_url() ?>/assets/js/main.js"></script>
 <script src="<?= base_url() ?>/dist/jquery-3.2.1.min.js"></script>
 <script src="<?= base_url() ?>/dist/jquery.fancybox.min.js"></script>

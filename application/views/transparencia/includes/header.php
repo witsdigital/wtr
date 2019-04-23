@@ -3,126 +3,9 @@
 $query = $this->db->get('configuracoes')->result();
 ?>
 <html lang="en-US">
-    <style>
-        .contrast,
-        .contrast nav,
-        .contrast div,
-        .contrast li,
-        .contrast ol,
-        .contrast header,
-        .contrast footer,
-        .contrast section,
-        .contrast main,
-        .contrast aside,
-        .contrast article {
-            background: black !important;
-            color: white !important;
-        }
-        .contrast h1,
-        .contrast h2,
-        .contrast h3,
-        .contrast h4,
-        .contrast h5,
-        .contrast h6,
-        .contrast p,
-        .contrast label,
-        .contrast strong,
-        .contrast em,
-        .contrast cite,
-        .contrast q,
-        .contrast i,
-        .contrast b,
-        .contrast u,
-        .contrast span {
-            color: white !important;
-        }
-        .contrast a{
-            color: yellow !important;
-        }
 
-        .contrast button,
-        .contrast input[type=button],
-        .contrast input[type=reset],
-        .contrast input[type=submit] {
-            background: black !important;
-            color: yellow !important;
-            border: none !important;
-        }
-        .contrast img.on-contrast-force-gray {
-            filter: grayscale(100%) contrast(120%);
-        }
-
-        .contrast img.on-contrast-force-white {
-            filter: brightness(0) invert(1);
-        }
-        .contrast input[type=text],
-        .contrast input[type=password],
-        .contrast input[type=url],
-        .contrast input[type=search],
-        .contrast input[type=email],
-        .contrast input[type=tel],
-        .contrast input[type=date],
-        .contrast input[type=month],
-        .contrast input[type=week],
-        .contrast input[type=datetime],
-        .contrast input[type=datetime-local],
-        .contrast textarea,
-        .contrast input[type=number] {
-            background: black !important;
-            border: 1px solid white !important;
-            color: white !important;
-        }
-    </style>
     <head>
-        <script>
-            (function () {
-                var Contrast = {
-                    storage: 'contrastState',
-                    cssClass: 'contrast',
-                    currentState: null,
-                    check: checkContrast,
-                    getState: getContrastState,
-                    setState: setContrastState,
-                    toogle: toogleContrast,
-                    updateView: updateViewContrast
-                };
-
-                window.toggleContrast = function () {
-                    Contrast.toogle();
-                };
-
-                Contrast.check();
-
-                function checkContrast() {
-                    this.updateView();
-                }
-
-                function getContrastState() {
-                    return localStorage.getItem(this.storage) === 'true';
-                }
-
-                function setContrastState(state) {
-                    localStorage.setItem(this.storage, '' + state);
-                    this.currentState = state;
-                    this.updateView();
-                }
-
-                function updateViewContrast() {
-                    var body = document.body;
-
-                    if (this.currentState === null)
-                        this.currentState = this.getState();
-
-                    if (this.currentState)
-                        body.classList.add(this.cssClass);
-                    else
-                        body.classList.remove(this.cssClass);
-                }
-
-                function toogleContrast() {
-                    this.setState(!this.currentState);
-                }
-            })();</script>
+    
         <link rel="icon" type="image/png" href="<?= base_url() ?>uploads/favicon.png" />
         <!-- Global site tag (gtag.js) - Google Analytics -->
         <script async src="https://www.googletagmanager.com/gtag/js?id=UA-46117675-3"></script>
@@ -204,36 +87,56 @@ $query = $this->db->get('configuracoes')->result();
                 </div>
             </div>
 
-            <header class="header">
-                <div class="container">
-                    <div class="logo">
-                        <br>
-                        <a href="<?= site_url() ?>">
-                            <img src="<?= $query[0]->logo ?> " alt="Transparência" class="img-responsive"/>
-                        </a>
-                        <br>
-
-                    </div>
-                    <div class="header-widgets  header-widgets-desktop">
-
-                        <div class="widget  widget-social-icons">	
-                            <a class="social-icons__link" href="#" target="_blank"><i class="fa  fa-facebook"></i></a>
-                            <a class="social-icons__link" href="#" target="_blank"><i class="fa  fa-twitter"></i></a>
-                            <a class="social-icons__link" href="#" target="_blank"><i class="fa  fa-youtube"></i></a>
-                        </div>	
-                    </div>
-                    <!-- Toggle Button for Mobile Navigation -->
-                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#buildpress-navbar-collapse">
-                        <span class="navbar-toggle__text">MENU</span>
-                        <span class="navbar-toggle__icon-bar">
-                            <span class="icon-bar"></span>
-                            <span class="icon-bar"></span>
-                            <span class="icon-bar"></span>
-                        </span>
-                    </button>
-                </div>
-                <div class="sticky-offset js-sticky-offset"></div>
-                <div class="container">
+          <header class="header">
+		<div class="container">
+			<div class="logo">
+				<a href="index.html">
+                                    <img  src="<?= base_url() ?>assets/images/logo.png" alt="BuildPress" class="img-responsive"/>
+				</a>
+			</div>
+			<div class="header-widgets  header-widgets-desktop">
+				<div class="widget  widget-icon-box">	
+					<div class="icon-box">
+						<i class="fa  fa-phone  fa-3x"></i>
+						<div class="icon-box__text">
+							<h4 class="icon-box__title"><?= $query[0]->telefone ?> </h4>
+							<!--<span class="icon-box__subtitle"><?= $query[0]->email ?> </span>-->
+						</div>
+					</div>
+				</div>
+				<div class="widget  widget-icon-box">	
+					<div class="icon-box">
+						<i class="fa fa-home fa-3x"></i>
+						<div class="icon-box__text">
+							<h4 class="icon-box__title"><?= $query[0]->endereco ?> </h4>
+							<span class="icon-box__subtitle"><?= $query[0]->cidade ?> </span>
+						</div>
+					</div>
+				</div>
+				<div class="widget  widget-icon-box">	
+					<div class="icon-box">
+						<i class="fa  fa-clock-o  fa-3x"></i>
+						<div class="icon-box__text">
+							<h4 class="icon-box__title">Seg - Sex 8:00 - 17:00</h4>
+							<!--<span class="icon-box__subtitle">Sunday CLOSED</span>-->
+						</div>
+					</div>
+				</div>
+				<div class="widget  widget-social-icons">	
+					<a class="social-icons__link" href="#" target="_blank"><i class="fa  fa-facebook"></i></a>
+					<a class="social-icons__link" href="#" target="_blank"><i class="fa  fa-twitter"></i></a>
+					<a class="social-icons__link" href="#" target="_blank"><i class="fa  fa-youtube"></i></a>
+				</div>	
+			</div>
+			<!-- Toggle Button for Mobile Navigation -->
+                        
+                        <button  class="navbar-toggle" data-target="#buildpress-navbar-collapse" data-toggle="collapse"><span style="color:#fff;">MENU</span></button>
+                                   
+			
+		</div>
+		<div class="sticky-offset js-sticky-offset"></div>
+		
+		<div class="container">
                     <div class="navigation">
                         <div class="collapse  navbar-collapse" id="buildpress-navbar-collapse">
                             <ul id="menu-main-menu" class="navigation--main">
@@ -281,3 +184,4 @@ $query = $this->db->get('configuracoes')->result();
                         </div>
                     </div>
                 </div>
+	</header>
