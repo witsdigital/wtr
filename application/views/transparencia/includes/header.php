@@ -83,6 +83,10 @@ $query = $this->db->get('configuracoes')->result();
 
                             </div>
                         </div>
+                        <div class="col-xs-12 col-md-2">
+                            <div class="top__left"> <a style="font-size: 15px; color: green; float: right;" >FALE CONOSCO</a></div>
+
+                        </div>
                     </div>
                 </div>
             </div>
