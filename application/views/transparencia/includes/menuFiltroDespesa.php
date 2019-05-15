@@ -45,7 +45,7 @@ $query = $this->db->query('SELECT DISTINCT credor from 131_despesa_dados')->resu
 				
 					  </div>
             <div class="col-md-12">
-						<label for="data">Tipo:</label>
+						<label for="data">Fase:</label>
 						<select class="form-control" name="tipo">
             <option  selected value="0">Todos</option>
             <option value="EMP">Empenho</option>

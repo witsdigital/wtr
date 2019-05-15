@@ -60,6 +60,25 @@ class Licitacao extends CI_Controller {
         $this->load->view('includes/footer');
     }
 
+    public function cadastroVencedor($indice = null) {
+         if ($indice == 1) {
+            $data['msg'] = "Dados cadastrados com sucesso!";
+            $this->load->view('includes/msg_success', $data);
+        }
+
+        ini_set('default_charset', 'UTF-8');
+
+        $this->load->view('includes/import');
+        $this->load->view('includes/header');
+        if ($this->session->userdata('permissao') == 'administrador') {
+            $this->load->view('includes/menu_admin');
+        } else {
+            redirect(site_url('home'));
+        }
+        $this->load->view('licitacao/cadastroVencedor');
+        $this->load->view('includes/footer');
+    }
+
     public function apagar($id = null) {
 
         if ($this->session->userdata('permissao') == 'administrador') {
@@ -99,6 +118,25 @@ class Licitacao extends CI_Controller {
 
         if ($this->db->insert('licitacao', $dados)) {
             redirect(site_url('licitacao/1'));
+        }
+
+  
+    }
+    public function salvarVencedor() {
+        ini_set('default_charset', 'UTF-8');
+        date_default_timezone_set('America/Sao_Paulo');
+
+
+        $dados['cod_licitacao'] = $this->input->post('cod_licitacao');
+        $dados['cod_contrato'] = $this->input->post('cod_contrato');
+        $dados['valor'] = $this->input->post('valor_contrato');
+        $dados['nome'] = $this->input->post('nome');
+        $dados['doc'] = $this->input->post('doc');
+        
+       
+
+        if ($this->db->insert('vencedor_licitacao', $dados)) {
+            redirect(site_url('licitacao/cadastroVencedor/1'));
         }
 
   

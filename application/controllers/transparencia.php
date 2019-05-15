@@ -668,6 +668,20 @@ class Transparencia extends CI_Controller {
         $this->load->view('transparencia/131', $data);
         $this->load->view('transparencia/includes/footer');
     }
+    public function faq() {
+     
+        $this->load->view('transparencia/includes/imports');
+        $this->load->view('/transparencia/includes/header');
+        $this->load->view('transparencia/faq');
+        $this->load->view('transparencia/includes/footer');
+    }
+    public function urlDetRec() {
+     
+        $this->load->view('transparencia/includes/imports');
+        $this->load->view('/transparencia/includes/header');
+        $this->load->view('transparencia/tpRealRec');
+        $this->load->view('transparencia/includes/footer');
+    }
 
     public function recdespview($competencia = NULL) {
         $this->load->model('um3um_model');

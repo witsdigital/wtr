@@ -26,9 +26,9 @@
     </div>
     <div class="widget widget-brochure-box  push-down-30">
         <h4 class="sidebar__headings">LEI 131</h4>
-        <a class="brochure-box" href="<?= site_url('/portal/recdesp') ?>">
+        <a class="brochure-box" href="<?= site_url('transparencia/urlDetRec') ?>">
             <i class="fa  fa-file-pdf-o"></i>
-            <h5 class="brochure-box__text">RECEITA/DESPESA</h5>
+            <h5 class="brochure-box__text">RECEITA/DESPESA TEMPO REAL</h5>
         </a>
     </div>
 

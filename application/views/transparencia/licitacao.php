@@ -106,7 +106,10 @@ $status[5] = 'Outro';
                                 <div class="col-md-2">
                                     <span><strong><i class="icon-list-alt"></i> Modalidade:</strong><br> <a  href="#"><?php echo $row->descricao ?></a></span>
                                 </div>
-                                <div class="col-md-4">
+                                <div class="col-md-1">
+                                    <span><strong><i class="icon-list-alt"></i> Nº:</strong><br> <a  href="#"><?php echo $row->cod_licitacao ?></a></span>
+                                </div>
+                                <div class="col-md-3">
                                     <span><strong><i class="icon-list-alt"></i> Unid. Gestora:</strong><br> <a  href="#"><?php echo $row->secretaria ?></a></span>
                                 </div>
                                 <div class="col-md-2">
@@ -136,12 +139,35 @@ $status[5] = 'Outro';
                                             <h4> <p><b>Status: </b><?php echo $status[$row->status_licitacao] ?></p></h4>
                                             <p><b>Unidade Gestora:</b> <?php echo $row->secretaria ?></p>
                                             <p><b>Modalidade: </b> <?php echo $row->descricao ?></p>
-                                            <p><b>Valor: </b> <?php echo number_format($row->valor, 2, ',', '.'); ?></p>
+                                            <p><b>Valor da licitação: </b> <?php echo number_format($row->valor, 2, ',', '.'); ?></p>
                                             <p><b>Data Abertura: </b>  <?php echo date('d/m/Y', strtotime($row->data_abertura)) ?></p>
-                                            <p><b>Data Publicação: </b>  <?php echo date('d/m/Y', strtotime($row->data_publicacao)) ?></p>
+                                            <p><b>Data Homologação: </b>  <?php echo date('d/m/Y', strtotime($row->data_publicacao)) ?></p>
                                             <p><b>Nº Edital: </b> <a target="_blank"  href="<?php echo $row->url_edital ?>"><?php echo $row->numero_edital ?></a></p>
                                             <p><b>Nº Contrato: </b> <a target="_blank"  href="<?php echo $row->url_contrato ?>"><?php echo $row->numero_contrato ?></a></p>
                                             <p><b>Objeto: </b> <?php echo $row->objeto ?></p> 
+                                                
+                                            <p><b style="font-size:20px;">Vencedores: </b> 
+                                            
+                                            <div>
+                                          
+                                                <?php 
+                                                $this->db->where('cod_licitacao', $row->id_licitacao);
+                                                $query = $this->db->get('vencedor_licitacao')->result();
+                                                foreach ($query as $vencedores){
+                                                    
+                                                
+                                                ?>
+                                                <div>
+                                                    <p> <b>Nome: </b>  <?= $vencedores->nome?> </p>
+                                                    <p> <b>CPF|CPNF: </b>  <?= $vencedores->doc?> </p>
+                                                    <p> <b>Valor Contrato: </b>  <?= $vencedores->valor?> </p>
+                                                </div>
+                                                <hr>
+                                                <?php }?>
+                                            </div>
+                                            
+                                            
+                                            </p> 
 
                                         </div>
                                         <div class="modal-footer">

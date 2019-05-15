@@ -36,6 +36,9 @@
 <div style="background-color:  #FFFFFF;">
     <br><br><br><br><div class="master-container">
         <div class="container">
+              <a href="<?= base_url('transparencia/urlDetRec')?>">
+                 <button type="buttom" data-toggle="modal" style="float:right"  type="button" class="btn btn-sm btn-warning" >DETALHAMENTO DE DESPESA TEMPO REAL</button>
+            </a>
             <div class="row">
                 <div class="col-md-3">
 				

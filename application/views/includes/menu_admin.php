@@ -102,6 +102,7 @@
 			<ul class="treeview-menu">
 
 				<li><a href="<?= site_url() ?>licitacao/cadastro"><i class="fa fa-circle-o"></i> Cadastrar</a></li>
+				<li><a href="<?= site_url() ?>licitacao/cadastroVencedor"><i class="fa fa-circle-o"></i> Cadastrar Vencedores</a></li>
 				<li><a href="<?= site_url() ?>licitacao"><i class="fa fa-circle-o"></i>Visualizar</a></li>
 				
 			</ul>
