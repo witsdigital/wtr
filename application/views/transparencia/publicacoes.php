@@ -102,7 +102,7 @@
 
                                 </div>
                                 <div class="col-md-2">     <span><strong>
-                                            <i class="icon-list-alt"></i> Data:</strong><br>
+                                            <i class="icon-list-alt"></i> Data Publicação:</strong><br>
                                         <a style="font-size:13px" > <?php echo date('d/m/Y', strtotime($row->data)) ?></a></span></div>
                                 <div class="col-md-2"><button type="buttom" class="btn btn-sm btn-primary btn-block" onclick="javascript:confirma(<?php echo $row->id ?>);" >Consultar</button></div>
                             </div>
