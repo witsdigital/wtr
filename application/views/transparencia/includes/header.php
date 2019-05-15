@@ -69,7 +69,7 @@ $query = $this->db->get('configuracoes')->result();
                         <div class="col-xs-12 col-md-4">
                             <div class="top__right">
                                 <ul id="menu-top-menu" class="navigation--top">
-                                    <li class="menu-item-has-children"><a href="extras.html">Utilidades</a>
+                                    <li class="menu-item-has-children"><a href="#">Utilidades</a>
                                         <ul class="sub-menu">
                                             <li><a href="<?= base_url('transparencia/faq')?>">Perguntas frequentes</a></li>
                                             <li><a href="#">Transparência</a></li>
