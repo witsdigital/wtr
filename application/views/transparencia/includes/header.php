@@ -71,7 +71,7 @@ $query = $this->db->get('configuracoes')->result();
                                 <ul id="menu-top-menu" class="navigation--top">
                                     <li class="menu-item-has-children"><a href="extras.html">Utilidades</a>
                                         <ul class="sub-menu">
-                                            <li><a href="#">Perguntas frequentes</a></li>
+                                            <li><a href="<?= base_url('transparencia/faq')?>">Perguntas frequentes</a></li>
                                             <li><a href="#">Transparência</a></li>
                                             <li><a href="#">Telefones úteis</a></li>
 
