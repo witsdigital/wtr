@@ -172,7 +172,7 @@
                         </div><!-- /.box-body -->
                     </div>
                     <div class=" col-md-12">
-                        <br><button type="submit" name="submit" value="upload" class="btn btn-primary">Cadastrar</button> <button type="button" onclick="window.location.href='<?=  site_url('usuario')?>'" class="btn btn-danger">Cancelar</button>
+                        <br><button type="submit" name="submit" value="upload" class="btn btn-primary">Cadastrar</button> <button type="button" onclick="window.location.href='<?=  site_url('licitacao')?>'" class="btn btn-danger">Cancelar</button>
                     </div>
                 </form>
             </div><!-- /.box-body -->
