@@ -31,6 +31,7 @@ $query = $this->db->get('configuracoes')->result();
                                  <li><a target="_blank" href="https://sistemas.sefaz.ba.gov.br/sistemas/sigat/Default.Aspx?Modulo=CREDITO&Tela=DocEmissaoCertidaoInternet&limparSessao=1&sts_link_externo=2">Certidão Estadual</a></li>
                                 <li><a target="_blank" href="http://www.tst.jus.br/certidao">Certidão Trabalhista</a></li>
                                 <li><a href="<?= base_url('transparencia/solicitar_sic')?>">Fale conosco</a></li>
+                                <li><a href="<?= base_url('transparencia/faq')?>">Perguntas frequentes</a></li>
                               
                                 
 

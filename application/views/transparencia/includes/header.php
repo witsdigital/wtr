@@ -66,7 +66,7 @@ $query = $this->db->get('configuracoes')->result();
                             <div class="top__left"> <a style="font-size: 12px; color: green" onclick="window.toggleContrast()" accesskey="h">Alto contraste [Alt+h]</a></div>
 
                         </div>
-                        <div class="col-xs-12 col-md-4">
+                        <div class="col-xs-12 col-md-2">
                             <div class="top__right">
                                 <ul id="menu-top-menu" class="navigation--top">
                                     <li class="menu-item-has-children"><a href="#">Utilidades</a>
@@ -78,7 +78,7 @@ $query = $this->db->get('configuracoes')->result();
                                         </ul>
                                     </li>
 
-                                    <li>FONE/FAX: <?= $query[0]->telefone ?> </li>
+                                   
                                 </ul>	
 
                             </div>
@@ -86,6 +86,11 @@ $query = $this->db->get('configuracoes')->result();
                         <div class="col-xs-12 col-md-2">
                          
                             <div class="top__left"> <a  href="<?= base_url('transparencia/solicitar_sic')?>" style="font-size: 15px; color: green; float: right;" >FALE CONOSCO</a></div>
+
+                        </div>
+                        <div class="col-xs-12 col-md-2">
+                         
+                            <div class="top__left"> <a  href="<?= base_url('transparencia/faq')?>" style="font-size: 12px; color: green; float: right;" >PERGUNTAS FREQUENTES</a></div>
 
                         </div>
                     </div>
