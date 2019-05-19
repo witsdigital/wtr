@@ -84,12 +84,12 @@ $status[5] = 'Outro';
                         </select>
 
                     </div>
-              
 
-                <div class="col-md-3">
-                    <button type="submit" style="margin:20px;" class="btn btn-sm btn-primary btn-block" >Consultar</button>
-                </div>
-                      </form>
+
+                    <div class="col-md-3">
+                        <button type="submit" style="margin:20px;" class="btn btn-sm btn-primary btn-block" >Consultar</button>
+                    </div>
+                </form>
                 <div class="col-md-12">
                     <hr>
                 </div>
@@ -103,6 +103,10 @@ $status[5] = 'Outro';
                         foreach ($diario_oficial as $row) {
                             ?>
                             <div class="row">
+                                <div class="widget widget-brochure-box  push-down-30">
+                                    <h4 class="sidebar__headings"><?php echo $row->descricao ?></h4>
+
+                                </div>
                                 <div class="col-md-2">
                                     <span><strong><i class="icon-list-alt"></i> Modalidade:</strong><br> <a  href="#"><?php echo $row->descricao ?></a></span>
                                 </div>
@@ -118,7 +122,7 @@ $status[5] = 'Outro';
                                 <div class="col-md-2">
                                     <span><strong><i class="icon-list-alt"></i> Data Publicação:</strong><br> <a  href="#"><?php echo date('d/m/Y', strtotime($row->data_publicacao)); ?></a></span>
                                 </div>
-                                <br><div class="col-md-2"><button type="buttom" data-toggle="modal" data-target="#<?php echo $row->id_licitacao ?>" type="button" class="btn  btn-block btn-sm btn-primary" >Consultar</button></div>
+                                <br><div class="col-md-2"><button type="buttom" data-toggle="modal" data-target="#<?php echo $row->id_licitacao ?>" type="button" class="btn  btn-block btn-sm btn-primary" >DETALHES</button></div>
 
                                 <div class="col-md-10">
                                     <span><strong><i class="icon-list-alt"></i> Objeto:</strong><br> <a  href="#"><?php echo $row->objeto ?></a></span>
@@ -126,6 +130,50 @@ $status[5] = 'Outro';
                                 <div class="col-md-2"><br>
                                     <span><strong><i class="icon-list-alt"></i> Status:</strong><br> <a  href="#"><?php echo $status[$row->status_licitacao] ?></a></span>
                                 </div>
+
+                                    <?php if($row->edital) { ?>
+                                    <div class="col-md-2"><br>
+                                        <a target="_blank" class="brochure-box" href="<?= base_url() ?>/uploads/licitacao/<?php echo $row->edital ?>">
+                                            <i class="fa  fa-file-pdf-o"></i>
+                                            <h5 class="brochure-box__text">EDITAL</h5>
+                                        </a> 
+                                    </div>
+                                    <?php } ?>
+                                <?php if($row->aviso) { ?>
+                                    <div class="col-md-2"><br>
+                                        <a target="_blank" class="brochure-box" href="<?= base_url() ?>/uploads/licitacao/<?php echo $row->aviso ?>">
+                                            <i class="fa  fa-file-pdf-o"></i>
+                                            <h5 class="brochure-box__text">AVISO</h5>
+                                        </a> 
+                                    </div>
+                                    <?php } ?>
+
+                                 <?php if($row->contrato) { ?>
+                                    <div class="col-md-2"><br>
+                                        <a target="_blank" class="brochure-box" href="<?= base_url() ?>/uploads/licitacao/<?php echo $row->contrato ?>">
+                                            <i class="fa  fa-file-pdf-o"></i>
+                                            <h5 class="brochure-box__text">CONTRATO</h5>
+                                        </a> 
+                                    </div>
+                                    <?php } ?>
+                                 <?php if($row->extrato) { ?>
+                                    <div class="col-md-2"><br>
+                                        <a target="_blank" class="brochure-box" href="<?= base_url() ?>/uploads/licitacao/<?php echo $row->extrato ?>">
+                                            <i class="fa  fa-file-pdf-o"></i>
+                                            <h5 class="brochure-box__text">EXTRATO</h5>
+                                        </a> 
+                                    </div>
+                                    <?php } ?>
+                                  <?php if($row->adjudicacao) { ?>
+                                    <div class="col-md-3"><br>
+                                        <a target="_blank" class="brochure-box" href="<?= base_url() ?>/uploads/licitacao/<?php echo $row->adjudicacao ?>">
+                                            <i class="fa  fa-file-pdf-o"></i>
+                                            <h5 class="brochure-box__text">ADJUDICAÇÃO</h5>
+                                        </a> 
+                                    </div>
+                                    <?php } ?>
+                                
+
                             </div>
                             <div class="modal fade" id="<?php echo $row->id_licitacao ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
                                 <div class="modal-dialog" role="document">
@@ -145,28 +193,26 @@ $status[5] = 'Outro';
                                             <p><b>Nº Edital: </b> <a target="_blank"  href="<?php echo $row->url_edital ?>"><?php echo $row->numero_edital ?></a></p>
                                             <p><b>Nº Contrato: </b> <a target="_blank"  href="<?php echo $row->url_contrato ?>"><?php echo $row->numero_contrato ?></a></p>
                                             <p><b>Objeto: </b> <?php echo $row->objeto ?></p> 
-                                                
+
                                             <p><b style="font-size:20px;">Vencedores: </b> 
-                                            
+
                                             <div>
-                                          
-                                                <?php 
+
+                                                <?php
                                                 $this->db->where('cod_licitacao', $row->id_licitacao);
                                                 $query = $this->db->get('vencedor_licitacao')->result();
-                                                foreach ($query as $vencedores){
-                                                    
-                                                
-                                                ?>
-                                                <div>
-                                                    <p> <b>Nome: </b>  <?= $vencedores->nome?> </p>
-                                                    <p> <b>CPF|CPNF: </b>  <?= $vencedores->doc?> </p>
-                                                    <p> <b>Valor Contrato: </b>  <?= $vencedores->valor?> </p>
-                                                </div>
-                                                <hr>
-                                                <?php }?>
+                                                foreach ($query as $vencedores) {
+                                                    ?>
+                                                    <div>
+                                                        <p> <b>Nome: </b>  <?= $vencedores->nome ?> </p>
+                                                        <p> <b>CPF|CPNF: </b>  <?= $vencedores->doc ?> </p>
+                                                        <p> <b>Valor Contrato: </b>  <?= $vencedores->valor ?> </p>
+                                                    </div>
+                                                    <hr>
+                                                <?php } ?>
                                             </div>
-                                            
-                                            
+
+
                                             </p> 
 
                                         </div>

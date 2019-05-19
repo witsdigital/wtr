@@ -115,6 +115,24 @@ class Licitacao extends CI_Controller {
         $dados['horario'] = $this->input->post('horario');
         $dados['status_licitacao'] = $this->input->post('status');
         $dados['cod_unidade'] = $this->input->post('cod_unidade');
+		
+		
+		if (isset($_FILES['aviso']) && $_FILES['aviso']['name'] != ''){
+			$dados['aviso']  = $this->up_multi_img($_FILES['aviso']);
+		}
+		if (isset($_FILES['adjudicacao']) && $_FILES['adjudicacao']['name'] != ''){
+			$dados['adjudicacao']  = $this->up_multi_img($_FILES['adjudicacao']);
+		}
+		if (isset($_FILES['edital']) && $_FILES['edital']['name'] != ''){
+			$dados['edital']  = $this->up_multi_img($_FILES['edital']);
+		}
+		if (isset($_FILES['contrato']) && $_FILES['contrato']['name'] != ''){
+			$dados['contrato']  = $this->up_multi_img($_FILES['contrato']);
+		}
+		if (isset($_FILES['extrato']) && $_FILES['extrato']['name'] != ''){
+			$dados['extrato']  = $this->up_multi_img($_FILES['extrato']);
+		}
+
 
         if ($this->db->insert('licitacao', $dados)) {
             redirect(site_url('licitacao/1'));
@@ -122,6 +140,63 @@ class Licitacao extends CI_Controller {
 
   
     }
+	
+public function up_multi_img($file) {
+             
+            $numFile = count(array_filter($file['name']));
+
+            if (is_dir("uploads/licitacao")) {
+                $dir = 'uploads/licitacao';
+            } else {
+                mkdir("uploads/licitacao", 0777, true);
+                $dir = 'uploads/licitacao';
+            }
+
+    
+                for ($i = 0; $i < $numFile; $i++) {
+    
+                    $name = rand(0, 999999999).md5(rand(0,99999999)).$file['name'][$i];
+                    $type = $file['type'][$i];
+                    $size = $file['size'][$i];
+                    $error = $file['error'][$i];
+                    $tmp = $file['tmp_name'][$i];
+                    $tiposPermitidos = array('application/vnd.openxmlformats-officedocument.wordprocessingml.document', 'application/pdf');
+                    // $tiposPermitidos = array('image/gif', 'image/jpeg', 'image/pjpeg', 'image/png');
+    
+                    if ($error != 0) {
+                        $msg[] = "<b> $name : </b>" . $error[$erromsg];
+                    }
+                    if (array_search($type, $tiposPermitidos) === false) {
+    
+                        redirect('index.php/publicacoes/cadastro/5');
+                        // Não houveram erros, move o arquivo
+                    } else {
+    
+                        if (move_uploaded_file($tmp, $dir . "/" . $name)) {
+                            return $name;
+                        } else {
+                            $msg[] = "<b> $name : </b> ocorreu erro";
+                        }
+                    }
+                }
+            
+        }
+	
+public function salvar_doc($file){
+	$nome = rand(99, 999999999).md5(rand(0, 9999999999999999)).'.pdf';
+     $curriculo    = $file;
+     $configuracao = array(
+         'upload_path'   => '.uploads/licitacao/',
+         'file_name'     => $nome
+     );      
+     $this->load->library('upload');
+     $this->upload->initialize($configuracao);
+     if ($this->upload->do_upload($curriculo['name']))
+         return $nome;
+     else
+         echo $this->upload->display_errors();
+}
+
     public function salvarVencedor() {
         ini_set('default_charset', 'UTF-8');
         date_default_timezone_set('America/Sao_Paulo');
@@ -179,6 +254,23 @@ public function update(){
         $dados['horario'] = $this->input->post('horario');
         $dados['status_licitacao'] = $this->input->post('status');
         $dados['cod_unidade'] = $this->input->post('cod_unidade');
+		
+		if (isset($_FILES['aviso']) && $_FILES['aviso']['name'] != ''){
+			$dados['aviso']  = $this->up_multi_img($_FILES['aviso']);
+		}
+		if (isset($_FILES['adjudicacao']) && $_FILES['adjudicacao']['name'] != ''){
+			$dados['adjudicacao']  = $this->up_multi_img($_FILES['adjudicacao']);
+		}
+		if (isset($_FILES['edital']) && $_FILES['edital']['name'] != ''){
+			$dados['edital']  = $this->up_multi_img($_FILES['edital']);
+		}
+		if (isset($_FILES['contrato']) && $_FILES['contrato']['name'] != ''){
+			$dados['contrato']  = $this->up_multi_img($_FILES['contrato']);
+		}
+		if (isset($_FILES['extrato']) && $_FILES['extrato']['name'] != ''){
+			$dados['extrato']  = $this->up_multi_img($_FILES['extrato']);
+		}
+
         
         
         		$this->db->where('id_licitacao', $this->input->post('iduser'));

@@ -31,7 +31,7 @@
         <div class="box">
 
             <div class="box-body">
-                <form action="<?= site_url(); ?>licitacao/salvar"  onsubmit="return validarSenha(this)" enctype="multipart/form-data" method="post">
+                <form action="<?= site_url(); ?>licitacao/salvar"   enctype="multipart/form-data" method="post" accept-charset="utf-8">
                     <div class="col-md-6">
 
                         <div class="box-body">
@@ -56,6 +56,7 @@
                         
                                 </select>
                             </div>
+							
                             
                                <div class="form-group col-md-4">
                                 <label for="exampleInputEmail1">Data Homologação</label>
@@ -104,7 +105,7 @@
                           
                             <div class="form-group col-md-3">
                                 <label for="exampleInputEmail1">Número Edital</label>
-                                <input type="text" name="numero_edital"  class="form-control" required placeholder="abca-2000">
+                                <input type="text" name="numero_edital"  class="form-control"  placeholder="abca-2000">
                             </div>
                                <div class="form-group col-md-8">
                                 <label for="exampleInputEmail1">URL Edital</label>
@@ -112,7 +113,7 @@
                             </div>
                                <div class="form-group col-md-4">
                                 <label for="exampleInputEmail1">Horário abertura</label>
-                                <input type="text" name="horario"  class="form-control" required placeholder="00:00">
+                                <input type="text" name="horario"  class="form-control"  placeholder="00:00">
                             </div>
                             
                             
@@ -143,31 +144,35 @@
                     <div class="col-md-6">
 
                         <div class="box-body">
-                            <div class="form-group col-md-9">
-                                <label for="exampleInputEmail1">Razão Social Vencedor</label>
-                                <input type="text" name="razao_social_vencedor"  class="form-control"  placeholder="Jose da silva">
-                            </div>
-                              <div class="form-group col-md-3">
-                                <label for="exampleInputEmail1">Número Contrato</label>
-                                <input type="text" name="numero_contrato"  class="form-control" required placeholder="abca-2000">
-                            </div>
-                              <div class="form-group col-md-3">
-                                <label for="exampleInputEmail1">Url Contrato</label>
-                                <input type="text" name="url_contrato"  class="form-control" required placeholder="http://.....">
-                            </div>
-
-                             <div class="form-group col-md-12">
-                                <label for="exampleInputEmail1">CPF/CNPJ Vencedor</label>
-                                <input type="text" name="cnpj_vencedor"  class="form-control"  placeholder="0000000000">
-                            </div>
+                          
 <div class="form-group col-md-12">
                                 <label for="exampleInputEmail1">informe Homologação</label>
                                    <textarea id="editorw" name="informe_homologacao" rows="10" class="form-group col-md-12"></textarea>            
                             </div>
+                            <div class="form-group col-md-12">
+                                    <label for="exampleInputFile">Aviso</label>
+                                    <input type="file"  name="aviso[]"  />
+                            </div>
+							<div class="form-group col-md-12">
+                                    <label for="exampleInputFile">edital</label>
+                                    <input type="file" name="edital[]"  />
+                            </div>
+							<div class="form-group col-md-12">
+                                    <label for="exampleInputFile">adjudicação</label>
+                                    <input type="file" name="adjudicacao[]"  />
+                            </div>
+							<div class="form-group col-md-12">
+                                    <label for="exampleInputFile">contrato</label>
+                                    <input type="file"  name="contrato[]"  />
+                            </div>
+							<div class="form-group col-md-12">
+                                    <label for="exampleInputFile">extrato</label>
+                                    <input type="file" name="extrato[]"  />
+                            </div>
                         </div><!-- /.box-body -->
                     </div>
                     <div class=" col-md-12">
-                        <br><button type="submit" class="btn btn-primary">Cadastrar</button> <button type="button" onclick="window.location.href='<?=  site_url('usuario')?>'" class="btn btn-danger">Cancelar</button>
+                        <br><button type="submit" name="submit" value="upload" class="btn btn-primary">Cadastrar</button> <button type="button" onclick="window.location.href='<?=  site_url('usuario')?>'" class="btn btn-danger">Cancelar</button>
                     </div>
                 </form>
             </div><!-- /.box-body -->
