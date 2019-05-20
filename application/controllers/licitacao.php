@@ -11,7 +11,7 @@ class Licitacao extends CI_Controller {
         if ($this->session->userdata('permissao') == 'administrador') {
             $this->load->view('includes/menu_admin');
         } else {
-            redirect(site_url('home'));
+        $this->load->view('includes/menu');
         }
         if ($indice == 1) {
             $data['msg'] = "Dados cadastrados com sucesso!";
@@ -54,7 +54,7 @@ class Licitacao extends CI_Controller {
         if ($this->session->userdata('permissao') == 'administrador') {
             $this->load->view('includes/menu_admin');
         } else {
-            redirect(site_url('home'));
+          $this->load->view('includes/menu');
         }
         $this->load->view('licitacao/cadastro');
         $this->load->view('includes/footer');
@@ -73,7 +73,7 @@ class Licitacao extends CI_Controller {
         if ($this->session->userdata('permissao') == 'administrador') {
             $this->load->view('includes/menu_admin');
         } else {
-            redirect(site_url('home'));
+        $this->load->view('includes/menu');
         }
         $this->load->view('licitacao/cadastroVencedor');
         $this->load->view('includes/footer');
@@ -227,7 +227,7 @@ $this->load->view('includes/import');
 	if($this->session->userdata('permissao') == 'administrador'){
 	 $this->load->view('includes/menu_admin');  
 	}else{
-	  redirect(site_url('home'));
+	  $this->load->view('includes/menu');
 	}
 $this->load->view('includes/header');
 $this->load->view('licitacao/alterar', $data);

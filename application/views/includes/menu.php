@@ -56,6 +56,18 @@
             </li>
             <li class="treeview">
 			<a href="#">
+				<i class="fa  fa-file-text-o"></i> <span>Licitações</span> <i class="fa fa-angle-left pull-right"></i>
+			</a>
+			<ul class="treeview-menu">
+
+				<li><a href="<?= site_url() ?>licitacao/cadastro"><i class="fa fa-circle-o"></i> Cadastrar</a></li>
+				<li><a href="<?= site_url() ?>licitacao/cadastroVencedor"><i class="fa fa-circle-o"></i> Cadastrar Vencedores</a></li>
+				<li><a href="<?= site_url() ?>licitacao"><i class="fa fa-circle-o"></i>Visualizar</a></li>
+				
+			</ul>
+		</li>
+            <li class="treeview">
+			<a href="#">
 				<i class="fa  fa-file-text-o"></i> <span>131</span> <i class="fa fa-angle-left pull-right"></i>
 			</a>
 			<ul class="treeview-menu">
