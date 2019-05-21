@@ -446,7 +446,7 @@ class Publicar extends CI_Controller {
 
 
 
-        if ($this->updoc(7, $datacad, $dados)) {
+        if ($this->updoc3(7, $datacad, $dados)) {
 
 
 
@@ -861,7 +861,204 @@ class Publicar extends CI_Controller {
         }
     }
 
-    public function updoc($entidade, $data, $dados) {
+      public function updoc($entidade, $data, $id) {
+
+
+
+        date_default_timezone_set('America/Sao_Paulo');
+
+        $file = $_FILES['ar'];
+
+        $numFile = count(array_filter($file['name']));
+
+
+
+        switch (date("m", strtotime($data))) {
+
+            case 1:
+
+                $dirdata = "janeiro";
+
+                break;
+
+            case 2:
+
+                $dirdata = "fevereiro";
+
+                break;
+
+            case 3:
+
+                $dirdata = "marco";
+
+                break;
+
+            case 4:
+
+                $dirdata = "abril";
+
+                break;
+
+            case 5:
+
+                $dirdata = "maio";
+
+                break;
+
+            case 6:
+
+                $dirdata = "junho";
+
+                break;
+
+            case 7:
+
+                $dirdata = "julho";
+
+                break;
+
+            case 8:
+
+                $dirdata = "agosto";
+
+                break;
+
+            case 9:
+
+                $dirdata = "setembro";
+
+                break;
+
+            case 10:
+
+                $dirdata = "outubro";
+
+                break;
+
+            case 11:
+
+                $dirdata = "novembro";
+
+                break;
+
+            case 12:
+
+                $dirdata = "dezembro";
+
+                break;
+
+        }
+
+         if (is_dir("uploads/publicadas/$entidade/$dirdata")) {
+
+            $dir = 'uploads/publicadas/' . $entidade . '/' . $dirdata;
+
+        } else {
+
+            mkdir("uploads/publicadas/$entidade/$dirdata", 0777, true);
+
+            $dir = 'uploads/publicadas/' . $entidade . '/' . $dirdata;
+
+        }
+
+        // fim diretorio
+
+
+
+        if ($numFile <= 0) {
+
+            echo "<script>alert('Selecione uma imagem')</script>";
+
+            echo "<script type=\"text/javascript\">
+
+		  window.setTimeout(\"location.href='index.php?pg=envio';\", 2000);
+
+		</script>";
+
+        } else {
+
+            $key = $id;
+
+            for ($i = 0; $i < $numFile; $i++) {
+
+
+
+                $name = rand(5, 10000).md5($file['name'][$i]);
+
+           
+
+				$type = $file['type'][$i];
+
+                $size = $file['size'][$i];
+
+                $error = $file['error'][$i];
+
+                $tmp = $file['tmp_name'][$i];
+
+                $tiposPermitidos = array('application/vnd.openxmlformats-officedocument.wordprocessingml.document', 'application/pdf');
+
+
+
+
+
+                if ($error != 0) {
+
+                    $msg[] = "<b> $name : </b>" . $error[$i];
+
+                }
+
+                if (array_search($type, $tiposPermitidos) === false) {
+
+
+
+                    redirect(site_url('publicadas/cadastro/5'));
+
+                    // Não houveram erros, move o arquivo
+
+                } else {
+
+
+
+
+
+                    if (move_uploaded_file($tmp, $dir . "/" . $name)) {
+
+
+
+                        date_default_timezone_set('America/Sao_Paulo');
+
+                        $date = date('Y-m-d');
+
+                        $obj['arquivo'] = base_url(). $dir. '/' .$name;
+
+                        $obj['key'] = $key;
+
+                        $obj['entidade'] = $entidade;
+
+                        $obj['data'] = $data;
+
+                        $obj['datapublicada'] = $date;
+
+                        $obj['usuario'] = $this->session->userdata('nome');
+
+
+
+                        $this->db->insert('upload_arquivo_publicado', $obj);
+
+                    } else {
+
+                        $msg[] = "<b> $name : </b> ocorreu erro";
+
+                    }
+
+                }
+
+            }return $key;
+
+        }
+
+    }
+    public function updoc3($entidade, $data, $dados) {
 
  
 
