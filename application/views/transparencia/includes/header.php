@@ -188,8 +188,19 @@ $query = $this->db->get('configuracoes')->result();
 
                                     </ul>
                                 </li>
+                                 <li class="menu-item-has-children">
+                                    <a href="#">LICITAÇÕES</a>
+                                    <ul class="sub-menu">
+                                        
+                                        <li><a href="<?= site_url('transparencia/licitacao') ?>">PROCESSO LICITATÓRIO</a></li>
+                                        <li><a href="<?= site_url('transparencia/get/avisos') ?>">AVISOS</a></li>
+                                        <li><a href="<?= site_url('transparencia/get/edital') ?>">EDITAL</a></li>
+                                        <li><a href="<?= site_url('transparencia/get/Contrato') ?>">CONTRATOS</a></li>
+                                        <li><a href="<?= site_url('transparencia/get/Licitacao') ?>">PUBLICAÇÕES</a></li>
+                                    </ul>
+                                </li>
 								
-								<li><a href="<?= site_url('transparencia/licitacao') ?>">LICITAÇÕES</a></li>
+								
 								<li><a href="<?= site_url('transparencia/diario') ?>">DIÁRIO OFICIAL</a></li>
 								<li><a href="<?= site_url('transparencia/sic') ?>">SIC | E-Sic</a></li>
                             </ul>	
