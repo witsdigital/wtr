@@ -1,14 +1,8 @@
 <?php
 
-
-
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-
-
 class Publicar extends CI_Controller {
-
-
 
     public function index($indice = null) {
 
@@ -27,11 +21,9 @@ class Publicar extends CI_Controller {
         if ($this->session->userdata('permissao') == 'administrador') {
 
             $this->load->view('includes/menu_admin');
-
         } else {
 
             $this->load->view('includes/menu');
-
         }
 
         if ($indice == 1) {
@@ -39,7 +31,6 @@ class Publicar extends CI_Controller {
             $data['msg'] = "Dados cadastrados com sucesso!";
 
             $this->load->view('includes/msg_success', $data);
-
         }
 
         if ($indice == 2) {
@@ -47,7 +38,6 @@ class Publicar extends CI_Controller {
             $data['msg'] = "Dados Alterados com sucesso!";
 
             $this->load->view('includes/msg_success', $data);
-
         }
 
         if ($indice == 3) {
@@ -55,7 +45,6 @@ class Publicar extends CI_Controller {
             $data['msg'] = "Dados Apagados com sucesso!";
 
             $this->load->view('includes/msg_success', $data);
-
         }
 
 
@@ -65,45 +54,25 @@ class Publicar extends CI_Controller {
         $this->load->view('publicar/view', $data);
 
         $this->load->view('includes/footer');
-
     }
-
-
 
     public function cadastro($indice = NULL) {
 
-
-
         $this->load->model('validalogin');
-
         $this->validalogin->valida();
-
         $this->load->model('md_tppublicacao');
-
         $data['tppublicacao'] = $this->md_tppublicacao->gettppublica();
-
-
-
         $this->load->view('includes/import');
-
         $this->load->view('includes/header');
-
         if ($this->session->userdata('permissao') == 'administrador') {
-
             $this->load->view('includes/menu_admin');
-
         } else {
-
             $this->load->view('includes/menu');
-
         }
-
         if ($indice == 1) {
 
             $data['msg'] = "Dados cadastrados com sucesso!";
-
             $this->load->view('includes/msg_success', $data);
-
         }
 
         if ($indice == 5) {
@@ -111,17 +80,42 @@ class Publicar extends CI_Controller {
             $data['msg'] = "Tipo de arquivo nao permitido !";
 
             $this->load->view('includes/msg_danger', $data);
+        }
+        $this->load->view('publicar/cadastro', $data);
+        $this->load->view('includes/footer');
+    }
+    public function cadastroLote($indice = NULL) {
 
+        $this->load->model('validalogin');
+        $this->validalogin->valida();
+        $this->load->model('md_tppublicacao');
+        $data['tppublicacao'] = $this->md_tppublicacao->gettppublica();
+        $this->load->view('includes/import');
+        $this->load->view('includes/header');
+        if ($this->session->userdata('permissao') == 'administrador') {
+            $this->load->view('includes/menu_admin');
+        } else {
+            $this->load->view('includes/menu');
+        }
+        if ($indice == 1) {
+
+            $data['msg'] = "Dados cadastrados com sucesso!";
+            $this->load->view('includes/msg_success', $data);
         }
 
-        $this->load->view('publicar/cadastro', $data);
+        if ($indice == 5) {
 
+            $data['msg'] = "Tipo de arquivo nao permitido !";
+
+            $this->load->view('includes/msg_danger', $data);
+        }
+        $this->load->view('publicar/cadastroLote', $data);
         $this->load->view('includes/footer');
-
     }
-	
-	
-	public function verpub($indice = null) {
+    
+    
+
+    public function verpub($indice = null) {
 
         $this->load->model('validalogin');
         $this->validalogin->valida();
@@ -135,11 +129,9 @@ class Publicar extends CI_Controller {
         if ($this->session->userdata('permissao') == 'administrador') {
 
             $this->load->view('includes/menu_admin');
-
         } else {
 
             $this->load->view('includes/menu');
-
         }
 
         if ($indice == 1) {
@@ -147,7 +139,6 @@ class Publicar extends CI_Controller {
             $data['msg'] = "Dados cadastrados com sucesso!";
 
             $this->load->view('includes/msg_success', $data);
-
         }
 
         if ($indice == 2) {
@@ -155,7 +146,6 @@ class Publicar extends CI_Controller {
             $data['msg'] = "Dados Alterados com sucesso!";
 
             $this->load->view('includes/msg_success', $data);
-
         }
 
         if ($indice == 3) {
@@ -163,7 +153,6 @@ class Publicar extends CI_Controller {
             $data['msg'] = "Dados Apagados com sucesso!";
 
             $this->load->view('includes/msg_success', $data);
-
         }
 
 
@@ -173,10 +162,7 @@ class Publicar extends CI_Controller {
         $this->load->view('publicar_envio/view', $data);
 
         $this->load->view('includes/footer');
-
     }
-
-
 
     public function view_publicacao($indice = NULL) {
 
@@ -198,21 +184,17 @@ class Publicar extends CI_Controller {
         if ($this->session->userdata('permissao') == 'administrador') {
 
             $this->load->view('includes/menu_admin');
-
         } else {
 
             $this->load->view('includes/menu');
-
         }
 
         $this->load->view('publicar/view_publicacao', $data);
 
         $this->load->view('includes/footer');
-
     }
-	
-	
-	public function view_publicacaoenvio($indice = NULL) {
+
+    public function view_publicacaoenvio($indice = NULL) {
 
 
 
@@ -222,7 +204,7 @@ class Publicar extends CI_Controller {
 
         $this->load->model('publicadas');
 
-        $data['publicacao'] = $this->db->query('select * from envio_arquivo where id_envio ='.$indice)->result();
+        $data['publicacao'] = $this->db->query('select * from envio_arquivo where id_envio =' . $indice)->result();
 
 
         $this->load->view('includes/import');
@@ -232,22 +214,18 @@ class Publicar extends CI_Controller {
         if ($this->session->userdata('permissao') == 'administrador') {
 
             $this->load->view('includes/menu_admin');
-
         } else {
 
             $this->load->view('includes/menu');
-
         }
 
         $this->load->view('publicar_envio/view_publicacao', $data);
 
         $this->load->view('includes/footer');
-
     }
-	
-	
-	public function enviarpub() {
-		$this->load->model('validalogin');
+
+    public function enviarpub() {
+        $this->load->model('validalogin');
         $this->validalogin->valida();
 
 
@@ -258,24 +236,18 @@ class Publicar extends CI_Controller {
         if ($this->session->userdata('permissao') == 'administrador') {
 
             $this->load->view('includes/menu_admin');
-
         } else {
 
             $this->load->view('includes/menu');
-
         }
 
         $this->load->view('publicar_envio/cadastro');
 
         $this->load->view('includes/footer');
-
     }
 
-
-
-
     public function alterar($indice = null) {
-		$this->load->model('validalogin');
+        $this->load->model('validalogin');
         $this->validalogin->valida();
 
 
@@ -296,33 +268,25 @@ class Publicar extends CI_Controller {
         if ($this->session->userdata('permissao') == 'administrador') {
 
             $this->load->view('includes/menu_admin');
-
         } else {
 
             $this->load->view('includes/menu');
-
         }
 
         $this->load->view('publicar/alterar', $data);
 
         $this->load->view('includes/footer');
-
     }
 
-
-
     public function status($indice = null) {
-		$this->load->model('validalogin');
+        $this->load->model('validalogin');
         $this->validalogin->valida();
 
 
         $this->load->model('publicadas');
 
         $this->publicadas->status($indice);
-
     }
-
-
 
     public function print_publicacao($indice = NULL) {
 
@@ -347,14 +311,11 @@ class Publicar extends CI_Controller {
 
 
         $this->load->view('publicar/print_publicacao', $data);
-
     }
-
-
 
     public function delete_file($indice = NULL) {
 
-$this->load->model('validalogin');
+        $this->load->model('validalogin');
         $this->validalogin->valida();
 
 
@@ -365,19 +326,15 @@ $this->load->model('validalogin');
         if ($this->publicadas->delete_file($indice)) {
 
             redirect(site_url('publicar'));
-
         }
-
     }
-
-
 
     public function salvar1() {
 
 
 
 
-$this->load->model('validalogin');
+        $this->load->model('validalogin');
         $this->validalogin->valida();
 
 
@@ -391,31 +348,26 @@ $this->load->model('validalogin');
         if (isset($_POST['de'])) {
 
             $local = "1";
-
         }
 
         if (isset($_POST['dm'])) {
 
             $local = "2";
-
         }
 
         if (isset($_POST['du'])) {
 
             $local = "3";
-
         }
 
         if (isset($_POST['de']) && isset($_POST['dm'])) {
 
             $local = "4";
-
         }
 
         if (isset($_POST['de']) && isset($_POST['dm']) && isset($_POST['du'])) {
 
             $local = "5";
-
         }
 
         $idpublicacao = $this->input->post('idpublicacao');
@@ -465,20 +417,48 @@ $this->load->model('validalogin');
             $this->publicacao->status($dados[0]->id);
 
             redirect(site_url('publicar/1'));
-
         } else {
 
             redirect(site_url('publicar/2'));
-
         }
-
     }
 
+    public function salvarLote() {
+
+        $this->load->model('validalogin');
+        $this->validalogin->valida();
+
+        $data = str_replace("/", "-", $this->input->post('data'));
 
 
+
+        $datacad = date('Y-m-d', strtotime($data)); // data q o cliente selecionou
+
+        $dados['data'] = $datacad;
+
+        $dados['titulo'] = $this->input->post('titulo');
+
+        $dados['tipo'] = $this->input->post('tipo');
+
+        $dados['objeto'] = $this->input->post('objeto');
+
+       
+
+
+
+        if ($this->updoc(7, $datacad, $dados)) {
+
+
+
+            redirect(site_url('publicar/1'));
+        } else {
+
+            redirect(site_url('publicar/2'));
+        }
+    }
     public function salvar() {
 
-$this->load->model('validalogin');
+        $this->load->model('validalogin');
         $this->validalogin->valida();
 
         $data = str_replace("/", "-", $this->input->post('data'));
@@ -504,21 +484,16 @@ $this->load->model('validalogin');
 
 
             redirect(site_url('publicar/1'));
-
         } else {
 
             redirect(site_url('publicar/2'));
-
         }
-
     }
-
-
 
     public function update() {
 
 
-$this->load->model('validalogin');
+        $this->load->model('validalogin');
         $this->validalogin->valida();
 
 
@@ -540,26 +515,19 @@ $this->load->model('validalogin');
         if ($this->publicadas->update($dados, $this->input->post('id'))) {
 
             redirect(site_url('publicar/1'));
-
         }
 
 //        if ($this->updoc(7, $datacad, $cod_publica)) {
-
 //
 
 //            redirect('publicar/1');
-
 //        } else {
-
 //            redirect('publicar/2');
-
 //        }
-
     }
-	
-	
-	public function salvarenvio() {
-$this->load->model('validalogin');
+
+    public function salvarenvio() {
+        $this->load->model('validalogin');
         $this->validalogin->valida();
 
 
@@ -575,9 +543,9 @@ $this->load->model('validalogin');
 
         $dados['observacao'] = $this->input->post('observacao');
 
-        
-		
-		$cod_publica = $this->publicadas->setpublicacaoenvio($dados);
+
+
+        $cod_publica = $this->publicadas->setpublicacaoenvio($dados);
 
 
 
@@ -586,19 +554,14 @@ $this->load->model('validalogin');
 
 
             redirect(site_url('publicar/verpub/1'));
-
         } else {
 
             redirect(site_url('publicar/verpub/2'));
-
         }
-
     }
 
-
-
     public function apagar($id = NULL) {
-		$this->load->model('validalogin');
+        $this->load->model('validalogin');
         $this->validalogin->valida();
 
 
@@ -624,7 +587,7 @@ $this->load->model('validalogin');
 
             case 4:
 
-                $dirdata = "abril"; 
+                $dirdata = "abril";
 
                 break;
 
@@ -675,7 +638,6 @@ $this->load->model('validalogin');
                 $dirdata = "dezembro";
 
                 break;
-
         }
 
 
@@ -684,41 +646,25 @@ $this->load->model('validalogin');
 
 
 
-                if ($this->db->delete('publicacao', array('id' => $id))) {
+        if ($this->db->delete('publicacao', array('id' => $id))) {
 
-                    redirect(site_url('publicar/3'));
+            redirect(site_url('publicar/3'));
 
 //                    $this->index();
-
-                
-
-				}
-
-        
-
+        }
     }
-	
-	
-	
+
     public function apagarenvio($id = NULL) {
-		$this->load->model('validalogin');
+        $this->load->model('validalogin');
 
         $this->validalogin->valida();
-		$this->db->delete('upload_arquivo', array('cod_envio' => $id));
- 
-                if ($this->db->delete('envio_arquivo', array('id_envio' => $id))) {
+        $this->db->delete('upload_arquivo', array('cod_envio' => $id));
 
-                    redirect(site_url('publicar/verpub/3'));
+        if ($this->db->delete('envio_arquivo', array('id_envio' => $id))) {
 
-
-				}
-
-        
-
+            redirect(site_url('publicar/verpub/3'));
+        }
     }
-
-
-
 
     public function upfile() {
 
@@ -811,7 +757,6 @@ $this->load->model('validalogin');
                 $dirdata = "dezembro";
 
                 break;
-
         }
 
 
@@ -823,13 +768,11 @@ $this->load->model('validalogin');
         if (is_dir("uploads/publicadas/$entidade/$dirdata")) {
 
             $dir = 'uploads/publicadas/' . $entidade . '/' . $dirdata;
-
         } else {
 
             mkdir("uploads/publicadas/$entidade/$dirdata", 0777, true);
 
             $dir = 'uploads/publicadas/' . $entidade . '/' . $dirdata;
-
         }
 
 
@@ -851,7 +794,6 @@ $this->load->model('validalogin');
 		  window.setTimeout(\"location.href='index.php?pg=envio';\", 2000);
 
 		</script>";
-
         } else {
 
             $key = $this->input->post('keyfile');
@@ -879,7 +821,6 @@ $this->load->model('validalogin');
                 if ($error != 0) {
 
                     $msg[] = "<b> $name : </b>" . $error['asdas'];
-
                 }
 
                 if (array_search($type, $tiposPermitidos) === false) {
@@ -889,7 +830,6 @@ $this->load->model('validalogin');
                     redirect(site_url('publicadas/cadastro/5'));
 
                     // Não houveram erros, move o arquivo
-
                 } else {
 
 
@@ -911,28 +851,19 @@ $this->load->model('validalogin');
 
 
 //                            redirect('index.php/publicacoes/2'); 
-
                         }
-
                     } else {
 
                         $msg[] = "<b> $name : </b> ocorreu erro";
-
                     }
-
                 }
-
             }redirect(site_url('publicar/2'));
-
         }
-
     }
 
+    public function updoc($entidade, $data, $dados) {
 
-
-    public function updoc($entidade, $data, $id) {
-
-
+ 
 
         date_default_timezone_set('America/Sao_Paulo');
 
@@ -1015,19 +946,16 @@ $this->load->model('validalogin');
                 $dirdata = "dezembro";
 
                 break;
-
         }
 
-         if (is_dir("uploads/publicadas/$entidade/$dirdata")) {
+        if (is_dir("uploads/publicadas/$entidade/$dirdata")) {
 
             $dir = 'uploads/publicadas/' . $entidade . '/' . $dirdata;
-
         } else {
 
             mkdir("uploads/publicadas/$entidade/$dirdata", 0777, true);
 
             $dir = 'uploads/publicadas/' . $entidade . '/' . $dirdata;
-
         }
 
         // fim diretorio
@@ -1043,26 +971,31 @@ $this->load->model('validalogin');
 		  window.setTimeout(\"location.href='index.php?pg=envio';\", 2000);
 
 		</script>";
-
         } else {
-
-            $key = $id;
+            
+   
 
             for ($i = 0; $i < $numFile; $i++) {
 
 
+                $name = rand(5, 10000) . md5($file['name'][$i]);
 
-                $name = rand(5, 10000).md5($file['name'][$i]);
 
-           
 
-				$type = $file['type'][$i];
+                $type = $file['type'][$i];
 
                 $size = $file['size'][$i];
 
                 $error = $file['error'][$i];
 
                 $tmp = $file['tmp_name'][$i];
+                      $tmp2 = $file['name'][$i];
+         
+                
+                
+                 $dados['titulo'] = substr( $tmp2, 0, -4); 
+                 $dados['objeto'] = substr( $tmp2, 0, -4); 
+                $key = $this->publicadas->setpublicacao($dados);
 
                 $tiposPermitidos = array('application/vnd.openxmlformats-officedocument.wordprocessingml.document', 'application/pdf');
 
@@ -1073,7 +1006,6 @@ $this->load->model('validalogin');
                 if ($error != 0) {
 
                     $msg[] = "<b> $name : </b>" . $error[$i];
-
                 }
 
                 if (array_search($type, $tiposPermitidos) === false) {
@@ -1083,7 +1015,6 @@ $this->load->model('validalogin');
                     redirect(site_url('publicadas/cadastro/5'));
 
                     // Não houveram erros, move o arquivo
-
                 } else {
 
 
@@ -1098,7 +1029,7 @@ $this->load->model('validalogin');
 
                         $date = date('Y-m-d');
 
-                        $obj['arquivo'] = base_url(). $dir. '/' .$name;
+                        $obj['arquivo'] = base_url() . $dir . '/' . $name;
 
                         $obj['key'] = $key;
 
@@ -1113,24 +1044,16 @@ $this->load->model('validalogin');
 
 
                         $this->db->insert('upload_arquivo_publicado', $obj);
-
                     } else {
 
                         $msg[] = "<b> $name : </b> ocorreu erro";
-
                     }
-
                 }
-
             }return $key;
-
         }
-
     }
-	
-	
-	
-	public function updoc2($entidade, $data, $id) {
+
+    public function updoc2($entidade, $data, $id) {
 
 
 
@@ -1215,19 +1138,16 @@ $this->load->model('validalogin');
                 $dirdata = "dezembro";
 
                 break;
-
         }
 
-          if (is_dir("uploads/publicadas/$entidade/$dirdata")) {
+        if (is_dir("uploads/publicadas/$entidade/$dirdata")) {
 
             $dir = 'uploads/publicadas/' . $entidade . '/' . $dirdata;
-
         } else {
 
             mkdir("uploads/publicadas/$entidade/$dirdata", 0777, true);
 
             $dir = 'uploads/publicadas/' . $entidade . '/' . $dirdata;
-
         }
 
         // fim diretorio
@@ -1243,7 +1163,6 @@ $this->load->model('validalogin');
 		  window.setTimeout(\"location.href='index.php?pg=envio';\", 2000);
 
 		</script>";
-
         } else {
 
             $cod_envio = $id;
@@ -1252,11 +1171,11 @@ $this->load->model('validalogin');
 
 
 
-                $name = md5(rand(100000, 100000000)).$file['name'][$i];
+                $name = md5(rand(100000, 100000000)) . $file['name'][$i];
 
-           
 
-				$type = $file['type'][$i];
+
+                $type = $file['type'][$i];
 
                 $size = $file['size'][$i];
 
@@ -1264,7 +1183,7 @@ $this->load->model('validalogin');
 
                 $tmp = $file['tmp_name'][$i];
 
-                $tiposPermitidos = array('application/vnd.openxmlformats-officedocument.wordprocessingml.document', 'application/pdf' , 'application/x-zip', 'application/zip', 'application/x-zip-compressed');
+                $tiposPermitidos = array('application/vnd.openxmlformats-officedocument.wordprocessingml.document', 'application/pdf', 'application/x-zip', 'application/zip', 'application/x-zip-compressed');
 
 
 
@@ -1273,7 +1192,6 @@ $this->load->model('validalogin');
                 if ($error != 0) {
 
                     $msg[] = "<b> $name : </b>" . $error[$i];
-
                 }
 
                 if (array_search($type, $tiposPermitidos) === false) {
@@ -1283,7 +1201,6 @@ $this->load->model('validalogin');
                     redirect(site_url('publicar/verpub/5'));
 
                     // Não houveram erros, move o arquivo
-
                 } else {
 
 
@@ -1297,7 +1214,7 @@ $this->load->model('validalogin');
 
                         $date = date('Y-m-d');
 
-                        $obj['arquivo'] = base_url(). $dir. '/' .$name;
+                        $obj['arquivo'] = base_url() . $dir . '/' . $name;
 
                         $obj['cod_envio'] = $cod_envio;
 
@@ -1308,22 +1225,13 @@ $this->load->model('validalogin');
                         $obj['usuario'] = $this->session->userdata('nome');
 
                         $this->db->insert('upload_arquivo', $obj);
-
                     } else {
 
                         $msg[] = "<b> $name : </b> ocorreu erro";
-
                     }
-
                 }
-
             } return $cod_envio;
-
         }
-
     }
 
-
-
 }
-

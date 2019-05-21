@@ -50,6 +50,10 @@
 			  
 			</li>
 			<li>
+			  <a href="' . site_url('publicar/cadastroLote') . '"><i class="fa fa-circle-o"></i> Cadastro Lote</a>
+			  
+			</li>
+			<li>
 			  <a href="' . site_url('publicar') . '"><i class="fa fa-circle-o"></i> Visualizar</a>
 			  
 			</li>								<li>                  <a href="' . site_url('publicar/verpub') . '"><i class="fa fa-circle-o"></i> Arquivos recebidos</a>                                  </li>
