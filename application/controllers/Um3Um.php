@@ -86,7 +86,7 @@ class Um3Um extends CI_Controller {
         if ($this->session->userdata('permissao') == 'administrador') {
             $this->load->view('includes/menu_admin');
         } else {
-            redirect(site_url('home'));
+        $this->load->view('includes/menu');
         }
         $this->load->view('131/cadastroGeral');
         $this->load->view('includes/footer');
