@@ -328,6 +328,7 @@ class Um3Um extends CI_Controller {
 
             $this->db->insert('131_despesa_dados', $query);
         }
+         redirect(site_url('Um3Um/1'));
     }
 
     public function salvarreceita($arquivo, $cod, $ano, $cod_unidade_gestora) {

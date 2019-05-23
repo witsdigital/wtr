@@ -131,8 +131,8 @@ class um3um_model extends CI_Model {
             $this->db->limit($limit, $offset);
 
     $this->db->select('*');
-            $this->db->from('131_despesa_dados dd, unidade_gestora ug');
-            $this->db->where('dd.unid_orc = ug.cod_unidade');
+            $this->db->from('131_despesa_dados');
+           // $this->db->where('dd.unid_orc = ug.cod_unidade');
  $query = $this->db->get();
  
  

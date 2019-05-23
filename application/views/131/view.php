@@ -55,7 +55,7 @@
     <div class="box-body">
         <div class="box">
             <div class="box-header">
-                <div align="right"><input  onclick="window.location.href = '<?= site_url() ?>Um3Um/cadastro'" type="button" value="Novo Envio" class="btn btn-success"></button></div>
+                <div align="right"><input  onclick="window.location.href = '<?= site_url() ?>Um3Um/cadastroGeral'" type="button" value="Novo Envio" class="btn btn-success"></button></div>
 
                 <!--                  <h3 class="box-title">Data Table With Full Features</h3>-->
             </div><!-- /.box-header -->
