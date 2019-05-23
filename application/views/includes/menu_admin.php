@@ -83,9 +83,10 @@
 			</a>
 			<ul class="treeview-menu">
 
-				<li><a href="<?= site_url() ?>Um3Um/cadastro"><i class="fa fa-circle-o"></i> Cadastrar</a></li>
+				<!--<li><a href="<?= site_url() ?>Um3Um/cadastro"><i class="fa fa-circle-o"></i> Cadastrar </a></li>-->
+				<li><a href="<?= site_url() ?>Um3Um/cadastroGeral"><i class="fa fa-circle-o"></i> Cadastrar </a></li>
 				<li><a href="<?= site_url() ?>Um3Um"><i class="fa fa-circle-o"></i>Visualizar</a></li>
-				<li><a href="<?= site_url() ?>Um3Um/reportPdf"><i class="fa fa-circle-o"></i>Exportar</a></li>
+				<!--<li><a href="<?= site_url() ?>Um3Um/reportPdf"><i class="fa fa-circle-o"></i>Exportar</a></li>-->
 			</ul>
 		</li>
 		<li class="treeview">

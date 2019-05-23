@@ -65,9 +65,9 @@
                         <tr>
                             <th style="width: 20px;">Id</th>
 
-                            <th>Competência</th>
-                            <th>Ano</th>
 
+
+                            <th>Arquivo</th>
 
                             <th>Usuário</th>
                             <th>Data/Hora</th>
@@ -83,59 +83,26 @@
 
                                 <td><?php echo $row->id ?></td>
 
-                                <td><?php
-                                    switch ($row->competencia) {
-                                        case 1:
-                                            $mes = 'janeiro';
-                                              break;
-                                        case 2:
-                                            $mes = 'Fevereiro';
-                                              break;
-                                        case 3:
-                                            $mes = 'Março';
-                                              break;
-                                        case 4:
-                                            $mes = 'Abril';
-                                              break;
-                                        case 5:
-                                            $mes = 'Maio';
-                                              break;
-                                        case 6:
-                                            $mes = 'Junho';
-                                              break;
-                                        case 7:
-                                            $mes = 'Julho';
-                                              break;
-                                        case 8:
-                                            $mes = 'Agosto';
-                                              break;
-                                        case 9:
-                                            $mes = 'Setembro';
-                                              break;
-                                        case 10:
-                                            $mes = 'Outubro';
-                                              break;
-
-                                        case 11:
-                                            $mes = 'Novembro';
-                                              break;
-                                        case 12:
-                                            $mes = 'Dezembro';
-                                              break;
-                                    }
 
 
-                                    echo $mes;
-                                    ?></td>
-                           
-                                <td><?php echo $row->ano ?></td>
+                                <td><?php echo $row->arquivo ?></td>
                                 <td><?php echo $row->usuario ?></td>
                                 <td><?php echo date("d/m/Y", strtotime($row->data_envio)) ?> às <?php echo $row->hora_envio ?> </td>
 
 
-
-                                <td align='center' style="width: 280px; "><button onclick="window.location.href = '<?= site_url('Um3Um/visualizar') ?>/<?php echo $row->id ?>/RECEITA'" class="btn btn-primary btn-flat">RECEITA</button><button onclick="window.location.href = '<?= site_url('Um3Um/visualizar') ?>/<?php echo $row->id ?>/DESPESA'" class="btn btn-primary btn-flat">DESPESA</button><button onclick="confirma(<?php echo $row->id ?>);" class="btn confirma  btn-danger btn-flat" >Apagar</button></td>
-
+                                <?php
+                                if ($row->arquivo == 'RECEITA') {
+                                    ?>
+                                    <td align='center' style="width: 280px; "><button onclick="window.location.href = '<?= site_url('Um3Um/visualizar') ?>/<?php echo $row->id ?>/RECEITA'" class="btn btn-primary btn-flat">RECEITA</button><button onclick="confirma(<?php echo $row->id ?>);" class="btn confirma  btn-danger btn-flat" >Apagar</button></td>
+                                    <?php
+                                } else {
+                                    ?>
+                                    <td align='center' style="width: 280px; "><button onclick="window.location.href = '<?= site_url('Um3Um/visualizar') ?>/<?php echo $row->id ?>/DESPESA'" class="btn btn-primary btn-flat">DESPESA</button><button onclick="confirma(<?php echo $row->id ?>);" class="btn confirma  btn-danger btn-flat" >Apagar</button></td>
+                             
+                                    <?php }
+                                ?>
+                                    
+                                    
                             </tr><?php } ?>                       
 
 

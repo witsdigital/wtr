@@ -157,7 +157,7 @@ $query = $this->db->get('configuracoes')->result();
                                     <ul class="sub-menu">
                                         <li><a href="<?= site_url('transparencia/diarias') ?>">DIÁRIAS</a></li>
                                         <li><a href="<?= site_url('transparencia/despesas') ?>">PAGAMENTOS</a></li>
-                                       
+                                             <li><a href="<?= site_url('transparencia/get/folha') ?>">FOLHA DE PAGAMENTO</a></li>
 
                                     </ul>
                                 </li>
@@ -174,16 +174,16 @@ $query = $this->db->get('configuracoes')->result();
                                 	  <li class="menu-item-has-children">
                                     <a href="#">GESTÃO FISCAL</a>
                                     <ul class="sub-menu">
-                                        <li><a href="<?= site_url('portal/get/leis') ?>">LEIS</a></li>
-                                        <li><a href="<?= site_url('portal/get/PPA') ?>">PPA</a></li>
-                                        <li><a href="<?= site_url('portal/get/loa') ?>">LOA</a></li>
-                                        <li><a href="<?= site_url('portal/get/ldo') ?>">LDO</a></li>
-                                        <li><a href="<?= site_url('portal/get/rgf') ?>">RGF</a></li>
-                                        <li><a href="<?= site_url('portal/get/rreo') ?>">RREO</a></li>
-                                        <li><a href="<?= site_url('portal/get/contratos') ?>">CONTRATOS</a></li>
-                                        <li><a href="<?= site_url('portal/get/licitacao') ?>">LICITAÇÃO</a></li>
-                                        <li><a href="<?= site_url('portal/get/convenios') ?>">CONVÊNIOS</a></li>
-                                        <li><a href="<?= site_url('portal/get/FOLHA') ?>">DETALHAMENTO PESSOAL</a></li>
+                                        <li><a href="<?= site_url('transparencia/get/leis') ?>">LEIS</a></li>
+                                        <li><a href="<?= site_url('transparencia/get/PPA') ?>">PPA</a></li>
+                                        <li><a href="<?= site_url('transparencia/get/loa') ?>">LOA</a></li>
+                                        <li><a href="<?= site_url('transparencia/get/ldo') ?>">LDO</a></li>
+                                        <li><a href="<?= site_url('transparencia/get/rgf') ?>">RGF</a></li>
+                                        <li><a href="<?= site_url('transparencia/get/rreo') ?>">RREO</a></li>
+                                        <li><a href="<?= site_url('transparencia/get/contratos') ?>">CONTRATOS</a></li>
+                                        <li><a href="<?= site_url('transparencia/get/licitacao') ?>">LICITAÇÃO</a></li>
+                                        <li><a href="<?= site_url('transparencia/get/convenios') ?>">CONVÊNIOS</a></li>
+                                        <li><a href="<?= site_url('transparencia/get/FOLHA') ?>">DETALHAMENTO PESSOAL</a></li>
                                        
 
                                     </ul>

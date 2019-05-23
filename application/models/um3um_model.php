@@ -24,7 +24,7 @@ class um3um_model extends CI_Model {
 
     public function getall() {
 
-        $this->db->group_by('competencia, entidade, ano');
+        //$this->db->group_by('competencia, entidade, ano');
         $query = $this->db->get('dados_131');
 
         return $query->result();

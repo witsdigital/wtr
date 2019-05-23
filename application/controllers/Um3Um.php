@@ -11,7 +11,7 @@ class Um3Um extends CI_Controller {
         if ($this->session->userdata('permissao') == 'administrador') {
             $this->load->view('includes/menu_admin');
         } else {
-            redirect (site_url('home'));
+            redirect(site_url('home'));
         }
         if ($indice == 1) {
             $data['msg'] = "Dados cadastrados com sucesso!";
@@ -32,7 +32,7 @@ class Um3Um extends CI_Controller {
             $this->load->view('includes/msg_danger', $data);
         }
         if ($indice == 9) {
-            $data['msg'] = "Já existe lancamentos para o mês em questão!";
+            $data['msg'] = "Já existe!";
             $this->load->view('includes/msg_danger', $data);
         }
 
@@ -52,11 +52,11 @@ class Um3Um extends CI_Controller {
         if ($this->session->userdata('permissao') == 'administrador') {
             $this->load->view('includes/menu_admin');
         } else {
-            redirect (site_url('home'));
+            redirect(site_url('home'));
         }
 
         $this->load->model('um3um_model');
-        $dados['data'] = $this->um3um_model->getalldetalhe($competencia,$ano);
+        $dados['data'] = $this->um3um_model->getalldetalhe($competencia, $ano);
 
         $this->load->view('131/view_detalhe', $dados);
         $this->load->view('includes/footer');
@@ -71,12 +71,27 @@ class Um3Um extends CI_Controller {
         if ($this->session->userdata('permissao') == 'administrador') {
             $this->load->view('includes/menu_admin');
         } else {
-            redirect (site_url('home'));
+            redirect(site_url('home'));
         }
         $this->load->view('131/cadastro');
         $this->load->view('includes/footer');
     }
-    
+
+    public function cadastroGeral() {
+
+        ini_set('default_charset', 'UTF-8');
+
+        $this->load->view('includes/import');
+        $this->load->view('includes/header');
+        if ($this->session->userdata('permissao') == 'administrador') {
+            $this->load->view('includes/menu_admin');
+        } else {
+            redirect(site_url('home'));
+        }
+        $this->load->view('131/cadastroGeral');
+        $this->load->view('includes/footer');
+    }
+
     public function reportPdf() {
 
         ini_set('default_charset', 'UTF-8');
@@ -91,59 +106,58 @@ class Um3Um extends CI_Controller {
         $this->load->view('131/cadastro2');
         $this->load->view('includes/footer');
     }
-    public function printReport(){
 
-        ini_set("memory_limit","1128M") ;
+    public function printReport() {
+
+        ini_set("memory_limit", "1128M");
         ini_set("pcre.backtrack_limit", "1000000000");
-        $filtro['tipo'] =  $this->input->post('tipo');
-        $filtro['inicio'] =  $this->input->post('competenciaa');
-        $filtro['fim'] =  $this->input->post('competenciab');
-        $filtro['ano'] =  $this->input->post('ano');
-       
-                  $filtro['operacao'] =  $this->input->post('operacao'); 
-    
- 
+        $filtro['tipo'] = $this->input->post('tipo');
+        $filtro['inicio'] = $this->input->post('competenciaa');
+        $filtro['fim'] = $this->input->post('competenciab');
+        $filtro['ano'] = $this->input->post('ano');
+
+        $filtro['operacao'] = $this->input->post('operacao');
+
+
 
 
         $this->load->model('um3um_model');
 
-        $query['dados'] =  $filtro;
+        $query['dados'] = $filtro;
 
         require_once('vendor/autoload.php');
         $mpdf = new \Mpdf\Mpdf();
-        if($filtro['tipo']==1){
-                    $query['itens'] = $this->um3um_model->getDespesaReport( $filtro);
-            $html = $this->load->view("report/reportDespesa",  $query, true);
-             $mpdf->SetTitle('Relatorio de Despesa');
-        }else{
-                    $query['itens'] = $this->um3um_model->getReceitaReport( $filtro);
-            $html = $this->load->view("report/reportReceita",  $query, true);
-             $mpdf->SetTitle('Relatorio de Receita');
+        if ($filtro['tipo'] == 1) {
+            $query['itens'] = $this->um3um_model->getDespesaReport($filtro);
+            $html = $this->load->view("report/reportDespesa", $query, true);
+            $mpdf->SetTitle('Relatorio de Despesa');
+        } else {
+            $query['itens'] = $this->um3um_model->getReceitaReport($filtro);
+            $html = $this->load->view("report/reportReceita", $query, true);
+            $mpdf->SetTitle('Relatorio de Receita');
         }
-        
-        
-        
-        
+
+
+
+
         $mpdf->SetHeader('Mantido por WitsDigital - Relatório gerado em {DATE j/m/Y}');
         $mpdf->SetFooter('{PAGENO}');
-        $mpdf->WriteHTML( $html);
-       
+        $mpdf->WriteHTML($html);
+
         $mpdf->Output();
- 
-}
-    
-     public function apagar($id = null) {
+    }
+
+    public function apagar($id = null) {
 
         if ($this->session->userdata('permissao') == 'administrador') {
-            if($this->db->query('delete from dados_131 where id = '.$id)){
-                 redirect(site_url('Um3Um/3'));
+            if ($this->db->query('delete from dados_131 where id = ' . $id)) {
+                redirect(site_url('Um3Um/3'));
             } else {
-               echo 'erro';
+                echo 'erro';
             }
         } else {
-           echo 'erro';
+            echo 'erro';
         }
-      
     }
 
     public function visualizar($id, $tipo) {
@@ -156,7 +170,7 @@ class Um3Um extends CI_Controller {
         if ($this->session->userdata('permissao') == 'administrador') {
             $this->load->view('includes/menu_admin');
         } else {
-            redirect (site_url('home'));
+            redirect(site_url('home'));
         }
 
         $this->load->model('um3um_model');
@@ -181,7 +195,7 @@ class Um3Um extends CI_Controller {
         if ($this->session->userdata('permissao') == 'administrador') {
             $this->load->view('includes/menu_admin');
         } else {
-            redirect (site_url('home'));
+            redirect(site_url('home'));
         }
 
 
@@ -190,6 +204,7 @@ class Um3Um extends CI_Controller {
     }
 
     public function salvar() {
+        $pm = 1;
         ini_set('default_charset', 'UTF-8');
         date_default_timezone_set('America/Sao_Paulo');
 
@@ -201,20 +216,32 @@ class Um3Um extends CI_Controller {
         set_time_limit(120);
         ini_set('max_input_nesting_level', 999);
 
-        $competencia = $this->input->post('competencia');
-        $ano = $this->input->post('ano');
+
+        $tp_file = $this->input->post('tp_file');
+        $cod_unidade_gestora = $this->input->post('unidade_gestora');
         $arquivo = $_FILES["arquivo"]["tmp_name"];
         $arquivo = file($arquivo); //abre o arquivo
         $total = count($arquivo);
         $tp = substr($arquivo[0], 1, 3);
         $ms = substr($arquivo[1], 34, 2);
+        $nmfile = substr($arquivo[0], 1, 7);
+        
+        if ($nmfile == 'DESPESA' && $tp_file == 1) {
+            echo "<script>alert('Arquivo txt e tipo de arquivo divergem');</script>";
+            $pm = 0;
+        } else {
+            if ($nmfile == 'RECEITA' && $tp_file == 2) {
+                echo "<script>alert('Arquivo txt e tipo de arquivo divergem');</script>";
+                $pm = 0;
+            }
+        }
+        if ($pm == 0) {
 
-        $this->db->where('mes_competencia', $competencia);
-        $this->db->where('arquivo', "DESPESA");
-        $this->db->where('ano', $ano);
-        $consult = $this->db->get('dados_131');
-        if ($consult->num_rows() > 0) {
-            redirect('Um3Um/9');
+            echo " <script>
+
+  window.history.back();
+
+</script> ";
         } else {
 
             $qy['entidade'] = $entidade;
@@ -223,71 +250,87 @@ class Um3Um extends CI_Controller {
             $qy['usuario'] = $this->session->userdata('nome');
             $qy['data_envio'] = date("Y-m-d");
             $qy['hora_envio'] = date("H:i:s");
+
             $qy['competencia'] = $ms;
             $qy['mes_competencia'] = $competencia;
-            $qy['ano'] =  $ano;
 
             if ($this->db->insert('dados_131', $qy)) {
                 $cod = $this->db->insert_id();
-                for ($i = 1; $i < $total - 1; $i++) {
-
-                    header('Content-Type: text/html; charset=iso-8859-1');
-                    $codigo = substr($arquivo[$i], 0, 1);
-                    $unidade = substr($arquivo[$i], 1, 20);
-                    $data = substr($arquivo[$i], 21, 10);
-                    $data2 = substr($arquivo[$i], 31, 10);
-                    $tipo = substr($arquivo[$i], 41, 3);
-                    $processoadm = substr($arquivo[$i], 44, 30);
-                    $nprocesso = substr($arquivo[$i], 74, 30);
-                    $modalidade = substr($arquivo[$i], 45, 3);
-                    $descricao = htmlentities(substr($arquivo[$i], 104, 1000), ENT_QUOTES, "iso-8859-1");
-                    $credor = substr($arquivo[$i], 1104, 150);
-                    $doc = substr($arquivo[$i], 1254, 18);
-                    $valor = substr($arquivo[$i], 1272, 21);
-                    $funcao = htmlentities(substr($arquivo[$i], 1293, 150), ENT_QUOTES, "iso-8859-1");
-
-
-                    $subfuncao = htmlentities(substr($arquivo[$i], 1443, 150), ENT_QUOTES, "iso-8859-1");
-                    $natureza = htmlentities(substr($arquivo[$i], 1593, 150), ENT_QUOTES, "iso-8859-1");
-                    $fonte = htmlentities(substr($arquivo[$i], 1743, 150), ENT_QUOTES, "iso-8859-1");
-
-                    $empenho = substr($arquivo[$i], 1893, 30);
-                    $pro3 = substr($arquivo[$i], 1923, 30);
-
-                    $query['codigo'] = $codigo;
-                    $query['unid_orc'] = $unidade;
-                    $query['datapublicacao'] = $unidade;
-                    $query['data_mov'] = $data2;
-                    $query['tipo'] = $tipo;
-                    $query['num_pro_ad'] = $processoadm;
-                    $query['num_pro_lict'] = $nprocesso;
-                    $query['bem_servico'] = utf8_encode( $descricao);
-                    $credor = utf8_encode($credor);
-
-                    $query['credor'] = $credor;
-                    $query['doc'] = $doc;
-                    $query['valor'] = $valor;
-                    $query['funcao'] = $funcao;
-                    $query['sub_funcao'] = $subfuncao;
-                    $query['natureza'] = $natureza;
-                    $query['fonte'] = $fonte;
-                    $query['empenho'] = $empenho;
-                    $query['processo_contratacao'] = $pro3;
-                    $query['entidade'] = $entidade;
-                    $query['competencia'] = $ms;
-                    $query['cod_dados_131'] = $cod;
-                    $query['ano'] = $ano;
-
-
-                    $this->db->insert('131_despesa_dados', $query);
-                }
+               if($tp_file == 2){
+                    $this->save_131_despesa($cod, $cod_unidade_gestora);
+               }else{
+                    $this->salvarreceita($_FILES["arquivo"]["tmp_name"], $cod, $ano, $cod_unidade_gestora);
+           
+               }
+                
             }
-            $this->salvarreceita($_FILES["arquivo1"]["tmp_name"], $cod, $ano);
-            //redirect(site_url('Um3Um/step2'));
         }
     }
 
-    public function salvarreceita($arquivo, $cod, $ano) {
+    public function save_131_despesa($cod, $cod_unidade_gestora) {
+
+        $arquivo = $_FILES["arquivo"]["tmp_name"];
+        $arquivo = file($arquivo); //abre o arquivo
+        $total = count($arquivo);
+        $tp = substr($arquivo[0], 1, 3);
+        $ms = substr($arquivo[1], 34, 2);
+        $entidade = $this->session->userdata('entidade');
+        for ($i = 1; $i < $total - 1; $i++) {
+
+            header('Content-Type: text/html; charset=iso-8859-1');
+            $codigo = substr($arquivo[$i], 0, 1);
+            $unidade = substr($arquivo[$i], 1, 20);
+            $data = substr($arquivo[$i], 21, 10);
+            $data2 = substr($arquivo[$i], 31, 10);
+            $tipo = substr($arquivo[$i], 41, 3);
+            $processoadm = substr($arquivo[$i], 44, 30);
+            $nprocesso = substr($arquivo[$i], 74, 30);
+            $modalidade = substr($arquivo[$i], 45, 3);
+            $descricao = htmlentities(substr($arquivo[$i], 104, 1000), ENT_QUOTES, "iso-8859-1");
+            $credor = substr($arquivo[$i], 1104, 150);
+            $doc = substr($arquivo[$i], 1254, 18);
+            $valor = substr($arquivo[$i], 1272, 21);
+            $funcao = htmlentities(substr($arquivo[$i], 1293, 150), ENT_QUOTES, "iso-8859-1");
+
+
+            $subfuncao = htmlentities(substr($arquivo[$i], 1443, 150), ENT_QUOTES, "iso-8859-1");
+            $natureza = htmlentities(substr($arquivo[$i], 1593, 150), ENT_QUOTES, "iso-8859-1");
+            $fonte = htmlentities(substr($arquivo[$i], 1743, 150), ENT_QUOTES, "iso-8859-1");
+
+            $empenho = substr($arquivo[$i], 1893, 30);
+            $pro3 = substr($arquivo[$i], 1923, 30);
+
+            $query['codigo'] = $codigo;
+            $query['unid_orc'] = $unidade;
+            $query['datapublicacao'] = $unidade;
+            $query['data_mov'] = $data2;
+            $query['tipo'] = $tipo;
+            $query['num_pro_ad'] = $processoadm;
+            $query['num_pro_lict'] = utf8_encode($nprocesso);
+            $query['bem_servico'] = utf8_encode($descricao);
+            $credor = utf8_encode($credor);
+
+            $query['credor'] = $credor;
+            $query['doc'] = $doc;
+            $query['valor'] = $valor;
+            $query['funcao'] = $funcao;
+            $query['sub_funcao'] = $subfuncao;
+            $query['natureza'] = $natureza;
+            $query['fonte'] = $fonte;
+            $query['empenho'] = $empenho;
+            $query['processo_contratacao'] = utf8_encode($pro3);
+            $query['entidade'] = $entidade;
+            $query['competencia'] = $ms;
+            $query['cod_dados_131'] = $cod;
+            $query['ano'] = substr($data2, 6, 4);
+            $query['cod_unidade_gestora'] = $cod_unidade_gestora;
+
+
+            $this->db->insert('131_despesa_dados', $query);
+        }
+    }
+
+    public function salvarreceita($arquivo, $cod, $ano, $cod_unidade_gestora) {
 
 
         $entidade = $this->session->userdata('entidade');
@@ -296,7 +339,7 @@ class Um3Um extends CI_Controller {
         set_time_limit(120);
         ini_set('max_input_nesting_level', 999);
 
- 
+
         $arquivo = file($arquivo); //abre o arquivo
         $total = count($arquivo);
         $tp = substr($arquivo[0], 1, 3);
@@ -321,31 +364,32 @@ class Um3Um extends CI_Controller {
             $query['unidade_gestora'] = $unidade;
             $query['data_publicacao'] = $data;
             $query['data_registro'] = $data2;
+            
             $query['tipo'] = $etapa;
             $query['modalidade'] = $modalidade;
-            $query['descricao'] = utf8_encode( $descricao);
+            $query['descricao'] = utf8_encode($descricao);
             $query['valor'] = $valor;
-            $query['fonte_recurso'] = utf8_encode( $fonte);
+            $query['fonte_recurso'] = utf8_encode($fonte);
 
 
 
             $natureza = utf8_encode($natureza);
             $query['natureza'] = $natureza;
 
-            $query['destinacao'] = $destino;
+            $query['destinacao'] = utf8_encode($destino);
             $query['entidade'] = $entidade;
 
             $query['competencia'] = $ms;
             $query['cod_dados_131'] = $cod;
-            $query['ano'] = $ano;
+         $query['ano'] = substr($data2, 6, 4);
 
 
-
+            $query['cod_unidade_gestora'] = $cod_unidade_gestora;
 
 
             $this->db->insert('131_receita_dados', $query);
         }
-      redirect(site_url('Um3Um/1'));
+        redirect(site_url('Um3Um/1'));
     }
 
     public function alterarreceita($cod, $id) {

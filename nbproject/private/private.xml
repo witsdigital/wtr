@@ -8,7 +8,10 @@
             <file>file:/Applications/MAMP/htdocs/transparencia/application/views/transparencia/includes/footer.php</file>
             <file>file:/Applications/MAMP/htdocs/transparencia/application/views/transparencia/includes/header.php</file>
             <file>file:/Applications/MAMP/htdocs/transparencia/application/views/transparencia/licitacao.php</file>
+            <file>file:/Applications/MAMP/htdocs/transparencia/application/views/publicar/cadastroLote.php</file>
+            <file>file:/Applications/MAMP/htdocs/transparencia/application/views/publicar/cadastro.php</file>
             <file>file:/Applications/MAMP/htdocs/transparencia/application/controllers/licitacao.php</file>
+            <file>file:/Applications/MAMP/htdocs/transparencia/application/controllers/publicar.php</file>
             <file>file:/Applications/MAMP/htdocs/transparencia/application/views/licitacao/cadastro.php</file>
         </group>
     </open-files>
