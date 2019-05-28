@@ -72,7 +72,7 @@ $mes[12] = 'Dezembro';
                         foreach ($despesas as $row) {
                             ?>
                             <div class="row">
-                                <div class="col-md-6">
+                                <div class="col-md-4">
                                 <span><strong><i class="icon-list-alt"></i> Natureza:</strong><br> <a  href="#"><?php echo $row->natureza ?></a></span>
                                 
                                 
@@ -80,6 +80,12 @@ $mes[12] = 'Dezembro';
                                 </div>
                                  <div class="col-md-2">
                                 <span><strong><i class="icon-list-alt"></i> ANO:</strong><br> <a  href="#"><?php echo $row->ano ?></a></span>
+                                
+                                
+                                
+                                </div>
+                                <div class="col-md-2">
+                                <span><strong><i class="icon-list-alt"></i> Mês:</strong><br> <a  href="#"><?php echo $mes[$row->competencia] ?></a></span>
                                 
                                 
                                 
