@@ -72,8 +72,14 @@ $mes[12] = 'Dezembro';
                         foreach ($despesas as $row) {
                             ?>
                             <div class="row">
-                                <div class="col-md-8">
+                                <div class="col-md-6">
                                 <span><strong><i class="icon-list-alt"></i> Natureza:</strong><br> <a  href="#"><?php echo $row->natureza ?></a></span>
+                                
+                                
+                                
+                                </div>
+                                 <div class="col-md-2">
+                                <span><strong><i class="icon-list-alt"></i> ANO:</strong><br> <a  href="#"><?php echo $row->ano ?></a></span>
                                 
                                 
                                 
@@ -84,7 +90,7 @@ $mes[12] = 'Dezembro';
                                 
                                 
                                 </div>
-                                <br><div class="col-md-2"><button type="buttom" data-toggle="modal" data-target="#<?php echo $row->id ?>" type="button" class="btn btn-sm btn-primary" >Consultar</button></div>
+                                <div style="padding:4px" class="col-md-2"><button type="buttom" data-toggle="modal" data-target="#<?php echo $row->id ?>" type="button" class="btn btn-sm btn-primary" >Consultar</button></div>
                             </div>
                             <div class="modal fade" id="<?php echo $row->id ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
                             <div class="modal-dialog" role="document">
