@@ -161,8 +161,8 @@ class um3um_model extends CI_Model {
         if ($limit)
             $this->db->limit($limit, $offset);
         $this->db->select('*');
-            $this->db->from('131_receita_dados dd, unidade_gestora ug');
-            $this->db->where('dd.unidade_gestora = ug.cod_unidade');
+            $this->db->from('131_receita_dados dd');
+        
  $query = $this->db->get();
 
         if ($query->num_rows() > 0) {
